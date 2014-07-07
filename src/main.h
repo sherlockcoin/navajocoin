@@ -59,6 +59,10 @@ static const uint256 CheckBlock1 ("0000003e263eae6f4176c5888962e60b9f9e7c3e1d945
 static const uint256 CheckBlock2 ("0000008595b56dfc05b26d073ce9e86bf5b7c4e4eb0e1f97beecde38b759890a"); // Checkpoint at block 2
 static const uint256 CheckBlock3 ("00000069ada990305c02b3807640126e93a88680fbe89201d673ebb4e26a22c7"); // Checkpoint at block 3
 static const uint256 CheckBlock4 ("000000b2c8845f757395db92f1b347f73727edba630339c44b6cb8625f87cd9b"); // Checkpoint at block 4
+static const uint256 CheckBlock5 ("0000000007054bf10c8fca005b92c253d3c31323c1273057194dd4b21c9ca9c6"); // Checkpoint at block 25000
+static const uint256 CheckBlock6 ("000000000480b6932ccfa26fb4acee44943ab081730e98b55c29ae07377e94bb"); // Checkpoint at block 50000
+static const uint256 CheckBlock7 ("0000000022dd29280a0e1d7aec75c8f9f86e28a54a551d2f210934c815873b81"); // Checkpoint at block 100000
+static const uint256 CheckBlock8 ("3e004a1b0399ef61a29c84d7760a5c36446c971f5a3e4dfb802da1c216a3ac3a"); // Checkpoint at block 117985
 
 inline int64_t PastDrift(int64_t nTime)   { return nTime - 24 * 60 * 60; } // up to 1 day from the past
 inline int64_t FutureDrift(int64_t nTime) { return nTime + 24 * 60 * 60; } // up to 1 day from the future
