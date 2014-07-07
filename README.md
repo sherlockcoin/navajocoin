@@ -1,7 +1,7 @@
 
-NavajoCoin 
+NavajoCoin
 
-A x13 PoW / PoS coin.
+A x13 PoW / PoS coin With Decentralized "Navajo Anonymous Technology" 
 
-Visit http://summercoin.org for more details, or visit the launch thread over at https://bitcointalk.org/index.php?topic=625693 , https://bitcointalk.org/index.php?topic=679791
+Visit To be Announced Soon for more details, or visit the launch thread over at https://bitcointalk.org/index.php?topic=679791 .
 
