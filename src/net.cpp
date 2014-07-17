@@ -1140,6 +1140,16 @@ void MapPort()
 // The second name should resolve to a list of seed addresses.
 static const char *strDNSSeed[][2] = {
     {"summercoinv2.no-ip.biz", "summercoinv2.no-ip.biz"},
+	{"navajosupernode1.no-ip.biz", "summercoinv2.no-ip.biz"},
+	{"navajosupernode2.no-ip.biz", "navajosupernode2.no-ip.biz"},
+	{"navajosupernode3.no-ip.biz", "navajosupernode3.no-ip.biz"},
+	{"navajosupernode4.no-ip.biz", "navajosupernode4.no-ip.biz"},
+	{"navajosupernode5.no-ip.biz", "navajosupernode5.no-ip.biz"},
+	{"navajosupernode6.no-ip.biz", "navajosupernode6.no-ip.biz"},
+	{"navajosupernode7.no-ip.biz", "navajosupernode7.no-ip.biz"},
+	{"navajosupernode8.no-ip.biz", "navajosupernode8.no-ip.biz"},
+	{"navajosupernode9.no-ip.biz", "navajosupernode9.no-ip.biz"},
+	{"navajosupernode10.no-ip.biz", "navajosupernode10.no-ip.biz"},
 };
 
 void ThreadDNSAddressSeed(void* parg)

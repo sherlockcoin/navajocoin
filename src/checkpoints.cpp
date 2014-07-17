@@ -33,6 +33,22 @@ namespace Checkpoints
 		( 50000, CheckBlock6 )
 		( 100000, CheckBlock7 )
 		( 117985, CheckBlock8 )
+		( 135000, CheckBlock9 )
+		( 141296, CheckBlock10 )
+		( 141300, CheckBlock11 )
+		( 141310, CheckBlock12 )
+		( 141320, CheckBlock13 )
+		( 141330, CheckBlock14 )
+		( 141340, CheckBlock15 )
+		( 141350, CheckBlock16 )
+		( 141351, CheckBlock17 )
+		( 141352, CheckBlock18 )
+		( 141353, CheckBlock19 )
+		( 141360, CheckBlock20 )
+		( 141370, CheckBlock21 )
+		( 141380, CheckBlock22 )
+		( 141390, CheckBlock23 )
+		( 141400, CheckBlock24 )
     ;
 
     // TestNet has no checkpoints

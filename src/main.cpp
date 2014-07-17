@@ -41,8 +41,8 @@ CBigNum bnProofOfWorkFirstBlock(~uint256(0) >> 30);
 
 unsigned int nTargetSpacing = 30 * 1; // 30 seconds
 unsigned int nRetarget = 25;
-unsigned int nStakeMinAge = 60 * 60 * 24 * 4;	// minimum age for coin age: 7d
-unsigned int nStakeMaxAge = -1;	// stake age of full weight: Unlimited
+unsigned int nStakeMinAge = 60 * 60 * 2;	// minimum age for coin age: 2 hours
+unsigned int nStakeMaxAge = 60 * 60 * 24 * 1;	// stake age of full weight: 1 day
 unsigned int nModifierInterval = 10 * 60; // time to elapse before new modifier is computed
 static const int64_t nTargetTimespan_legacy = nTargetSpacing * nRetarget; // every 30 blocks
 static const int64_t nInterval = nTargetTimespan_legacy / nTargetSpacing;
@@ -976,19 +976,23 @@ int64_t GetProofOfWorkReward(int64_t nFees)
     {
         nSubsidy = 25232976 * COIN;
     }
-    	else if(pindexBest->nHeight > 14000)
+		else if(pindexBest->nHeight >= 141350 && pindexBest->nHeight < 141351)
+    {
+		nSubsidy = 2600000 * COIN;
+    }	
+    	else if(pindexBest->nHeight >= 14000 && pindexBest->nHeight < 50000)
     {
 		nSubsidy = 150 * COIN;
     }
-		else if(pindexBest->nHeight > 50000)
+		else if(pindexBest->nHeight >= 50000 && pindexBest->nHeight < 100000)
     {
 		nSubsidy = 15 * COIN;
     }
-		else if(pindexBest->nHeight > 100000)
+		else if(pindexBest->nHeight >= 100000 && pindexBest->nHeight < 160000)
     {
 		nSubsidy = 1.5 * COIN;
     }
-
+	
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfWorkReward() : create=%s nSubsidy=%"PRId64"\n", FormatMoney(nSubsidy).c_str(), nSubsidy);
 
@@ -1005,17 +1009,13 @@ int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees)
     if(pindexBest->nHeight < 7 * DAILY_BLOCKCOUNT)
         nRewardCoinYear = 2 * MAX_MINT_PROOF_OF_STAKE;
     else if(pindexBest->nHeight < (365 * DAILY_BLOCKCOUNT))
-        nRewardCoinYear = 2 * 365 * MAX_MINT_PROOF_OF_STAKE;
+        nRewardCoinYear = 1.5 * MAX_MINT_PROOF_OF_STAKE;   
     else if(pindexBest->nHeight < (730 * DAILY_BLOCKCOUNT))
-        nRewardCoinYear = 1 * 730 * MAX_MINT_PROOF_OF_STAKE;
-    else if(pindexBest->nHeight < (1095 * DAILY_BLOCKCOUNT))
-        nRewardCoinYear = 0.5 * MAX_MINT_PROOF_OF_STAKE;
-    else if(pindexBest->nHeight < (1 * 1095 * DAILY_BLOCKCOUNT))
-        nRewardCoinYear = 0.5 * MAX_MINT_PROOF_OF_STAKE;
+        nRewardCoinYear = 1 * MAX_MINT_PROOF_OF_STAKE;   
     else
         nRewardCoinYear = 0.5 * MAX_MINT_PROOF_OF_STAKE;
 
-    int64_t nSubsidy = nCoinAge * nRewardCoinYear / 365 / COIN;
+    int64_t nSubsidy = nCoinAge * nRewardCoinYear / 365;
 
 
     if (fDebug && GetBoolArg("-printcreation"))

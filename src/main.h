@@ -26,7 +26,7 @@ class CInv;
 class CRequestTracker;
 class CNode;
 
-static const int LAST_POW_BLOCK = 100000; // at 30 second blocks will be about 30 days from launch
+static const int LAST_POW_BLOCK = 160000; // at 30 second blocks will be about 30 days from launch
 
 static const unsigned int MAX_BLOCK_SIZE = 1000000;
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
@@ -35,9 +35,9 @@ static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
 static const unsigned int MAX_INV_SZ = 50000;
 static const int64_t MIN_TX_FEE = 10000;
 static const int64_t MIN_RELAY_TX_FEE = MIN_TX_FEE;
-static const int64_t MAX_MONEY = 50000000 * COIN;
+static const int64_t MAX_MONEY = 60000000 * COIN;
 static const int64_t COIN_YEAR_REWARD = 1 * CENT; // 1% per year
-static const int64_t MAX_MINT_PROOF_OF_STAKE = 0.01 * COIN;	// 10% annual interest
+static const int64_t MAX_MINT_PROOF_OF_STAKE = 0.1 * COIN;	// 10% annual interest
 
 #define FOUNDATION "sZD2Tv6HpfT1q3aHKRUHopy1T6Ge8UYLtZ"
 #define FOUNDATION_TEST "sZD2Tv6HpfT1q3aHKRUHopy1T6Ge8UYLtZ"
@@ -63,6 +63,22 @@ static const uint256 CheckBlock5 ("0000000007054bf10c8fca005b92c253d3c31323c1273
 static const uint256 CheckBlock6 ("000000000480b6932ccfa26fb4acee44943ab081730e98b55c29ae07377e94bb"); // Checkpoint at block 50000
 static const uint256 CheckBlock7 ("0000000022dd29280a0e1d7aec75c8f9f86e28a54a551d2f210934c815873b81"); // Checkpoint at block 100000
 static const uint256 CheckBlock8 ("3e004a1b0399ef61a29c84d7760a5c36446c971f5a3e4dfb802da1c216a3ac3a"); // Checkpoint at block 117985
+static const uint256 CheckBlock9 ("7f735b89ca46c056a347fba6d8d4978c491d53de0e50f05020e980572b8b1c97"); // Checkpoint at block 135000
+static const uint256 CheckBlock10 ("00000000167beb4925ba3eea445c6ee36f530ce9b320bc20ae421394ae8afefe"); // Checkpoint at block 141296
+static const uint256 CheckBlock11 ("000001206c1b30d69ab8126e8aee557855ff0fc1f00b62f948180c2faaf32667"); // Checkpoint at block 141300
+static const uint256 CheckBlock12 ("0000001ca34381fc5d3897cd338b0a91f8a10345d688e457a184088e6bc6a366"); // Checkpoint at block 141310
+static const uint256 CheckBlock13 ("00000052473a7a0bf0073481dbbd81ea7b0c2faee6c5623a4907bd1fbc8331ba"); // Checkpoint at block 141320
+static const uint256 CheckBlock14 ("0000000b3bbc6ff2baccfe8377a221df5815a94e2383755c4180fe71e9dbcea6"); // Checkpoint at block 141330
+static const uint256 CheckBlock15 ("000000056e60e91f1d4c5c39b053c6099acd81e65f5d0a825c69ee07bc59c831"); // Checkpoint at block 141340
+static const uint256 CheckBlock16 ("00000007c4afb4073bdd7f1fe3b80ef03703e35dbe7a0e5cdc0d428217a14835"); // Checkpoint at block 141350
+static const uint256 CheckBlock17 ("0000001874306dc4ee34624e63ca5693bcd3f0817b6247bb2e0a71d5acaf30ae"); // Checkpoint at block 141351
+static const uint256 CheckBlock18 ("000000008d1c60ce7a50ba153a5d3f91e436c6c8a75f20a1bbdbe91cedbc4d05"); // Checkpoint at block 141352
+static const uint256 CheckBlock19 ("000000157f70ca2b7d888640c98ccb4e931f26d1e969af01a686f2bea1c1885b"); // Checkpoint at block 141353
+static const uint256 CheckBlock20 ("0000000e345042b49353d387d7021c13b6a0d59f7674edf603e9933342fc1877"); // Checkpoint at block 141360
+static const uint256 CheckBlock21 ("00000002423353dd38d0b21c1b513f50d88c794d450f58158ad6bf93083ad2b8"); // Checkpoint at block 141370
+static const uint256 CheckBlock22 ("000000020670eb25cdfef7b3cd3ef80f7eeae8343adf56ea262a9e5e4c0a0b78"); // Checkpoint at block 141380
+static const uint256 CheckBlock23 ("000000050a93b81bb6956e3a47f84243c34ac8a2d4063db7c98d60a39d0c4af4"); // Checkpoint at block 141390
+static const uint256 CheckBlock24 ("000000026bdb8db7d635838f37c7d0694bdf381ee04aaec49bfa19e8105c288c"); // Checkpoint at block 141400
 
 inline int64_t PastDrift(int64_t nTime)   { return nTime - 24 * 60 * 60; } // up to 1 day from the past
 inline int64_t FutureDrift(int64_t nTime) { return nTime + 24 * 60 * 60; } // up to 1 day from the future
