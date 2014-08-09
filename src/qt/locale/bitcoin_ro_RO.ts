@@ -1587,8 +1587,8 @@ Acest lucru înseamnă că o taxă de cel puțin %2 este necesară</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>NavajoCoinV2 Core</source>
-        <translation>NavajoCoinV2 Core</translation>
+        <source>NavajoCoin Core</source>
+        <translation>NavajoCoin Core</translation>
     </message>
     <message>
         <location line="+279"/>

@@ -1587,7 +1587,7 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>NavajoCoinV2 Core</source>
+        <source>NavajoCoin Core</source>
         <translation>NavajoCoin Kerne</translation>
     </message>
     <message>

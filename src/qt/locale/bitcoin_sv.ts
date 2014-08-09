@@ -1588,8 +1588,8 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>NavajoCoinV2 Core</source>
-        <translation>NavajoCoinV2 Core</translation>
+        <source>NavajoCoin Core</source>
+        <translation>NavajoCoin Core</translation>
     </message>
     <message>
         <location line="+279"/>

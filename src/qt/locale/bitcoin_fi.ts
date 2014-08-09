@@ -1585,7 +1585,7 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>NavajoCoinV2 Core</source>
+        <source>NavajoCoin Core</source>
         <translation>NavajoCoinin ydin</translation>
     </message>
     <message>

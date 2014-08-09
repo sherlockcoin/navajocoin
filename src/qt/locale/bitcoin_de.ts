@@ -1570,7 +1570,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+25"/>
-        <source>NavajoCoinV2 Core</source>
+        <source>NavajoCoin Core</source>
         <translation>NavajoCoin Kern</translation>
     </message>
     <message>

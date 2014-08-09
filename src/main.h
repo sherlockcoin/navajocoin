@@ -79,6 +79,17 @@ static const uint256 CheckBlock21 ("00000002423353dd38d0b21c1b513f50d88c794d450f
 static const uint256 CheckBlock22 ("000000020670eb25cdfef7b3cd3ef80f7eeae8343adf56ea262a9e5e4c0a0b78"); // Checkpoint at block 141380
 static const uint256 CheckBlock23 ("000000050a93b81bb6956e3a47f84243c34ac8a2d4063db7c98d60a39d0c4af4"); // Checkpoint at block 141390
 static const uint256 CheckBlock24 ("000000026bdb8db7d635838f37c7d0694bdf381ee04aaec49bfa19e8105c288c"); // Checkpoint at block 141400
+static const uint256 CheckBlock25 ("00000003a8491403dd8f9e50d61f708c94a4d247e052b896694e6100cc705387"); // Checkpoint at block 150000
+static const uint256 CheckBlock26 ("ceabbb5036d3ad9186db38b04a2ff3b1cf2e2473bd72b848d5175c4645a87a76"); // Checkpoint at block 160000
+static const uint256 CheckBlock27 ("26bc88c34d0f70ea1b68b75beffcb45ccb66285773c67f75988e9c15f06dd935"); // Checkpoint at block 170000
+static const uint256 CheckBlock28 ("0af905fed32c81845ec518d75cd67f76f0f21237dd391fec3e07231c0b27b797"); // Checkpoint at block 180000
+static const uint256 CheckBlock29 ("e0d9002d503ca284bed9ab9190758187f5826693b8c4ceb6045bde3b326f7407"); // Checkpoint at block 190000
+static const uint256 CheckBlock30 ("99fa06ca9ae93f5ff40bc5240de62967a7888adefe907d2b229d09d05c9c5946"); // Checkpoint at block 200000
+static const uint256 CheckBlock31 ("7ceddca8ed9dd7ad5f98870dcd6f2c9fcfa90ed1b684a58c042dd081b91487eb"); // Checkpoint at block 210000
+static const uint256 CheckBlock32 ("42d8c73e295bc58f0d6457739f751c6fdb7b066fc27404eafbfd31c9d84943bd"); // Checkpoint at block 220000
+static const uint256 CheckBlock33 ("4b3a964cb7daefed14cef75dcd1728fb5e45d121abe60a24fae241b4cc75fa57"); // Checkpoint at block 221000
+static const uint256 CheckBlock34 ("75da191e75dd985446d4e0dc28211711ec055a38e8a9fb6491c83190b1bdfd1a"); // Checkpoint at block 222000
+static const uint256 CheckBlock35 ("eb8c232317e6a2f76a8358bf917076c40b5f9a70fb3de34f1e2b17605d24b879"); // Checkpoint at block 224176
 
 inline int64_t PastDrift(int64_t nTime)   { return nTime - 24 * 60 * 60; } // up to 1 day from the past
 inline int64_t FutureDrift(int64_t nTime) { return nTime + 24 * 60 * 60; } // up to 1 day from the future

@@ -1585,7 +1585,7 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+25"/>
-        <source>NavajoCoinV2 Core</source>
+        <source>NavajoCoin Core</source>
         <translation>NavajoCoin jedro</translation>
     </message>
     <message>

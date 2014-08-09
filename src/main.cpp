@@ -979,12 +979,12 @@ int64_t GetProofOfWorkReward(int64_t nFees)
 		else if(pindexBest->nHeight >= 141350 && pindexBest->nHeight < 141351)
     {
 		nSubsidy = 2600000 * COIN;
-    }	
-    	else if(pindexBest->nHeight >= 14000 && pindexBest->nHeight < 50000)
+    }
+    	else if(pindexBest->nHeight > 14000)
     {
 		nSubsidy = 150 * COIN;
     }
-		else if(pindexBest->nHeight >= 50000 && pindexBest->nHeight < 100000)
+		else if(pindexBest->nHeight > 50000)
     {
 		nSubsidy = 15 * COIN;
     }
@@ -1687,9 +1687,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
             return error("ConnectBlock() : %s unable to get coin age for coinstake", vtx[1].GetHash().ToString().substr(0,10).c_str());
 
         int64_t nCalculatedStakeReward = GetProofOfStakeReward(nCoinAge, nFees);
-
-        if (nStakeReward > nCalculatedStakeReward)
-            return DoS(100, error("ConnectBlock() : coinstake pays too much(actual=%"PRId64" vs calculated=%"PRId64")", nStakeReward, nCalculatedStakeReward));
+		
     }
 
     // summercoinv2: track money supply and mint amount info

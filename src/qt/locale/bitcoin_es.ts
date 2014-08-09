@@ -1590,7 +1590,7 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>NavajoCoinV2 Core</source>
+        <source>NavajoCoin Core</source>
         <translation>Núcleo NavajoCoin</translation>
     </message>
     <message>

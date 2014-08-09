@@ -1587,8 +1587,8 @@ Les montants inférieurs à  0.546 fois les frais minimum de relais apparaissent
     </message>
     <message>
         <location line="+25"/>
-        <source>NavajoCoinV2 Core</source>
-        <translation>NavajoCoinV2 Core</translation>
+        <source>NavajoCoin Core</source>
+        <translation>NavajoCoin Core</translation>
     </message>
     <message>
         <location line="+279"/>
