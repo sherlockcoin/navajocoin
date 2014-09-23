@@ -968,37 +968,6 @@ uint256 WantedByOrphan(const CBlock* pblockOrphan)
     return pblockOrphan->hashPrevBlock;
 }
 
-
-
-// Update the coin staking parameter dynamically with bestHeight    ** FIX EM52
-int UpdateCoinStakeParameter(const int CurrHeight)
-{
-
-    if ( !fTestNet)
-    {
-        if (CurrHeight < 141350)
-        {
-            nStakeMinAge = 60 * 60 * 24 * 4;	// minimum age for coin age: 7d
-            nStakeMaxAge = -1;	// stake age of full weight: Unlimited
-        }
-        else
-        {
-            nStakeMinAge = 60 * 60 * 2;	// minimum age for coin age: 2 hours
-            nStakeMaxAge = 60 * 60 * 24 * 1;	// stake age of full weight: 1 day
-        }
-
-    }
-    /*  // in case testnet would need it in future
-    else {
-        bnProofOfWorkLimit = bnProofOfWorkLimitTestNet;    // 16 bits PoW target limit for testnet
-        nStakeMinAge = 15 * 60; // test net min age is 1 hour
-        nCoinbaseMaturity = 10; // test maturity is 10 blocks
-        nModifierInterval = 60;
-    }
-    */
-    return CurrHeight;
-}
-
 // miner's coin base reward
 int64_t GetProofOfWorkReward(int64_t nFees)
 {
@@ -1007,26 +976,21 @@ int64_t GetProofOfWorkReward(int64_t nFees)
     {
         nSubsidy = 25232976 * COIN;
     }
-    else if(pindexBest->nHeight >= 141350 && pindexBest->nHeight < 141351)
+		else if(pindexBest->nHeight >= 141350 && pindexBest->nHeight < 141351)
     {
-        nSubsidy = 2600000 * COIN;
-    }	
-    else if(pindexBest->nHeight > 14000 && pindexBest->nHeight < 50000)
-    {
-	nSubsidy = 150 * COIN;
+		nSubsidy = 2600000 * COIN;
     }
-    else if(pindexBest->nHeight >= 50000 && pindexBest->nHeight < 100000)
+    	else if(pindexBest->nHeight > 14000)
     {
-        /*  ** FIX EM52
-         *  15 coin POW reward phase never started. locked to 150 coin until POW end
-         * check with  http://cryptexplorer.com/chain/NavajoCoin?hi=100003&count=100
-         * nSubsidy = 15 * COIN;
-         */
-        nSubsidy = 150 * COIN;
+		nSubsidy = 150 * COIN;
     }
-    else if(pindexBest->nHeight >= 100000 && pindexBest->nHeight < 160000)
+		else if(pindexBest->nHeight > 50000)
     {
-	nSubsidy = 1.5 * COIN;
+		nSubsidy = 15 * COIN;
+    }
+		else if(pindexBest->nHeight >= 100000 && pindexBest->nHeight < 160000)
+    {
+		nSubsidy = 1.5 * COIN;
     }
 	
     if (fDebug && GetBoolArg("-printcreation"))
@@ -1042,29 +1006,18 @@ int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees)
 {
     int64_t nRewardCoinYear;
 
-    // reorganized pre and post "double spend fix"           ** FIX EM52
-    if(pindexBest->nHeight < 141350)
-    {
-        if(pindexBest->nHeight < 7 * DAILY_BLOCKCOUNT)
-            nRewardCoinYear = .2 * MAX_MINT_PROOF_OF_STAKE;
-        else
-            nRewardCoinYear = .2 * 365 * MAX_MINT_PROOF_OF_STAKE;
-    }
+    if(pindexBest->nHeight < 7 * DAILY_BLOCKCOUNT)
+        nRewardCoinYear = 2 * MAX_MINT_PROOF_OF_STAKE;
+    else if(pindexBest->nHeight < (365 * DAILY_BLOCKCOUNT))
+        nRewardCoinYear = 2 * 365 * MAX_MINT_PROOF_OF_STAKE;
+    else if(pindexBest->nHeight < (730 * DAILY_BLOCKCOUNT))
+        nRewardCoinYear = 1 * 730 * MAX_MINT_PROOF_OF_STAKE;
+    else if(pindexBest->nHeight < (1095 * DAILY_BLOCKCOUNT))
+        nRewardCoinYear = 0.5 * MAX_MINT_PROOF_OF_STAKE;
+    else if(pindexBest->nHeight < (1 * 1095 * DAILY_BLOCKCOUNT))
+        nRewardCoinYear = 0.5 * MAX_MINT_PROOF_OF_STAKE;
     else
-    {
-        if(pindexBest->nHeight < (365 * DAILY_BLOCKCOUNT))
-            nRewardCoinYear = 2 * 365 * MAX_MINT_PROOF_OF_STAKE;
-
-        // next year % must be recheck. reward look really weird       ** FIX EM52
-        else if(pindexBest->nHeight < (730 * DAILY_BLOCKCOUNT))
-            nRewardCoinYear = 1 * 730 * MAX_MINT_PROOF_OF_STAKE;
-        else if(pindexBest->nHeight < (1095 * DAILY_BLOCKCOUNT))
-            nRewardCoinYear = 0.5 * MAX_MINT_PROOF_OF_STAKE;
-        else if(pindexBest->nHeight < (1 * 1095 * DAILY_BLOCKCOUNT))    // ????
-            nRewardCoinYear = 0.5 * MAX_MINT_PROOF_OF_STAKE;
-        else
-            nRewardCoinYear = 0.5 * MAX_MINT_PROOF_OF_STAKE;
-    }
+        nRewardCoinYear = 0.5 * MAX_MINT_PROOF_OF_STAKE;
 
     int64_t nSubsidy = nCoinAge * nRewardCoinYear / 365 / COIN;
 
@@ -1708,12 +1661,6 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     if (IsProofOfWork())
     {
         int64_t nReward = GetProofOfWorkReward(nFees);
-
-        // ** Debug Pow Reward Calc Check    FIX EM52
-        if ( nReward != vtx[0].GetValueOut() )
-            printf("WARNING: ConnectBlock() : check Pow Reward Difference failed      POW Reward actual=%"PRId64" vs calculated=%"PRId64"\n",  vtx[0].GetValueOut(), nReward);
-
-
         // Check coinbase reward
         if (vtx[0].GetValueOut() > nReward)
             return DoS(50, error("ConnectBlock() : coinbase reward exceeded (actual=%"PRId64" vs calculated=%"PRId64")",
@@ -1740,13 +1687,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
             return error("ConnectBlock() : %s unable to get coin age for coinstake", vtx[1].GetHash().ToString().substr(0,10).c_str());
 
         int64_t nCalculatedStakeReward = GetProofOfStakeReward(nCoinAge, nFees);
-
-        // ** Debug Stake Calc Check    FIX EM52
-        if ( nStakeReward != nCalculatedStakeReward )
-            printf("WARNING: ConnectBlock() : check PoS Reward Difference failed       minAge  %d  MaxAge %d    Stake actual=%"PRId64" vs calculated=%"PRId64"\n", nStakeMinAge, nStakeMaxAge, nStakeReward, nCalculatedStakeReward);
-
-        if (nStakeReward > nCalculatedStakeReward)
-            return DoS(100, error("ConnectBlock() : coinstake pays too much(actual=%"PRId64" vs calculated=%"PRId64")", nStakeReward, nCalculatedStakeReward));
+		
     }
 
     // summercoinv2: track money supply and mint amount info
@@ -1987,7 +1928,6 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
     nBestChainTrust = pindexNew->nChainTrust;
     nTimeBestReceived = GetTime();
     nTransactionsUpdated++;
-    UpdateCoinStakeParameter(nBestHeight);        // Update coin parameter to best block  ** FIX EM52
 
     uint256 nBestBlockTrust = pindexBest->nHeight != 0 ? (pindexBest->nChainTrust - pindexBest->pprev->nChainTrust) : pindexBest->nChainTrust;
 
@@ -2173,14 +2113,6 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
     // that can be verified before saving an orphan block.
     if(pindexBest != NULL && pindexBest->nHeight > 1)
         nCoinbaseMaturity = 50; //coinbase maturity change to 60 blocks
-
-    // Coin Parameters updated according to nBestHeigh, or nHeight if block already known  ** FIX EM52
-    // it maybe superfluous, but safe.
-    {
-        uint256 hash = GetHash();
-        UpdateCoinStakeParameter( mapBlockIndex.count(hash) ? mapBlockIndex[hash]->nHeight : nBestHeight);
-    }
-
     // Size limits
     if (vtx.empty() || vtx.size() > MAX_BLOCK_SIZE || ::GetSerializeSize(*this, SER_NETWORK, PROTOCOL_VERSION) > MAX_BLOCK_SIZE)
         return DoS(100, error("CheckBlock() : size limits failed"));
@@ -2626,8 +2558,6 @@ bool LoadBlockIndex(bool fAllowNew)
 {
     CBigNum bnTrustedModulus;
 
-    UpdateCoinStakeParameter(0);             // Reset Parametr ** FIX EM52
-
     if (fTestNet)
     {
         pchMessageStart[0] = 0x80;
@@ -2732,8 +2662,6 @@ bool LoadBlockIndex(bool fAllowNew)
         if ((!fTestNet) && !Checkpoints::ResetSyncCheckpoint())
             return error("LoadBlockIndex() : failed to reset sync-checkpoint");
     }
-
-    UpdateCoinStakeParameter(nBestHeight);       // Update coin parameter to best block  ** FIX EM52
 
     return true;
 }
