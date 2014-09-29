@@ -60,6 +60,7 @@ namespace Checkpoints
 		( 221000, CheckBlock33 )
 		( 222000, CheckBlock34 )
 		( 224176, CheckBlock35 )
+		( 419892, CheckBlock36 )
     ;
 
     // TestNet has no checkpoints

@@ -19,6 +19,13 @@
      <property name="toolTip">
       <string>This pane shows a detailed description of the transaction</string>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255,255,255);
+border-radius:3px;
+border: 1px solid #C4C1BD;
+color: #4C4C4C;
+padding: 4px;</string>
+     </property>
      <property name="readOnly">
       <bool>true</bool>
      </property>
@@ -26,6 +33,13 @@
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="styleSheet">
+      <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240,240,240), stop:1 rgb(255, 255, 255));
+border-radius:3px;
+border: 1px solid #C4C1BD;
+color: #4C4C4C;
+padding: 4px 12px;</string>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>

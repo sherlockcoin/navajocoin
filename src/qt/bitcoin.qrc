@@ -39,26 +39,19 @@
         <file alias="debugwindow">res/icons/debugwindow.png</file>
         <file alias="staking_off">res/icons/staking_off.png</file>
         <file alias="staking_on">res/icons/staking_on.png</file>
+        <file alias="user">res/icons/user.png</file>
         <file alias="bitcoin">res/icons/bitcoin.png</file>
         <file alias="bitcoin_testnet">res/icons/bitcoin_testnet.png</file>
         <file alias="toolbar">res/icons/toolbar.png</file>
         <file alias="toolbar_testnet">res/icons/toolbar_testnet.png</file>
-		<file alias="smiley-button">res/icons/smiley-button.png</file>
+        <file alias="smiley-button">res/icons/smiley-button.png</file>
         <file alias="chat-bubble">res/icons/chat-bubble.png</file>
-        <file alias="chat-translate">res/icons/chat-translate.png</file>
         <file alias="flag_en">res/icons/flags/flag_en.png</file>
-        <file alias="flag_de">res/icons/flags/flag_de.png</file>
-        <file alias="flag_fr">res/icons/flags/flag_fr.png</file>
-        <file alias="flag_es">res/icons/flags/flag_es.png</file>
-        <file alias="flag_it">res/icons/flags/flag_it.png</file>
-        <file alias="flag_pt">res/icons/flags/flag_pt.png</file>
-        <file alias="flag_tr">res/icons/flags/flag_tr.png</file>
         <file alias="flag_ru">res/icons/flags/flag_ru.png</file>
         <file alias="flag_cn">res/icons/flags/flag_cn.png</file>
-        <file alias="flag_jp">res/icons/flags/flag_jp.png</file>
-        <file alias="flag_kr">res/icons/flags/flag_kr.png</file>
+        <file alias="chat">res/icons/chat.png</file>
     </qresource>
-	<qresource prefix="/smileys">
+    <qresource prefix="/smileys">
         <file alias="icon_smile">res/icons/smileys/icon_smile.png</file>
         <file alias="icon_biggrin">res/icons/smileys/icon_biggrin.png</file>
         <file alias="icon_sad">res/icons/smileys/icon_sad.png</file>
@@ -76,6 +69,29 @@
         <file alias="splash">res/images/splash.png</file>
         <file alias="Wallet_Logo">res/images/Wallet_Logo.png</file>
         <file alias="background">res/images/background.jpg</file>
+        <file alias="p2p">res/images/p2p.png</file>
+        <file alias="chatback">res/images/chatback.jpg</file>
+        <file>res/images/nav-bg.jpg</file>
+    </qresource>
+    <qresource prefix="/images2">
+        <file alias="1">res/images/images2/1.jpg</file>
+        <file alias="2">res/images/images2/2.jpg</file>
+        <file alias="3">res/images/images2/3.jpg</file>
+        <file alias="4">res/images/images2/4.jpg</file>
+        <file alias="5">res/images/images2/5.jpg</file>
+        <file alias="6">res/images/images2/6.jpg</file>
+        <file alias="7">res/images/images2/7.jpg</file>
+        <file alias="8">res/images/images2/8.jpg</file>
+        <file alias="9">res/images/images2/9.jpg</file>
+        <file alias="10">res/images/images2/10.jpg</file>
+        <file alias="11">res/images/images2/11.jpg</file>
+        <file alias="12">res/images/images2/12.jpg</file>
+        <file alias="13">res/images/images2/13.jpg</file>
+        <file alias="coins">res/images/images2/coins.jpg</file>
+        <file alias="coins2">res/images/images2/coins2.jpg</file>
+        <file alias="moh">res/images/images2/Medal_of_Honor.jpg</file>
+        <file alias="navajo">res/images/images2/navajo.jpg</file>
+        <file alias="patterns">res/images/images2/patterns.jpg</file>
     </qresource>
     <qresource prefix="/movies">
         <file alias="update_spinner">res/movies/update_spinner.mng</file>

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>740</width>
-    <height>450</height>
+    <height>491</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,7 +36,7 @@
           </font>
          </property>
          <property name="text">
-          <string>NavajoCoin Core</string>
+          <string>NavanjoAnonBeta Core</string>
          </property>
         </widget>
        </item>
@@ -322,7 +322,14 @@
        <item row="15" column="0">
         <widget class="QPushButton" name="openDebugLogfileButton">
          <property name="toolTip">
-          <string>Open the NavajoCoin/SummerCoinV2 debug log file from the current data directory. This can take a few seconds for large log files.</string>
+          <string>Open the NavajoCoin debug log file from the current data directory. This can take a few seconds for large log files.</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240,240,240), stop:1 rgb(255, 255, 255));
+border-radius:3px;
+border: 1px solid #C4C1BD;
+color: #4C4C4C;
+padding: 4px 12px;</string>
          </property>
          <property name="text">
           <string>&amp;Open</string>
@@ -348,7 +355,14 @@
        <item row="17" column="0">
         <widget class="QPushButton" name="showCLOptionsButton">
          <property name="toolTip">
-          <string>Show the NavajoCoin/SummerCoinV2-Qt help message to get a list with possible NavajoCoin/SummerCoinV2 command-line options.</string>
+          <string>Show the NavajoCoin-Qt help message to get a list with possible NavajoCoin command-line options.</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240,240,240), stop:1 rgb(255, 255, 255));
+border-radius:3px;
+border: 1px solid #C4C1BD;
+color: #4C4C4C;
+padding: 4px 12px;</string>
          </property>
          <property name="text">
           <string>&amp;Show</string>
@@ -413,7 +427,16 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit"/>
+          <widget class="QLineEdit" name="lineEdit">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255,255,255);
+border-radius:3px;
+border: 1px solid #C4C1BD;
+color: #4C4C4C;
+padding: 4px;
+margin: 0px 6px 0px 0px;</string>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QPushButton" name="clearButton">
@@ -425,6 +448,14 @@
            </property>
            <property name="toolTip">
             <string>Clear console</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240,240,240), stop:1 rgb(255, 255, 255));
+border-radius:3px;
+border: 1px solid #C4C1BD;
+color: #4C4C4C;
+padding: 4px 8px;
+</string>
            </property>
            <property name="text">
             <string/>

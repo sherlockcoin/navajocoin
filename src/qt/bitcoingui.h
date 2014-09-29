@@ -11,6 +11,7 @@ class TransactionView;
 class OverviewPage;
 class AddressBookPage;
 class SendCoinsDialog;
+class ChatWindow;
 class SignVerifyMessageDialog;
 class Notificator;
 class RPCConsole;
@@ -64,6 +65,7 @@ private:
     AddressBookPage *addressBookPage;
     AddressBookPage *receiveCoinsPage;
     SendCoinsDialog *sendCoinsPage;
+	ChatWindow *chatWindow;
     SignVerifyMessageDialog *signVerifyMessageDialog;
 
     QLabel *labelEncryptionIcon;
@@ -78,6 +80,7 @@ private:
     QAction *historyAction;
     QAction *quitAction;
     QAction *sendCoinsAction;
+	QAction *chatAction;
     QAction *addressBookAction;
     QAction *signMessageAction;
     QAction *verifyMessageAction;
@@ -93,6 +96,13 @@ private:
     QAction *lockWalletAction;
     QAction *aboutQtAction;
     QAction *openRPCConsoleAction;
+	QAction *openUrlAction;
+	QAction *openUrlAction1;
+	QAction *openUrlAction2;
+	QAction *openUrlAction3;
+	QAction *openUrlAction4;
+	QAction *openUrlAction5;
+	QAction *openUrlAction6;
 
     QSystemTrayIcon *trayIcon;
     Notificator *notificator;
@@ -145,6 +155,8 @@ private slots:
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
     void gotoSendCoinsPage();
+	/** Switch to chat page */
+    void gotoChatWindow();
 
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");
@@ -155,6 +167,14 @@ private slots:
     void optionsClicked();
     /** Show about dialog */
     void aboutClicked();
+	/** Show Information */
+    void urlClicked();
+	void urlClicked1();
+	void urlClicked2();
+	void urlClicked3();
+	void urlClicked4();
+	void urlClicked5();
+	void urlClicked6();
 #ifndef Q_OS_MAC
     /** Handle tray icon clicked */
     void trayIconActivated(QSystemTrayIcon::ActivationReason reason);

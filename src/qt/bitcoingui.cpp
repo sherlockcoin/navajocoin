@@ -19,6 +19,7 @@
 #include "addresstablemodel.h"
 #include "transactionview.h"
 #include "overviewpage.h"
+#include "ChatWindow.h"
 #include "bitcoinunits.h"
 #include "guiconstants.h"
 #include "askpassphrasedialog.h"
@@ -115,6 +116,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     receiveCoinsPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::ReceivingTab);
 
     sendCoinsPage = new SendCoinsDialog(this);
+	
+	chatWindow = new ChatWindow(this);
 
     signVerifyMessageDialog = new SignVerifyMessageDialog(this);
 
@@ -124,6 +127,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     centralWidget->addWidget(addressBookPage);
     centralWidget->addWidget(receiveCoinsPage);
     centralWidget->addWidget(sendCoinsPage);
+	centralWidget->addWidget(chatWindow);
     setCentralWidget(centralWidget);
 
     // Create status bar
@@ -216,6 +220,12 @@ void BitcoinGUI::createActions()
     overviewAction->setCheckable(true);
     overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
     tabGroup->addAction(overviewAction);
+	
+	chatAction = new QAction(QIcon(":/icons/chat"), tr("&Talk Code"), this);
+    chatAction->setToolTip(tr("Talk Code Within The Network"));
+    chatAction->setCheckable(true);
+    chatAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
+    tabGroup->addAction(chatAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send coins"), this);
     sendCoinsAction->setToolTip(tr("Send coins to a SummerCoinV2 address"));
@@ -245,6 +255,7 @@ void BitcoinGUI::createActions()
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(gotoSendCoinsPage()));
+	connect(chatAction, SIGNAL(triggered()), this, SLOT(gotoChatWindow()));
     connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(gotoReceiveCoinsPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -269,6 +280,28 @@ void BitcoinGUI::createActions()
     encryptWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Encrypt Wallet..."), this);
     encryptWalletAction->setToolTip(tr("Encrypt or decrypt wallet"));
     encryptWalletAction->setCheckable(true);
+	
+	openUrlAction = new QAction(QIcon(":/icons/bitcoin"), tr("NavajoCoin Website"), this);
+    openUrlAction->setToolTip(tr("NavajoCoin Website"));
+	
+    openUrlAction1 = new QAction(QIcon(":/icons/bitcoin"), tr("Buy Navajo at Bittrex"), this);
+    openUrlAction->setToolTip(tr("Buy Navajo at Bittrex"));
+	
+	openUrlAction2 = new QAction(QIcon(":/icons/bitcoin"), tr("Buy Navajo at Poloniex"), this);
+    openUrlAction2->setToolTip(tr("Buy Navajo at Poloniex"));
+	
+	openUrlAction3 = new QAction(QIcon(":/icons/bitcoin"), tr("Buy Navajo at Bter"), this);
+    openUrlAction3->setToolTip(tr("Buy Navajo at Bter"));
+	
+	openUrlAction4 = new QAction(QIcon(":/icons/bitcoin"), tr("Block Explorer"), this);
+    openUrlAction4->setToolTip(tr("Block Explorer"));
+	
+	openUrlAction5 = new QAction(QIcon(":/icons/bitcoin"), tr("BitCoinTalk Thread"), this);
+    openUrlAction5->setToolTip(tr("BitCoinTalk Thread"));
+	
+	openUrlAction6 = new QAction(QIcon(":/icons/bitcoin"), tr("Rich List"), this);
+    openUrlAction6->setToolTip(tr("Rich List"));
+	
     backupWalletAction = new QAction(QIcon(":/icons/filesave"), tr("&Backup Wallet..."), this);
     backupWalletAction->setToolTip(tr("Backup wallet to another location"));
     changePassphraseAction = new QAction(QIcon(":/icons/key"), tr("&Change Passphrase..."), this);
@@ -290,6 +323,13 @@ void BitcoinGUI::createActions()
     connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
     connect(optionsAction, SIGNAL(triggered()), this, SLOT(optionsClicked()));
     connect(toggleHideAction, SIGNAL(triggered()), this, SLOT(toggleHidden()));
+	connect(openUrlAction, SIGNAL(triggered()), this, SLOT(urlClicked()));
+	connect(openUrlAction1, SIGNAL(triggered()), this, SLOT(urlClicked1()));
+	connect(openUrlAction2, SIGNAL(triggered()), this, SLOT(urlClicked2()));
+	connect(openUrlAction3, SIGNAL(triggered()), this, SLOT(urlClicked3()));
+	connect(openUrlAction4, SIGNAL(triggered()), this, SLOT(urlClicked4()));
+	connect(openUrlAction5, SIGNAL(triggered()), this, SLOT(urlClicked5()));
+	connect(openUrlAction6, SIGNAL(triggered()), this, SLOT(urlClicked6()));
     connect(encryptWalletAction, SIGNAL(triggered(bool)), this, SLOT(encryptWallet(bool)));
     connect(backupWalletAction, SIGNAL(triggered()), this, SLOT(backupWallet()));
     connect(changePassphraseAction, SIGNAL(triggered()), this, SLOT(changePassphrase()));
@@ -331,6 +371,15 @@ void BitcoinGUI::createMenuBar()
     help->addSeparator();
     help->addAction(aboutAction);
     help->addAction(aboutQtAction);
+
+	QMenu *visit = appMenuBar->addMenu(tr("&Important Links"));
+    visit->addAction(openUrlAction);
+	visit->addAction(openUrlAction1);
+	visit->addAction(openUrlAction2);
+    visit->addAction(openUrlAction3);
+    visit->addAction(openUrlAction4);
+    visit->addAction(openUrlAction5);
+	visit->addAction(openUrlAction6);
 }
 
 void BitcoinGUI::createToolBars()
@@ -338,6 +387,7 @@ void BitcoinGUI::createToolBars()
     QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
     toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     toolbar->addAction(overviewAction);
+	toolbar->addAction(chatAction);
     toolbar->addAction(sendCoinsAction);
     toolbar->addAction(receiveCoinsAction);
     toolbar->addAction(historyAction);
@@ -440,6 +490,7 @@ void BitcoinGUI::createTrayIcon()
     // Configuration of the tray icon (or dock icon) icon menu
     trayIconMenu->addAction(toggleHideAction);
     trayIconMenu->addSeparator();
+	trayIconMenu->addAction(chatAction);
     trayIconMenu->addAction(sendCoinsAction);
     trayIconMenu->addAction(receiveCoinsAction);
     trayIconMenu->addSeparator();
@@ -481,6 +532,41 @@ void BitcoinGUI::aboutClicked()
     AboutDialog dlg;
     dlg.setModel(clientModel);
     dlg.exec();
+}
+
+void BitcoinGUI::urlClicked()
+{
+    QDesktopServices::openUrl(QUrl("http://www.navajocoin.org", QUrl::TolerantMode));
+}
+
+void BitcoinGUI::urlClicked1()
+{
+    QDesktopServices::openUrl(QUrl("https://www.bittrex.com/Market/Index?MarketName=BTC-NAV", QUrl::TolerantMode));
+}
+
+void BitcoinGUI::urlClicked2()
+{
+    QDesktopServices::openUrl(QUrl("https://www.poloniex.com/exchange/btc_nav", QUrl::TolerantMode));
+}
+
+void BitcoinGUI::urlClicked3()
+{
+    QDesktopServices::openUrl(QUrl("https://bter.com/trade/nav_btc", QUrl::TolerantMode));
+}
+
+void BitcoinGUI::urlClicked4()
+{
+    QDesktopServices::openUrl(QUrl("http://78.47.81.237:2750", QUrl::TolerantMode));
+}
+
+void BitcoinGUI::urlClicked5()
+{
+    QDesktopServices::openUrl(QUrl("https://bitcointalk.org/index.php?topic=679791", QUrl::TolerantMode));
+}
+
+void BitcoinGUI::urlClicked6()
+{
+    QDesktopServices::openUrl(QUrl("http://www.navajocoin.org/richlist/richlist.php", QUrl::TolerantMode));
 }
 
 void BitcoinGUI::setNumConnections(int count)
@@ -739,6 +825,15 @@ void BitcoinGUI::gotoSendCoinsPage()
 {
     sendCoinsAction->setChecked(true);
     centralWidget->setCurrentWidget(sendCoinsPage);
+
+    exportAction->setEnabled(false);
+    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+}
+
+void BitcoinGUI::gotoChatWindow()
+{
+    chatAction->setChecked(true);
+    centralWidget->setCurrentWidget(chatWindow);
 
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
