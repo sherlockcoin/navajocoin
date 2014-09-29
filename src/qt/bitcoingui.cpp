@@ -556,7 +556,7 @@ void BitcoinGUI::urlClicked3()
 
 void BitcoinGUI::urlClicked4()
 {
-    QDesktopServices::openUrl(QUrl("http://78.47.81.237:2750", QUrl::TolerantMode));
+    QDesktopServices::openUrl(QUrl("", QUrl::TolerantMode));
 }
 
 void BitcoinGUI::urlClicked5()
@@ -566,7 +566,7 @@ void BitcoinGUI::urlClicked5()
 
 void BitcoinGUI::urlClicked6()
 {
-    QDesktopServices::openUrl(QUrl("http://www.navajocoin.org/richlist/richlist.php", QUrl::TolerantMode));
+    QDesktopServices::openUrl(QUrl("", QUrl::TolerantMode));
 }
 
 void BitcoinGUI::setNumConnections(int count)
