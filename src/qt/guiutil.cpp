@@ -427,7 +427,8 @@ HelpMessageBox::HelpMessageBox(QWidget *parent) :
     uiOptions = tr("UI options") + ":\n" +
         "  -lang=<lang>           " + tr("Set language, for example \"de_DE\" (default: system locale)") + "\n" +
         "  -min                   " + tr("Start minimized") + "\n" +
-        "  -splash                " + tr("Show splash screen on startup (default: 1)") + "\n";
+        "  -splash                " + tr("Show splash screen on startup (default: 1)") + "\n" +
+        "  -disablereportupdate   " + tr("Disable auto update of Stake Report Windows (default: 0)") + "\n";
 
     setWindowTitle(tr("SummerCoinV2-Qt"));
     setTextFormat(Qt::PlainText);

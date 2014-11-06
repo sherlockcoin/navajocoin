@@ -31,6 +31,8 @@ private:
     WalletModel *ex_model;
 
     qint64 nLastReportUpdate;
+    bool disablereportupdate;
+    bool alreadyConnected;
 
     void updateStakeReport(bool fImmediate);
 

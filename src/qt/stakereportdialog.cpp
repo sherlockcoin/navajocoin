@@ -46,6 +46,8 @@ StakeReportDialog::StakeReportDialog(QWidget *parent) :
 
     QTableWidget *TableW = ui->StakeReportTable;
 
+    alreadyConnected = false;
+
     // fill the table with clone of row 0
     for(int y=TableW->rowCount(); --y >= 1;)
         for(int x=TableW->columnCount(); --x >= 0;)
@@ -53,14 +55,6 @@ StakeReportDialog::StakeReportDialog(QWidget *parent) :
                 TableW->item(0, x)->clone());
 
     TableW->horizontalHeader()->resizeSection(1,160);
-
-
-    connect(ui->button_Refresh, SIGNAL(clicked()), this, SLOT(updateStakeReportNow()));
-    connect(ui->CopytoClipboard, SIGNAL(clicked()), this, SLOT(CopyAllToClipboard()));
-
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(updateStakeReportTimer()));
-    timer->start(MODEL_UPDATE_DELAY*5);
 
     QApplication::processEvents();
 
@@ -77,16 +71,26 @@ void StakeReportDialog::setModel(WalletModel *model)
 {
     this->ex_model = model;
 
-    if(model)
+    if(ex_model && ex_model->getOptionsModel() && !alreadyConnected)
     {
-        if(ex_model && ex_model->getOptionsModel())
+        alreadyConnected = true;
+
+        connect(ex_model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit(int)));
+        connect(ui->button_Refresh, SIGNAL(clicked()), this, SLOT(updateStakeReportNow()));
+        connect(ui->CopytoClipboard, SIGNAL(clicked()), this, SLOT(CopyAllToClipboard()));
+
+        disablereportupdate = GetBoolArg("-disablereportupdate");
+
+        if (!disablereportupdate)
         {
+            QTimer *timer = new QTimer(this);
+            connect(timer, SIGNAL(timeout()), this, SLOT(updateStakeReportTimer()));
          connect(ex_model, SIGNAL(balanceChanged(qint64, qint64, qint64, qint64)), this, SLOT(updateStakeReportbalanceChanged(qint64, qint64, qint64, qint64)));
-         connect(ex_model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit(int)));
+
+            timer->start(MODEL_UPDATE_DELAY*5);
         }
     }
 }
-
 
 
 void StakeReportDialog::updateStakeReportbalanceChanged(qint64, qint64, qint64, qint64)
@@ -147,7 +151,6 @@ void StakeReportDialog::updateStakeReportNow()
 
 void StakeReportDialog::updateStakeReport(bool fImmediate=false)
 {
-
     static vStakePeriodRange_T aRange;
     int nItemCounted=0;
 
@@ -161,6 +164,8 @@ void StakeReportDialog::updateStakeReport(bool fImmediate=false)
     // Skip report recalc if not immediate or before 5 minutes from last
     if (GetTime() - nLastReportUpdate > 300)
     {
+        QApplication::processEvents();
+
         ui->TimeTook->setText(tr("Please wait..."));
         ui->TimeTook->repaint();
         QApplication::processEvents();
@@ -218,10 +223,13 @@ void StakeReportDialog::updateStakeReport(bool fImmediate=false)
 
     ui->TimeTook_2->setText(tr("Refresh took ") + QString::number(GetTimeMillis() -nTook2) +  "ms");
 
-    string strCurr_block_info = strprintf("%s : %6d @ %s\nhash %s\n",
-           "Current Block", nBestHeight,
+    string sRefreshType = disablereportupdate ? "Manual refresh" : "Auto refresh";
+
+    string strCurr_block_info = strprintf("%s  -  %s : %6d @ %s\nhash %s\n",
+           sRefreshType.c_str(), "Current Block", nBestHeight,
            HalfDate(pindexBest->GetBlockTime(), "hh:mm:ss").toStdString().c_str(),
            hashBestChain.GetHex().c_str());
+
     ui->L_CurrentBlock->setText(strCurr_block_info.c_str() );
 
 }

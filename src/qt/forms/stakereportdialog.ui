@@ -466,7 +466,7 @@
        </font>
       </property>
       <property name="toolTip">
-       <string>Date of the last Stake</string>
+       <string>Date of the last mature Stake</string>
       </property>
       <property name="text">
        <string>Never</string>
@@ -490,7 +490,7 @@
        </font>
       </property>
       <property name="toolTip">
-       <string>Coin Earned in last Stake</string>
+       <string>Coin Earned in last mature Stake</string>
       </property>
       <property name="text">
        <string>0.00</string>
