@@ -91,9 +91,10 @@ static const uint256 CheckBlock33 ("4b3a964cb7daefed14cef75dcd1728fb5e45d121abe6
 static const uint256 CheckBlock34 ("75da191e75dd985446d4e0dc28211711ec055a38e8a9fb6491c83190b1bdfd1a"); // Checkpoint at block 222000
 static const uint256 CheckBlock35 ("eb8c232317e6a2f76a8358bf917076c40b5f9a70fb3de34f1e2b17605d24b879"); // Checkpoint at block 224176
 static const uint256 CheckBlock36 ("856573b88e592d4eb4eb75d690e80bd7ce179d9da1cf6a185495385bb57901c4"); // Checkpoint at block 419892
+static const uint256 CheckBlock37 ("93ed73ab6dbe7410fb107c939f0380864f9a4891f36522bd1f0c7ee6f3565c40"); // Checkpoint at block 681958
 
-inline int64_t PastDrift(int64_t nTime)   { return nTime - 24 * 60 * 60; } // up to 1 day from the past
-inline int64_t FutureDrift(int64_t nTime) { return nTime + 24 * 60 * 60; } // up to 1 day from the future
+inline int64_t PastDrift(int64_t nTime)   { return nTime - 10 * 60; } // up to 10 minutes from the past
+inline int64_t FutureDrift(int64_t nTime) { return nTime + 10 * 60; } // up to 10 minutes from the future
 
 extern int64_t devCoin;
 extern CScript COINBASE_FLAGS;
