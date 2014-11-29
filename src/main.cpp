@@ -1245,10 +1245,17 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
         change = 160;
     else
         change = 250;
-    if (pindexLast->nHeight < 681958)
-        return GetNextTargetRequiredV1(pindexLast, fProofOfStake);
+
+    if (pindexLast->nHeight + 1 <= change)
+       return GetNextWorkRequired_legacy(pindexLast);
+
     else
-        return GetNextTargetRequiredV2(pindexLast, fProofOfStake);
+    {
+        if (pindexLast->nHeight < 681958)
+           return GetNextTargetRequiredV1(pindexLast, fProofOfStake);
+        else
+           return GetNextTargetRequiredV2(pindexLast, fProofOfStake);
+    }
 }
 
 bool CheckProofOfWork(uint256 hash, unsigned int nBits)
