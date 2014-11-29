@@ -93,8 +93,8 @@ static const uint256 CheckBlock35 ("eb8c232317e6a2f76a8358bf917076c40b5f9a70fb3d
 static const uint256 CheckBlock36 ("856573b88e592d4eb4eb75d690e80bd7ce179d9da1cf6a185495385bb57901c4"); // Checkpoint at block 419892
 static const uint256 CheckBlock37 ("93ed73ab6dbe7410fb107c939f0380864f9a4891f36522bd1f0c7ee6f3565c40"); // Checkpoint at block 681958
 
-inline int64_t PastDrift(int64_t nTime)   { return nTime - 10 * 60; } // up to 10 minutes from the past
-inline int64_t FutureDrift(int64_t nTime) { return nTime + 10 * 60; } // up to 10 minutes from the future
+inline int64_t PastDrift(int64_t nTime)   { return nTime - (nBestHeight < 681958 ? 24*60*60 : 10 * 60) ; } // up to (24H or) 10 minutes from the past    **em52
+inline int64_t FutureDrift(int64_t nTime) { return nTime + (nBestHeight < 681958 ? 24*60*60 : 10 * 60) ; } // up to (24H or) 10 minutes from the future  ** em52
 
 extern int64_t devCoin;
 extern CScript COINBASE_FLAGS;
