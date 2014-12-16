@@ -120,6 +120,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     sendCoinsPage = new SendCoinsDialog(this);
 	
 	chatWindow = new ChatWindow(this);
+    chatWindow->setGUI(this);
 
     signVerifyMessageDialog = new SignVerifyMessageDialog(this);
 
@@ -476,6 +477,11 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
         // Ask for passphrase if needed
         connect(walletModel, SIGNAL(requireUnlock()), this, SLOT(unlockWallet()));
     }
+}
+
+WalletModel* BitcoinGUI::getWalletModel()
+{
+    return this->walletModel;
 }
 
 void BitcoinGUI::createTrayIcon()
@@ -1078,4 +1084,12 @@ void BitcoinGUI::updateStakingIcon()
         else
             labelStakingIcon->setToolTip(tr("Not staking"));
     }
+}
+
+void BitcoinGUI::chatUpdated(){
+
+    if(!chatAction->isChecked()){
+        chatAction->setIcon(QIcon(":/icons/chat_alt"));
+    }
+
 }

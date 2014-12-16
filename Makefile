@@ -61,6 +61,7 @@ SOURCES       = src/txdb-leveldb.cpp \
 		src/skein.c \
 		src/fugue.c \
 		src/hamsi.c \
+		src/qt/simplecrypt.cpp \
 		src/qt/bitcoin.cpp \
 		src/qt/bitcoingui.cpp \
 		src/qt/transactiontablemodel.cpp \
@@ -180,6 +181,7 @@ OBJECTS       = build/txdb-leveldb.o \
 		build/skein.o \
 		build/fugue.o \
 		build/hamsi.o \
+		build/simplecrypt.o \
 		build/bitcoin.o \
 		build/bitcoingui.o \
 		build/transactiontablemodel.o \
@@ -407,6 +409,7 @@ DIST          = ../../../Qt/5.3/gcc_64/mkspecs/features/spec_pre.prf \
 		src/skein.c \
 		src/fugue.c \
 		src/hamsi.c \
+		src/qt/simplecrypt.cpp \
 		src/qt/bitcoin.cpp \
 		src/qt/bitcoingui.cpp \
 		src/qt/transactiontablemodel.cpp \
@@ -744,7 +747,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d build/navajocoin-qt1.0.0 || mkdir -p build/navajocoin-qt1.0.0
-	$(COPY_FILE) --parents $(DIST) build/navajocoin-qt1.0.0/ && $(COPY_FILE) --parents src/qt/locale/bitcoin_af_ZA.ts src/qt/locale/bitcoin_ar.ts src/qt/locale/bitcoin_be_BY.ts src/qt/locale/bitcoin_bg.ts src/qt/locale/bitcoin_bs.ts src/qt/locale/bitcoin_ca.ts src/qt/locale/bitcoin_ca@valencia.ts src/qt/locale/bitcoin_ca_ES.ts src/qt/locale/bitcoin_cs.ts src/qt/locale/bitcoin_cy.ts src/qt/locale/bitcoin_da.ts src/qt/locale/bitcoin_de.ts src/qt/locale/bitcoin_el_GR.ts src/qt/locale/bitcoin_en.ts src/qt/locale/bitcoin_eo.ts src/qt/locale/bitcoin_es.ts src/qt/locale/bitcoin_es_CL.ts src/qt/locale/bitcoin_es_DO.ts src/qt/locale/bitcoin_es_MX.ts src/qt/locale/bitcoin_es_UY.ts src/qt/locale/bitcoin_et.ts src/qt/locale/bitcoin_eu_ES.ts src/qt/locale/bitcoin_fa.ts src/qt/locale/bitcoin_fa_IR.ts src/qt/locale/bitcoin_fi.ts src/qt/locale/bitcoin_fr.ts src/qt/locale/bitcoin_fr_CA.ts src/qt/locale/bitcoin_gl.ts src/qt/locale/bitcoin_he.ts src/qt/locale/bitcoin_hi_IN.ts src/qt/locale/bitcoin_hr.ts src/qt/locale/bitcoin_hu.ts src/qt/locale/bitcoin_id_ID.ts src/qt/locale/bitcoin_it.ts src/qt/locale/bitcoin_ja.ts src/qt/locale/bitcoin_ka.ts src/qt/locale/bitcoin_kk_KZ.ts src/qt/locale/bitcoin_ko_KR.ts src/qt/locale/bitcoin_ky.ts src/qt/locale/bitcoin_la.ts src/qt/locale/bitcoin_lt.ts src/qt/locale/bitcoin_lv_LV.ts src/qt/locale/bitcoin_ms_MY.ts src/qt/locale/bitcoin_nb.ts src/qt/locale/bitcoin_nl.ts src/qt/locale/bitcoin_pam.ts src/qt/locale/bitcoin_pl.ts src/qt/locale/bitcoin_pt_BR.ts src/qt/locale/bitcoin_pt_PT.ts src/qt/locale/bitcoin_ro_RO.ts src/qt/locale/bitcoin_ru.ts src/qt/locale/bitcoin_sah.ts src/qt/locale/bitcoin_sk.ts src/qt/locale/bitcoin_sl_SI.ts src/qt/locale/bitcoin_sq.ts src/qt/locale/bitcoin_sr.ts src/qt/locale/bitcoin_sv.ts src/qt/locale/bitcoin_th_TH.ts src/qt/locale/bitcoin_tr.ts src/qt/locale/bitcoin_uk.ts src/qt/locale/bitcoin_ur_PK.ts src/qt/locale/bitcoin_vi.ts src/qt/locale/bitcoin_vi_VN.ts src/qt/locale/bitcoin_zh_CN.ts src/qt/locale/bitcoin_zh_TW.ts build/navajocoin-qt1.0.0/ && $(COPY_FILE) --parents src/qt/bitcoin.qrc build/navajocoin-qt1.0.0/ && $(COPY_FILE) --parents src/qt/bitcoingui.h src/qt/transactiontablemodel.h src/qt/addresstablemodel.h src/qt/optionsdialog.h src/qt/coincontroldialog.h src/qt/coincontroltreewidget.h src/qt/sendcoinsdialog.h src/qt/addressbookpage.h src/qt/signverifymessagedialog.h src/qt/aboutdialog.h src/qt/editaddressdialog.h src/qt/bitcoinaddressvalidator.h src/alert.h src/addrman.h src/base58.h src/bignum.h src/checkpoints.h src/compat.h src/coincontrol.h src/sync.h src/util.h src/uint256.h src/uint256_t.h src/kernel.h src/scrypt.h src/pbkdf2.h src/serialize.h src/strlcpy.h src/main.h src/miner.h src/net.h src/key.h src/db.h src/txdb.h src/walletdb.h src/script.h src/init.h src/irc.h src/mruset.h src/json/json_spirit_writer_template.h src/json/json_spirit_writer.h src/json/json_spirit_value.h src/json/json_spirit_utils.h src/json/json_spirit_stream_reader.h src/json/json_spirit_reader_template.h src/json/json_spirit_reader.h src/json/json_spirit_error_position.h src/json/json_spirit.h src/qt/clientmodel.h src/qt/guiutil.h src/qt/transactionrecord.h src/qt/guiconstants.h src/qt/optionsmodel.h src/qt/monitoreddatamapper.h src/qt/transactiondesc.h src/qt/transactiondescdialog.h src/qt/bitcoinamountfield.h src/wallet.h src/keystore.h src/qt/transactionfilterproxy.h src/qt/transactionview.h src/qt/walletmodel.h src/bitcoinrpc.h src/qt/overviewpage.h src/qt/ChatWindow.h src/qt/csvmodelwriter.h src/crypter.h src/qt/sendcoinsentry.h src/qt/qvalidatedlineedit.h src/qt/bitcoinunits.h src/qt/qvaluecombobox.h src/qt/askpassphrasedialog.h src/protocol.h src/qt/notificator.h src/qt/qtipcserver.h src/allocators.h src/ui_interface.h src/qt/rpcconsole.h src/version.h src/netbase.h src/clientversion.h src/bloom.h src/checkqueue.h src/hash.h src/hashblock.h src/limitedmap.h src/sph_blake.h src/sph_bmw.h src/sph_cubehash.h src/sph_echo.h src/sph_groestl.h src/sph_jh.h src/sph_keccak.h src/sph_luffa.h src/sph_shavite.h src/sph_simd.h src/sph_skein.h src/sph_fugue.h src/sph_hamsi.h src/sph_types.h src/threadsafety.h src/txdb-leveldb.h src/qt/stakereportdialog.h build/navajocoin-qt1.0.0/ && $(COPY_FILE) --parents src/txdb-leveldb.cpp src/bloom.cpp src/hash.cpp src/blake.c src/bmw.c src/cubehash.c src/echo.c src/groestl.c src/jh.c src/keccak.c src/luffa.c src/shavite.c src/simd.c src/skein.c src/fugue.c src/hamsi.c src/qt/bitcoin.cpp src/qt/bitcoingui.cpp src/qt/transactiontablemodel.cpp src/qt/addresstablemodel.cpp src/qt/optionsdialog.cpp src/qt/sendcoinsdialog.cpp src/qt/coincontroldialog.cpp src/qt/coincontroltreewidget.cpp src/qt/addressbookpage.cpp src/qt/signverifymessagedialog.cpp src/qt/aboutdialog.cpp src/qt/editaddressdialog.cpp src/qt/bitcoinaddressvalidator.cpp src/alert.cpp src/version.cpp src/sync.cpp src/util.cpp src/netbase.cpp src/key.cpp src/script.cpp src/main.cpp src/miner.cpp src/init.cpp src/net.cpp src/irc.cpp src/checkpoints.cpp src/addrman.cpp src/db.cpp src/walletdb.cpp src/qt/clientmodel.cpp src/qt/guiutil.cpp src/qt/transactionrecord.cpp src/qt/optionsmodel.cpp src/qt/monitoreddatamapper.cpp src/qt/transactiondesc.cpp src/qt/transactiondescdialog.cpp src/qt/bitcoinstrings.cpp src/qt/bitcoinamountfield.cpp src/wallet.cpp src/keystore.cpp src/qt/transactionfilterproxy.cpp src/qt/transactionview.cpp src/qt/walletmodel.cpp src/bitcoinrpc.cpp src/rpcdump.cpp src/rpcnet.cpp src/rpcmining.cpp src/rpcwallet.cpp src/rpcblockchain.cpp src/rpcrawtransaction.cpp src/qt/overviewpage.cpp src/qt/ChatWindow.cxx src/qt/csvmodelwriter.cpp src/crypter.cpp src/qt/sendcoinsentry.cpp src/qt/qvalidatedlineedit.cpp src/qt/bitcoinunits.cpp src/qt/qvaluecombobox.cpp src/qt/askpassphrasedialog.cpp src/protocol.cpp src/qt/notificator.cpp src/qt/qtipcserver.cpp src/qt/rpcconsole.cpp src/noui.cpp src/kernel.cpp src/scrypt-arm.S src/scrypt-x86.S src/scrypt-x86_64.S src/scrypt.cpp src/pbkdf2.cpp src/qt/stakereportdialog.cpp build/navajocoin-qt1.0.0/ && $(COPY_FILE) --parents src/qt/forms/coincontroldialog.ui src/qt/forms/sendcoinsdialog.ui src/qt/forms/addressbookpage.ui src/qt/forms/signverifymessagedialog.ui src/qt/forms/aboutdialog.ui src/qt/forms/editaddressdialog.ui src/qt/forms/transactiondescdialog.ui src/qt/forms/overviewpage.ui src/qt/forms/ChatWindow.ui src/qt/forms/sendcoinsentry.ui src/qt/forms/askpassphrasedialog.ui src/qt/forms/rpcconsole.ui src/qt/forms/optionsdialog.ui src/qt/forms/stakereportdialog.ui build/navajocoin-qt1.0.0/ && $(COPY_FILE) --parents src/qt/locale/bitcoin_af_ZA.ts src/qt/locale/bitcoin_ar.ts src/qt/locale/bitcoin_be_BY.ts src/qt/locale/bitcoin_bg.ts src/qt/locale/bitcoin_bs.ts src/qt/locale/bitcoin_ca.ts src/qt/locale/bitcoin_ca@valencia.ts src/qt/locale/bitcoin_ca_ES.ts src/qt/locale/bitcoin_cs.ts src/qt/locale/bitcoin_cy.ts src/qt/locale/bitcoin_da.ts src/qt/locale/bitcoin_de.ts src/qt/locale/bitcoin_el_GR.ts src/qt/locale/bitcoin_en.ts src/qt/locale/bitcoin_eo.ts src/qt/locale/bitcoin_es.ts src/qt/locale/bitcoin_es_CL.ts src/qt/locale/bitcoin_es_DO.ts src/qt/locale/bitcoin_es_MX.ts src/qt/locale/bitcoin_es_UY.ts src/qt/locale/bitcoin_et.ts src/qt/locale/bitcoin_eu_ES.ts src/qt/locale/bitcoin_fa.ts src/qt/locale/bitcoin_fa_IR.ts src/qt/locale/bitcoin_fi.ts src/qt/locale/bitcoin_fr.ts src/qt/locale/bitcoin_fr_CA.ts src/qt/locale/bitcoin_gl.ts src/qt/locale/bitcoin_he.ts src/qt/locale/bitcoin_hi_IN.ts src/qt/locale/bitcoin_hr.ts src/qt/locale/bitcoin_hu.ts src/qt/locale/bitcoin_id_ID.ts src/qt/locale/bitcoin_it.ts src/qt/locale/bitcoin_ja.ts src/qt/locale/bitcoin_ka.ts src/qt/locale/bitcoin_kk_KZ.ts src/qt/locale/bitcoin_ko_KR.ts src/qt/locale/bitcoin_ky.ts src/qt/locale/bitcoin_la.ts src/qt/locale/bitcoin_lt.ts src/qt/locale/bitcoin_lv_LV.ts src/qt/locale/bitcoin_ms_MY.ts src/qt/locale/bitcoin_nb.ts src/qt/locale/bitcoin_nl.ts src/qt/locale/bitcoin_pam.ts src/qt/locale/bitcoin_pl.ts src/qt/locale/bitcoin_pt_BR.ts src/qt/locale/bitcoin_pt_PT.ts src/qt/locale/bitcoin_ro_RO.ts src/qt/locale/bitcoin_ru.ts src/qt/locale/bitcoin_sah.ts src/qt/locale/bitcoin_sk.ts src/qt/locale/bitcoin_sl_SI.ts src/qt/locale/bitcoin_sq.ts src/qt/locale/bitcoin_sr.ts src/qt/locale/bitcoin_sv.ts src/qt/locale/bitcoin_th_TH.ts src/qt/locale/bitcoin_tr.ts src/qt/locale/bitcoin_uk.ts src/qt/locale/bitcoin_ur_PK.ts src/qt/locale/bitcoin_vi.ts src/qt/locale/bitcoin_vi_VN.ts src/qt/locale/bitcoin_zh_CN.ts src/qt/locale/bitcoin_zh_TW.ts build/navajocoin-qt1.0.0/ && (cd `dirname build/navajocoin-qt1.0.0` && $(TAR) navajocoin-qt1.0.0.tar navajocoin-qt1.0.0 && $(COMPRESS) navajocoin-qt1.0.0.tar) && $(MOVE) `dirname build/navajocoin-qt1.0.0`/navajocoin-qt1.0.0.tar.gz . && $(DEL_FILE) -r build/navajocoin-qt1.0.0
+	$(COPY_FILE) --parents $(DIST) build/navajocoin-qt1.0.0/ && $(COPY_FILE) --parents src/qt/locale/bitcoin_af_ZA.ts src/qt/locale/bitcoin_ar.ts src/qt/locale/bitcoin_be_BY.ts src/qt/locale/bitcoin_bg.ts src/qt/locale/bitcoin_bs.ts src/qt/locale/bitcoin_ca.ts src/qt/locale/bitcoin_ca@valencia.ts src/qt/locale/bitcoin_ca_ES.ts src/qt/locale/bitcoin_cs.ts src/qt/locale/bitcoin_cy.ts src/qt/locale/bitcoin_da.ts src/qt/locale/bitcoin_de.ts src/qt/locale/bitcoin_el_GR.ts src/qt/locale/bitcoin_en.ts src/qt/locale/bitcoin_eo.ts src/qt/locale/bitcoin_es.ts src/qt/locale/bitcoin_es_CL.ts src/qt/locale/bitcoin_es_DO.ts src/qt/locale/bitcoin_es_MX.ts src/qt/locale/bitcoin_es_UY.ts src/qt/locale/bitcoin_et.ts src/qt/locale/bitcoin_eu_ES.ts src/qt/locale/bitcoin_fa.ts src/qt/locale/bitcoin_fa_IR.ts src/qt/locale/bitcoin_fi.ts src/qt/locale/bitcoin_fr.ts src/qt/locale/bitcoin_fr_CA.ts src/qt/locale/bitcoin_gl.ts src/qt/locale/bitcoin_he.ts src/qt/locale/bitcoin_hi_IN.ts src/qt/locale/bitcoin_hr.ts src/qt/locale/bitcoin_hu.ts src/qt/locale/bitcoin_id_ID.ts src/qt/locale/bitcoin_it.ts src/qt/locale/bitcoin_ja.ts src/qt/locale/bitcoin_ka.ts src/qt/locale/bitcoin_kk_KZ.ts src/qt/locale/bitcoin_ko_KR.ts src/qt/locale/bitcoin_ky.ts src/qt/locale/bitcoin_la.ts src/qt/locale/bitcoin_lt.ts src/qt/locale/bitcoin_lv_LV.ts src/qt/locale/bitcoin_ms_MY.ts src/qt/locale/bitcoin_nb.ts src/qt/locale/bitcoin_nl.ts src/qt/locale/bitcoin_pam.ts src/qt/locale/bitcoin_pl.ts src/qt/locale/bitcoin_pt_BR.ts src/qt/locale/bitcoin_pt_PT.ts src/qt/locale/bitcoin_ro_RO.ts src/qt/locale/bitcoin_ru.ts src/qt/locale/bitcoin_sah.ts src/qt/locale/bitcoin_sk.ts src/qt/locale/bitcoin_sl_SI.ts src/qt/locale/bitcoin_sq.ts src/qt/locale/bitcoin_sr.ts src/qt/locale/bitcoin_sv.ts src/qt/locale/bitcoin_th_TH.ts src/qt/locale/bitcoin_tr.ts src/qt/locale/bitcoin_uk.ts src/qt/locale/bitcoin_ur_PK.ts src/qt/locale/bitcoin_vi.ts src/qt/locale/bitcoin_vi_VN.ts src/qt/locale/bitcoin_zh_CN.ts src/qt/locale/bitcoin_zh_TW.ts build/navajocoin-qt1.0.0/ && $(COPY_FILE) --parents src/qt/bitcoin.qrc build/navajocoin-qt1.0.0/ && $(COPY_FILE) --parents src/qt/bitcoingui.h src/qt/transactiontablemodel.h src/qt/addresstablemodel.h src/qt/optionsdialog.h src/qt/coincontroldialog.h src/qt/coincontroltreewidget.h src/qt/sendcoinsdialog.h src/qt/addressbookpage.h src/qt/signverifymessagedialog.h src/qt/aboutdialog.h src/qt/editaddressdialog.h src/qt/bitcoinaddressvalidator.h src/alert.h src/addrman.h src/base58.h src/bignum.h src/checkpoints.h src/compat.h src/coincontrol.h src/sync.h src/util.h src/uint256.h src/uint256_t.h src/kernel.h src/scrypt.h src/pbkdf2.h src/serialize.h src/strlcpy.h src/main.h src/miner.h src/net.h src/key.h src/db.h src/txdb.h src/walletdb.h src/script.h src/init.h src/irc.h src/mruset.h src/json/json_spirit_writer_template.h src/json/json_spirit_writer.h src/json/json_spirit_value.h src/json/json_spirit_utils.h src/json/json_spirit_stream_reader.h src/json/json_spirit_reader_template.h src/json/json_spirit_reader.h src/json/json_spirit_error_position.h src/json/json_spirit.h src/qt/clientmodel.h src/qt/guiutil.h src/qt/transactionrecord.h src/qt/guiconstants.h src/qt/optionsmodel.h src/qt/monitoreddatamapper.h src/qt/transactiondesc.h src/qt/transactiondescdialog.h src/qt/bitcoinamountfield.h src/wallet.h src/keystore.h src/qt/transactionfilterproxy.h src/qt/transactionview.h src/qt/walletmodel.h src/bitcoinrpc.h src/qt/overviewpage.h src/qt/ChatWindow.h src/qt/csvmodelwriter.h src/crypter.h src/qt/sendcoinsentry.h src/qt/qvalidatedlineedit.h src/qt/bitcoinunits.h src/qt/qvaluecombobox.h src/qt/askpassphrasedialog.h src/protocol.h src/qt/notificator.h src/qt/qtipcserver.h src/allocators.h src/ui_interface.h src/qt/rpcconsole.h src/version.h src/netbase.h src/clientversion.h src/bloom.h src/checkqueue.h src/hash.h src/hashblock.h src/limitedmap.h src/sph_blake.h src/sph_bmw.h src/sph_cubehash.h src/sph_echo.h src/sph_groestl.h src/sph_jh.h src/sph_keccak.h src/sph_luffa.h src/sph_shavite.h src/sph_simd.h src/sph_skein.h src/sph_fugue.h src/sph_hamsi.h src/sph_types.h src/threadsafety.h src/txdb-leveldb.h src/qt/stakereportdialog.h src/qt/simplecrypt.h build/navajocoin-qt1.0.0/ && $(COPY_FILE) --parents src/txdb-leveldb.cpp src/bloom.cpp src/hash.cpp src/blake.c src/bmw.c src/cubehash.c src/echo.c src/groestl.c src/jh.c src/keccak.c src/luffa.c src/shavite.c src/simd.c src/skein.c src/fugue.c src/hamsi.c src/qt/simplecrypt.cpp src/qt/bitcoin.cpp src/qt/bitcoingui.cpp src/qt/transactiontablemodel.cpp src/qt/addresstablemodel.cpp src/qt/optionsdialog.cpp src/qt/sendcoinsdialog.cpp src/qt/coincontroldialog.cpp src/qt/coincontroltreewidget.cpp src/qt/addressbookpage.cpp src/qt/signverifymessagedialog.cpp src/qt/aboutdialog.cpp src/qt/editaddressdialog.cpp src/qt/bitcoinaddressvalidator.cpp src/alert.cpp src/version.cpp src/sync.cpp src/util.cpp src/netbase.cpp src/key.cpp src/script.cpp src/main.cpp src/miner.cpp src/init.cpp src/net.cpp src/irc.cpp src/checkpoints.cpp src/addrman.cpp src/db.cpp src/walletdb.cpp src/qt/clientmodel.cpp src/qt/guiutil.cpp src/qt/transactionrecord.cpp src/qt/optionsmodel.cpp src/qt/monitoreddatamapper.cpp src/qt/transactiondesc.cpp src/qt/transactiondescdialog.cpp src/qt/bitcoinstrings.cpp src/qt/bitcoinamountfield.cpp src/wallet.cpp src/keystore.cpp src/qt/transactionfilterproxy.cpp src/qt/transactionview.cpp src/qt/walletmodel.cpp src/bitcoinrpc.cpp src/rpcdump.cpp src/rpcnet.cpp src/rpcmining.cpp src/rpcwallet.cpp src/rpcblockchain.cpp src/rpcrawtransaction.cpp src/qt/overviewpage.cpp src/qt/ChatWindow.cxx src/qt/csvmodelwriter.cpp src/crypter.cpp src/qt/sendcoinsentry.cpp src/qt/qvalidatedlineedit.cpp src/qt/bitcoinunits.cpp src/qt/qvaluecombobox.cpp src/qt/askpassphrasedialog.cpp src/protocol.cpp src/qt/notificator.cpp src/qt/qtipcserver.cpp src/qt/rpcconsole.cpp src/noui.cpp src/kernel.cpp src/scrypt-arm.S src/scrypt-x86.S src/scrypt-x86_64.S src/scrypt.cpp src/pbkdf2.cpp src/qt/stakereportdialog.cpp build/navajocoin-qt1.0.0/ && $(COPY_FILE) --parents src/qt/forms/coincontroldialog.ui src/qt/forms/sendcoinsdialog.ui src/qt/forms/addressbookpage.ui src/qt/forms/signverifymessagedialog.ui src/qt/forms/aboutdialog.ui src/qt/forms/editaddressdialog.ui src/qt/forms/transactiondescdialog.ui src/qt/forms/overviewpage.ui src/qt/forms/ChatWindow.ui src/qt/forms/sendcoinsentry.ui src/qt/forms/askpassphrasedialog.ui src/qt/forms/rpcconsole.ui src/qt/forms/optionsdialog.ui src/qt/forms/stakereportdialog.ui build/navajocoin-qt1.0.0/ && $(COPY_FILE) --parents src/qt/locale/bitcoin_af_ZA.ts src/qt/locale/bitcoin_ar.ts src/qt/locale/bitcoin_be_BY.ts src/qt/locale/bitcoin_bg.ts src/qt/locale/bitcoin_bs.ts src/qt/locale/bitcoin_ca.ts src/qt/locale/bitcoin_ca@valencia.ts src/qt/locale/bitcoin_ca_ES.ts src/qt/locale/bitcoin_cs.ts src/qt/locale/bitcoin_cy.ts src/qt/locale/bitcoin_da.ts src/qt/locale/bitcoin_de.ts src/qt/locale/bitcoin_el_GR.ts src/qt/locale/bitcoin_en.ts src/qt/locale/bitcoin_eo.ts src/qt/locale/bitcoin_es.ts src/qt/locale/bitcoin_es_CL.ts src/qt/locale/bitcoin_es_DO.ts src/qt/locale/bitcoin_es_MX.ts src/qt/locale/bitcoin_es_UY.ts src/qt/locale/bitcoin_et.ts src/qt/locale/bitcoin_eu_ES.ts src/qt/locale/bitcoin_fa.ts src/qt/locale/bitcoin_fa_IR.ts src/qt/locale/bitcoin_fi.ts src/qt/locale/bitcoin_fr.ts src/qt/locale/bitcoin_fr_CA.ts src/qt/locale/bitcoin_gl.ts src/qt/locale/bitcoin_he.ts src/qt/locale/bitcoin_hi_IN.ts src/qt/locale/bitcoin_hr.ts src/qt/locale/bitcoin_hu.ts src/qt/locale/bitcoin_id_ID.ts src/qt/locale/bitcoin_it.ts src/qt/locale/bitcoin_ja.ts src/qt/locale/bitcoin_ka.ts src/qt/locale/bitcoin_kk_KZ.ts src/qt/locale/bitcoin_ko_KR.ts src/qt/locale/bitcoin_ky.ts src/qt/locale/bitcoin_la.ts src/qt/locale/bitcoin_lt.ts src/qt/locale/bitcoin_lv_LV.ts src/qt/locale/bitcoin_ms_MY.ts src/qt/locale/bitcoin_nb.ts src/qt/locale/bitcoin_nl.ts src/qt/locale/bitcoin_pam.ts src/qt/locale/bitcoin_pl.ts src/qt/locale/bitcoin_pt_BR.ts src/qt/locale/bitcoin_pt_PT.ts src/qt/locale/bitcoin_ro_RO.ts src/qt/locale/bitcoin_ru.ts src/qt/locale/bitcoin_sah.ts src/qt/locale/bitcoin_sk.ts src/qt/locale/bitcoin_sl_SI.ts src/qt/locale/bitcoin_sq.ts src/qt/locale/bitcoin_sr.ts src/qt/locale/bitcoin_sv.ts src/qt/locale/bitcoin_th_TH.ts src/qt/locale/bitcoin_tr.ts src/qt/locale/bitcoin_uk.ts src/qt/locale/bitcoin_ur_PK.ts src/qt/locale/bitcoin_vi.ts src/qt/locale/bitcoin_vi_VN.ts src/qt/locale/bitcoin_zh_CN.ts src/qt/locale/bitcoin_zh_TW.ts build/navajocoin-qt1.0.0/ && (cd `dirname build/navajocoin-qt1.0.0` && $(TAR) navajocoin-qt1.0.0.tar navajocoin-qt1.0.0 && $(COMPRESS) navajocoin-qt1.0.0.tar) && $(MOVE) `dirname build/navajocoin-qt1.0.0`/navajocoin-qt1.0.0.tar.gz . && $(DEL_FILE) -r build/navajocoin-qt1.0.0
 
 
 clean:compiler_clean 
@@ -1082,6 +1085,8 @@ qrc_bitcoin.cpp: src/qt/bitcoin.qrc \
 		src/qt/res/icons/toolbar.png \
 		src/qt/res/icons/editpaste.png \
 		src/qt/res/icons/lock_closed.png \
+		src/qt/res/icons/power.png \
+		src/qt/res/icons/chat_alt.png \
 		src/qt/res/images/images2/coins.jpg \
 		src/qt/res/images/images2/navajo.jpg \
 		src/qt/res/images/images2/1.jpg \
@@ -3293,6 +3298,44 @@ build/moc_ChatWindow.cpp: ../../../Qt/5.3/gcc_64/include/QtWidgets/QMainWindow \
 		../../../Qt/5.3/gcc_64/include/QtNetwork/QTcpSocket \
 		../../../Qt/5.3/gcc_64/include/QtNetwork/qtcpsocket.h \
 		../../../Qt/5.3/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QBasicTimer \
+		../../../Qt/5.3/gcc_64/include/QtCore/qbasictimer.h \
+		src/qt/bitcoingui.h \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QSystemTrayIcon \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/qsystemtrayicon.h \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QTextBrowser \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/qtextbrowser.h \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt/5.3/gcc_64/include/QtGui/qtextdocument.h \
+		../../../Qt/5.3/gcc_64/include/QtGui/qtextoption.h \
+		../../../Qt/5.3/gcc_64/include/QtGui/qtextcursor.h \
+		../../../Qt/5.3/gcc_64/include/QtGui/qtextformat.h \
+		../../../Qt/5.3/gcc_64/include/QtGui/qpen.h \
+		src/qt/simplecrypt.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QString \
+		../../../Qt/5.3/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.3/gcc_64/include/QtCore/QFlags \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/QNetworkReply \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QIODevice \
+		../../../Qt/5.3/gcc_64/include/QtCore/QVariant \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../Qt/5.3/gcc_64/include/QtCore/QUrl \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QObject \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qsslerror.h \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qssl.h \
 		build/ui_ChatWindow.h \
 		src/qt/ChatWindow.h
 	/home/craig/Qt/5.3/gcc_64/bin/moc $(DEFINES) -I/home/craig/Qt/5.3/gcc_64/mkspecs/linux-g++ -I/home/craig/Projects/QT/main_navajocoin -I/home/craig/Projects/QT/main_navajocoin/src -I/home/craig/Projects/QT/main_navajocoin/src/json -I/home/craig/Projects/QT/main_navajocoin/src/qt -I/home/craig/Projects/QT/main_navajocoin/src/leveldb/include -I/home/craig/Projects/QT/main_navajocoin/src/leveldb/helpers -I/home/craig/Qt/5.3/gcc_64/include -I/home/craig/Qt/5.3/gcc_64/include/QtWidgets -I/home/craig/Qt/5.3/gcc_64/include/QtNetwork -I/home/craig/Qt/5.3/gcc_64/include/QtGui -I/home/craig/Qt/5.3/gcc_64/include/QtCore src/qt/ChatWindow.h -o build/moc_ChatWindow.cpp
@@ -5352,6 +5395,86 @@ build/hamsi.o: src/hamsi.c src/sph_hamsi.h \
 		src/hamsi_helper.c
 	$(CC) -c $(CFLAGS) $(INCPATH) -o build/hamsi.o src/hamsi.c
 
+build/simplecrypt.o: src/qt/simplecrypt.cpp src/qt/simplecrypt.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QString \
+		../../../Qt/5.3/gcc_64/include/QtCore/qstring.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qchar.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qfeatures.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qtypetraits.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qflags.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qatomic_mips.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qatomic_x86.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qatomic_unix.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.3/gcc_64/include/QtCore/qvector.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qlist.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qpoint.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QFlags \
+		../../../Qt/5.3/gcc_64/include/QtCore/QByteArray \
+		../../../Qt/5.3/gcc_64/include/QtCore/QtDebug \
+		../../../Qt/5.3/gcc_64/include/QtCore/qdebug.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qhash.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qpair.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qmap.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qtextstream.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qiodevice.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qobject.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qisenum.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qobject_impl.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qvariant.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qdatastream.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qshareddata.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qset.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QtGlobal \
+		../../../Qt/5.3/gcc_64/include/QtCore/QDateTime \
+		../../../Qt/5.3/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QCryptographicHash \
+		../../../Qt/5.3/gcc_64/include/QtCore/qcryptographichash.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/simplecrypt.o src/qt/simplecrypt.cpp
+
 build/bitcoin.o: src/qt/bitcoin.cpp src/qt/bitcoingui.h \
 		../../../Qt/5.3/gcc_64/include/QtWidgets/QMainWindow \
 		../../../Qt/5.3/gcc_64/include/QtWidgets/qmainwindow.h \
@@ -5671,6 +5794,39 @@ build/bitcoingui.o: src/qt/bitcoingui.cpp src/qt/bitcoingui.h \
 		../../../Qt/5.3/gcc_64/include/QtNetwork/QTcpSocket \
 		../../../Qt/5.3/gcc_64/include/QtNetwork/qtcpsocket.h \
 		../../../Qt/5.3/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QBasicTimer \
+		../../../Qt/5.3/gcc_64/include/QtCore/qbasictimer.h \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QTextBrowser \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/qtextbrowser.h \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt/5.3/gcc_64/include/QtGui/qtextdocument.h \
+		../../../Qt/5.3/gcc_64/include/QtGui/qtextoption.h \
+		../../../Qt/5.3/gcc_64/include/QtGui/qtextcursor.h \
+		../../../Qt/5.3/gcc_64/include/QtGui/qtextformat.h \
+		../../../Qt/5.3/gcc_64/include/QtGui/qpen.h \
+		src/qt/simplecrypt.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.3/gcc_64/include/QtCore/QFlags \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/QNetworkReply \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QIODevice \
+		../../../Qt/5.3/gcc_64/include/QtCore/QVariant \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../Qt/5.3/gcc_64/include/QtCore/QUrl \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qsslerror.h \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qssl.h \
 		build/ui_ChatWindow.h \
 		src/qt/bitcoinunits.h \
 		src/qt/guiconstants.h \
@@ -5748,13 +5904,8 @@ build/bitcoingui.o: src/qt/bitcoingui.cpp src/qt/bitcoingui.h \
 		../../../Qt/5.3/gcc_64/include/QtWidgets/qstatusbar.h \
 		../../../Qt/5.3/gcc_64/include/QtWidgets/QLabel \
 		../../../Qt/5.3/gcc_64/include/QtWidgets/qlabel.h \
-		../../../Qt/5.3/gcc_64/include/QtWidgets/qframe.h \
 		../../../Qt/5.3/gcc_64/include/QtWidgets/QLineEdit \
 		../../../Qt/5.3/gcc_64/include/QtWidgets/qlineedit.h \
-		../../../Qt/5.3/gcc_64/include/QtGui/qtextcursor.h \
-		../../../Qt/5.3/gcc_64/include/QtGui/qtextformat.h \
-		../../../Qt/5.3/gcc_64/include/QtGui/qpen.h \
-		../../../Qt/5.3/gcc_64/include/QtGui/qtextoption.h \
 		../../../Qt/5.3/gcc_64/include/QtWidgets/QPushButton \
 		../../../Qt/5.3/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../Qt/5.3/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -5766,7 +5917,6 @@ build/bitcoingui.o: src/qt/bitcoingui.cpp src/qt/bitcoingui.h \
 		../../../Qt/5.3/gcc_64/include/QtWidgets/QStackedWidget \
 		../../../Qt/5.3/gcc_64/include/QtWidgets/qstackedwidget.h \
 		../../../Qt/5.3/gcc_64/include/QtCore/QDateTime \
-		../../../Qt/5.3/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.3/gcc_64/include/QtGui/QMovie \
 		../../../Qt/5.3/gcc_64/include/QtGui/qmovie.h \
 		../../../Qt/5.3/gcc_64/include/QtGui/qimagereader.h \
@@ -5785,9 +5935,7 @@ build/bitcoingui.o: src/qt/bitcoingui.cpp src/qt/bitcoingui.h \
 		../../../Qt/5.3/gcc_64/include/QtCore/qstandardpaths.h \
 		../../../Qt/5.3/gcc_64/include/QtCore/QTimer \
 		../../../Qt/5.3/gcc_64/include/QtCore/qtimer.h \
-		../../../Qt/5.3/gcc_64/include/QtCore/qbasictimer.h \
 		../../../Qt/5.3/gcc_64/include/QtGui/QDragEnterEvent \
-		../../../Qt/5.3/gcc_64/include/QtCore/QUrl \
 		../../../Qt/5.3/gcc_64/include/QtWidgets/QStyle \
 		../../../Qt/5.3/gcc_64/include/QtWidgets/qstyle.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/bitcoingui.o src/qt/bitcoingui.cpp
@@ -10083,8 +10231,112 @@ build/ChatWindow.o: src/qt/ChatWindow.cxx src/qt/ChatWindow.h \
 		../../../Qt/5.3/gcc_64/include/QtNetwork/QTcpSocket \
 		../../../Qt/5.3/gcc_64/include/QtNetwork/qtcpsocket.h \
 		../../../Qt/5.3/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QBasicTimer \
+		../../../Qt/5.3/gcc_64/include/QtCore/qbasictimer.h \
+		src/qt/bitcoingui.h \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QSystemTrayIcon \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/qsystemtrayicon.h \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QTextBrowser \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/qtextbrowser.h \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt/5.3/gcc_64/include/QtGui/qtextdocument.h \
+		../../../Qt/5.3/gcc_64/include/QtGui/qtextoption.h \
+		../../../Qt/5.3/gcc_64/include/QtGui/qtextcursor.h \
+		../../../Qt/5.3/gcc_64/include/QtGui/qtextformat.h \
+		../../../Qt/5.3/gcc_64/include/QtGui/qpen.h \
+		src/qt/simplecrypt.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QString \
+		../../../Qt/5.3/gcc_64/include/QtCore/QVector \
+		../../../Qt/5.3/gcc_64/include/QtCore/QFlags \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/QNetworkReply \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QIODevice \
+		../../../Qt/5.3/gcc_64/include/QtCore/QVariant \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../Qt/5.3/gcc_64/include/QtCore/QUrl \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QObject \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qsslerror.h \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.3/gcc_64/include/QtNetwork/qssl.h \
 		build/ui_ChatWindow.h \
-		../../../Qt/5.3/gcc_64/include/QtCore/QRegExp
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QCheckBox \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QRegExp \
+		../../../Qt/5.3/gcc_64/include/QtCore/QSettings \
+		../../../Qt/5.3/gcc_64/include/QtCore/qsettings.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QTime \
+		../../../Qt/5.3/gcc_64/include/QtGui/QDesktopServices \
+		../../../Qt/5.3/gcc_64/include/QtGui/qdesktopservices.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qstandardpaths.h \
+		../../../Qt/5.3/gcc_64/include/QtWidgets/QTabWidget \
+		../../../Qt/5.3/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt/5.3/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QJsonArray \
+		../../../Qt/5.3/gcc_64/include/QtCore/qjsonarray.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QJsonDocument \
+		../../../Qt/5.3/gcc_64/include/QtCore/qjsondocument.h \
+		src/wallet.h \
+		src/main.h \
+		src/bignum.h \
+		src/serialize.h \
+		src/allocators.h \
+		src/version.h \
+		src/clientversion.h \
+		src/uint256.h \
+		src/sync.h \
+		src/net.h \
+		src/mruset.h \
+		src/netbase.h \
+		src/compat.h \
+		src/protocol.h \
+		src/addrman.h \
+		src/util.h \
+		src/uint256_t.h \
+		src/script.h \
+		src/keystore.h \
+		src/crypter.h \
+		src/key.h \
+		src/scrypt.h \
+		src/hashblock.h \
+		src/sph_blake.h \
+		src/sph_types.h \
+		src/sph_bmw.h \
+		src/sph_groestl.h \
+		src/sph_jh.h \
+		src/sph_keccak.h \
+		src/sph_skein.h \
+		src/sph_luffa.h \
+		src/sph_cubehash.h \
+		src/sph_shavite.h \
+		src/sph_simd.h \
+		src/sph_echo.h \
+		src/sph_hamsi.h \
+		src/sph_fugue.h \
+		src/ui_interface.h \
+		src/walletdb.h \
+		src/db.h \
+		src/base58.h \
+		src/qt/walletmodel.h \
+		src/qt/addresstablemodel.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QAbstractTableModel \
+		../../../Qt/5.3/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/QStringList \
+		../../../Qt/5.3/gcc_64/include/QtCore/QSortFilterProxyModel \
+		../../../Qt/5.3/gcc_64/include/QtCore/qsortfilterproxymodel.h \
+		../../../Qt/5.3/gcc_64/include/QtCore/qabstractproxymodel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/ChatWindow.o src/qt/ChatWindow.cxx
 
 build/csvmodelwriter.o: src/qt/csvmodelwriter.cpp src/qt/csvmodelwriter.h \

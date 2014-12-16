@@ -50,6 +50,8 @@
         <file alias="flag_ru">res/icons/flags/flag_ru.png</file>
         <file alias="flag_cn">res/icons/flags/flag_cn.png</file>
         <file alias="chat">res/icons/chat.png</file>
+        <file>res/icons/power.png</file>
+        <file>res/icons/chat_alt.png</file>
     </qresource>
     <qresource prefix="/smileys">
         <file alias="icon_smile">res/icons/smileys/icon_smile.png</file>
@@ -137,4 +139,5 @@
         <file alias="zh_CN">locale/bitcoin_zh_CN.qm</file>
         <file alias="zh_TW">locale/bitcoin_zh_TW.qm</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>

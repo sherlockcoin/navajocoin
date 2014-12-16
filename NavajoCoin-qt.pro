@@ -136,7 +136,8 @@ SOURCES += src/txdb-leveldb.cpp \
     src/simd.c \
     src/skein.c \
     src/fugue.c \
-    src/hamsi.c
+    src/hamsi.c \
+    src/qt/simplecrypt.cpp
 
 !win32 {
     # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
@@ -287,7 +288,8 @@ HEADERS += src/qt/bitcoingui.h \
     src/sph_types.h \
     src/threadsafety.h \
     src/txdb-leveldb.h \
-    src/qt/stakereportdialog.h
+    src/qt/stakereportdialog.h \
+    src/qt/simplecrypt.h
 
 SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/transactiontablemodel.cpp \
