@@ -1131,7 +1131,7 @@ public:
 
         retranslateUi(ChatWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(2);
         tabWidget->setCurrentIndex(-1);
 
 

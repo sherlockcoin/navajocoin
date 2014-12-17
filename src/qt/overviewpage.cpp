@@ -13,6 +13,15 @@
 #include <QAbstractItemDelegate>
 #include <QPainter>
 
+#include <QNetworkRequest>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QUrl>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QTableWidgetItem>
+
 #define DECORATION_SIZE 64
 #define NUM_ITEMS 3
 
@@ -116,6 +125,85 @@ OverviewPage::OverviewPage(QWidget *parent) :
 
     // start with displaying the "out of sync" warnings
     showOutOfSyncWarning(true);
+
+    //start ticker
+
+    tickerTimer.start(tickerInterval, this);
+
+    this->getMarketData();
+
+}
+
+void OverviewPage::timerEvent(QTimerEvent *event)
+{
+
+    if(event->timerId() == tickerTimer.timerId()){
+       this->getMarketData();
+    }
+}
+
+void OverviewPage::getMarketData(){
+
+    //bittrex
+
+    qDebug() << "getMarketData";
+
+    QUrl bittrexUrl;
+    QByteArray postData;
+
+    bittrexUrl.setUrl("https://bittrex.com/api/v1.1/public/getticker?market=BTC-NAV");
+
+    QNetworkRequest request(bittrexUrl);
+
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/octet-stream");
+
+    QNetworkAccessManager *networkManager = new QNetworkAccessManager(this);
+    connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(bittrexRequest(QNetworkReply*)));
+    networkManager->get(request);
+
+}
+
+void OverviewPage::bittrexRequest(QNetworkReply *reply){
+
+
+    QString rawReply = reply->readAll();
+
+    QJsonDocument jsonDoc =  QJsonDocument::fromJson(rawReply.toUtf8());
+
+    QJsonObject jsonObject = jsonDoc.object();
+
+    qDebug() << rawReply;
+
+    bool success = jsonObject["success"].toBool();
+
+    if(success){
+
+        QJsonObject replyObject = jsonObject["result"].toObject();
+
+        double bidValue = replyObject["Bid"].toDouble()*100000000;
+        QTableWidgetItem *bid = new QTableWidgetItem();
+        bid->setText(QString::number(bidValue));
+        ui->marketTableWidget->setItem(0,0,bid);
+
+        double askValue = replyObject["Ask"].toDouble()*100000000;
+        QTableWidgetItem *ask = new QTableWidgetItem();
+        ask->setText(QString::number(askValue));
+        ui->marketTableWidget->setItem(0,1,ask);
+
+        double lastValue = replyObject["Last"].toDouble()*100000000;
+        QTableWidgetItem *last = new QTableWidgetItem();
+        last->setText(QString::number(lastValue));
+        ui->marketTableWidget->setItem(0,2,last);
+    }
+
+
+
+
+
+
+
+
+
 }
 
 void OverviewPage::handleTransactionClicked(const QModelIndex &index)

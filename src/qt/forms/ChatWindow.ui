@@ -73,7 +73,7 @@ border-radius: 25px;
           <string notr="true">background-image:url(:/images/res/images/nav-bg.jpg)</string>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="chatPage">
           <layout class="QGridLayout" name="gridLayout">

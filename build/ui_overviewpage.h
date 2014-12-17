@@ -18,12 +18,10 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListView>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QTextEdit>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -69,21 +67,11 @@ public:
     QListView *listTransactions;
     QPushButton *unlockWalletButton;
     QFrame *line_3;
+    QHBoxLayout *horizontalLayout_7;
+    QLabel *label_7;
     QVBoxLayout *verticalLayout_7;
-    QHBoxLayout *horizontalLayout_6;
-    QSpacerItem *horizontalSpacer_3;
-    QRadioButton *rbLang_en;
-    QRadioButton *rbLang_ru;
-    QRadioButton *rbLang_cn;
-    QSpacerItem *horizontalSpacer_7;
-    QHBoxLayout *horizontalLayout_8;
-    QTextEdit *txtChat;
     QHBoxLayout *horizontalLayout_5;
-    QPushButton *btnBold;
-    QLineEdit *txtChatNick;
-    QLineEdit *txtChatMsg;
-    QPushButton *btnSmiley;
-    QPushButton *btnChatSend;
+    QTableWidget *marketTableWidget;
 
     void setupUi(QWidget *OverviewPage)
     {
@@ -343,268 +331,80 @@ public:
 
         verticalLayout_3->addWidget(line_3);
 
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
+        horizontalLayout_7->setContentsMargins(6, 6, 6, 0);
+        label_7 = new QLabel(OverviewPage);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setFont(font1);
+
+        horizontalLayout_7->addWidget(label_7);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_7);
+
         verticalLayout_7 = new QVBoxLayout();
         verticalLayout_7->setSpacing(0);
         verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
         verticalLayout_7->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout_6 = new QHBoxLayout();
-        horizontalLayout_6->setSpacing(6);
-        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        horizontalLayout_6->setContentsMargins(0, 0, 0, 0);
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_6->addItem(horizontalSpacer_3);
-
-        rbLang_en = new QRadioButton(OverviewPage);
-        rbLang_en->setObjectName(QStringLiteral("rbLang_en"));
-        rbLang_en->setMinimumSize(QSize(25, 19));
-        rbLang_en->setMaximumSize(QSize(25, 19));
-        rbLang_en->setStyleSheet(QLatin1String("QRadioButton::indicator {\n"
-"	subcontrol-position: top center;\n"
-"	image: url(:/icons/flag_en);\n"
-" }\n"
-"\n"
-" QRadioButton::indicator::unchecked {\n"
-"	width: 22px;\n"
-"	height: 16px;\n"
-" }\n"
-"\n"
-" QRadioButton::indicator:unchecked:hover {\n"
-"	background-color: blue;\n"
-"	width: 25px;\n"
-"	height: 19px;\n"
-" }\n"
-"\n"
-" QRadioButton::indicator:unchecked:pressed {\n"
-"	background-color: blue;\n"
-"	width: 25px;\n"
-"	height: 19px;\n"
-" }\n"
-"\n"
-" QRadioButton::indicator::checked {\n"
-"	background-color: black;\n"
-"	width: 25px;\n"
-"	height: 19px;\n"
-" }\n"
-"\n"
-" QRadioButton::indicator:checked:hover {\n"
-"	background-color: blue;\n"
-"	width: 25px;\n"
-"	height: 19px;\n"
-" }\n"
-"\n"
-" QRadioButton::indicator:checked:pressed {\n"
-"	background-color: blue;\n"
-"	width: 25px;\n"
-"	height: 19px;\n"
-" }"));
-        rbLang_en->setChecked(true);
-
-        horizontalLayout_6->addWidget(rbLang_en);
-
-        rbLang_ru = new QRadioButton(OverviewPage);
-        rbLang_ru->setObjectName(QStringLiteral("rbLang_ru"));
-        rbLang_ru->setMinimumSize(QSize(25, 19));
-        rbLang_ru->setMaximumSize(QSize(25, 19));
-        rbLang_ru->setStyleSheet(QLatin1String("QRadioButton::indicator {\n"
-"	subcontrol-position: top center;\n"
-"	image: url(:/icons/flag_ru);\n"
-" }\n"
-"\n"
-" QRadioButton::indicator::unchecked {\n"
-"	width: 22px;\n"
-"	height: 16px;\n"
-" }\n"
-"\n"
-" QRadioButton::indicator:unchecked:hover {\n"
-"	background-color: blue;\n"
-"	width: 25px;\n"
-"	height: 19px;\n"
-" }\n"
-"\n"
-" QRadioButton::indicator:unchecked:pressed {\n"
-"	background-color: blue;\n"
-"	width: 25px;\n"
-"	height: 19px;\n"
-" }\n"
-"\n"
-" QRadioButton::indicator::checked {\n"
-"	background-color: black;\n"
-"	width: 25px;\n"
-"	height: 19px;\n"
-" }\n"
-"\n"
-" QRadioButton::indicator:checked:hover {\n"
-"	background-color: blue;\n"
-"	width: 25px;\n"
-"	height: 19px;\n"
-" }\n"
-"\n"
-" QRadioButton::indicator:checked:pressed {\n"
-"	background-color: blue;\n"
-"	width: 25px;\n"
-"	height: 19px;\n"
-" }"));
-        rbLang_ru->setCheckable(true);
-        rbLang_ru->setChecked(false);
-
-        horizontalLayout_6->addWidget(rbLang_ru);
-
-        rbLang_cn = new QRadioButton(OverviewPage);
-        rbLang_cn->setObjectName(QStringLiteral("rbLang_cn"));
-        rbLang_cn->setMinimumSize(QSize(25, 19));
-        rbLang_cn->setMaximumSize(QSize(25, 19));
-        rbLang_cn->setStyleSheet(QLatin1String("QRadioButton::indicator {\n"
-"	subcontrol-position: top center;\n"
-"	image: url(:/icons/flag_cn);\n"
-" }\n"
-"\n"
-" QRadioButton::indicator::unchecked {\n"
-"	width: 22px;\n"
-"	height: 16px;\n"
-" }\n"
-"\n"
-" QRadioButton::indicator:unchecked:hover {\n"
-"	background-color: blue;\n"
-"	width: 25px;\n"
-"	height: 19px;\n"
-" }\n"
-"\n"
-" QRadioButton::indicator:unchecked:pressed {\n"
-"	background-color: blue;\n"
-"	width: 25px;\n"
-"	height: 19px;\n"
-" }\n"
-"\n"
-" QRadioButton::indicator::checked {\n"
-"	background-color: black;\n"
-"	width: 25px;\n"
-"	height: 19px;\n"
-" }\n"
-"\n"
-" QRadioButton::indicator:checked:hover {\n"
-"	background-color: blue;\n"
-"	width: 25px;\n"
-"	height: 19px;\n"
-" }\n"
-"\n"
-" QRadioButton::indicator:checked:pressed {\n"
-"	background-color: blue;\n"
-"	width: 25px;\n"
-"	height: 19px;\n"
-" }"));
-
-        horizontalLayout_6->addWidget(rbLang_cn);
-
-        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_6->addItem(horizontalSpacer_7);
-
-
-        verticalLayout_7->addLayout(horizontalLayout_6);
-
-        horizontalLayout_8 = new QHBoxLayout();
-        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
-        horizontalLayout_8->setContentsMargins(0, 6, 0, 6);
-        txtChat = new QTextEdit(OverviewPage);
-        txtChat->setObjectName(QStringLiteral("txtChat"));
-        QFont font3;
-        font3.setPointSize(10);
-        txtChat->setFont(font3);
-        txtChat->setStyleSheet(QStringLiteral(""));
-        txtChat->setFrameShape(QFrame::Box);
-        txtChat->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        txtChat->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        txtChat->setTextInteractionFlags(Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse);
-
-        horizontalLayout_8->addWidget(txtChat);
-
-
-        verticalLayout_7->addLayout(horizontalLayout_8);
-
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setSpacing(0);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
         horizontalLayout_5->setContentsMargins(0, 6, 0, 6);
-        btnBold = new QPushButton(OverviewPage);
-        btnBold->setObjectName(QStringLiteral("btnBold"));
-        btnBold->setMaximumSize(QSize(32, 27));
-        QFont font4;
-        font4.setPointSize(11);
-        font4.setBold(false);
-        font4.setWeight(50);
-        btnBold->setFont(font4);
-#ifndef QT_NO_TOOLTIP
-        btnBold->setToolTip(QStringLiteral("<html><head/><body><p><span style=\" font-weight:600;\">10 CHAT</span></p></body></html>"));
-#endif // QT_NO_TOOLTIP
-        btnBold->setStyleSheet(QLatin1String("background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240,240,240), stop:1 rgb(255, 255, 255));\n"
-"border-radius:3px;\n"
-"border: 1px solid #C4C1BD;\n"
-"color: #4C4C4C;\n"
-"padding: 4px 8px;\n"
-"margin: 0px 6px 0px 0px;"));
-        btnBold->setShortcut(QStringLiteral(""));
-        btnBold->setCheckable(true);
+        marketTableWidget = new QTableWidget(OverviewPage);
+        if (marketTableWidget->columnCount() < 3)
+            marketTableWidget->setColumnCount(3);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        __qtablewidgetitem->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter|Qt::AlignCenter);
+        marketTableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        __qtablewidgetitem1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter|Qt::AlignCenter);
+        marketTableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
+        __qtablewidgetitem2->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter|Qt::AlignCenter);
+        marketTableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        if (marketTableWidget->rowCount() < 3)
+            marketTableWidget->setRowCount(3);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        __qtablewidgetitem3->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter|Qt::AlignCenter);
+        marketTableWidget->setVerticalHeaderItem(0, __qtablewidgetitem3);
+        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
+        __qtablewidgetitem4->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter|Qt::AlignCenter);
+        marketTableWidget->setVerticalHeaderItem(1, __qtablewidgetitem4);
+        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
+        __qtablewidgetitem5->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter|Qt::AlignCenter);
+        marketTableWidget->setVerticalHeaderItem(2, __qtablewidgetitem5);
+        QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
+        __qtablewidgetitem6->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter|Qt::AlignCenter);
+        marketTableWidget->setItem(0, 0, __qtablewidgetitem6);
+        QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
+        __qtablewidgetitem7->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter|Qt::AlignCenter);
+        marketTableWidget->setItem(0, 1, __qtablewidgetitem7);
+        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
+        __qtablewidgetitem8->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter|Qt::AlignCenter);
+        marketTableWidget->setItem(0, 2, __qtablewidgetitem8);
+        QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
+        __qtablewidgetitem9->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter|Qt::AlignCenter);
+        marketTableWidget->setItem(1, 0, __qtablewidgetitem9);
+        QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
+        __qtablewidgetitem10->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter|Qt::AlignCenter);
+        marketTableWidget->setItem(1, 1, __qtablewidgetitem10);
+        QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
+        __qtablewidgetitem11->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter|Qt::AlignCenter);
+        marketTableWidget->setItem(1, 2, __qtablewidgetitem11);
+        QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
+        __qtablewidgetitem12->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter|Qt::AlignCenter);
+        marketTableWidget->setItem(2, 0, __qtablewidgetitem12);
+        QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
+        __qtablewidgetitem13->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter|Qt::AlignCenter);
+        marketTableWidget->setItem(2, 1, __qtablewidgetitem13);
+        QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
+        __qtablewidgetitem14->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter|Qt::AlignCenter);
+        marketTableWidget->setItem(2, 2, __qtablewidgetitem14);
+        marketTableWidget->setObjectName(QStringLiteral("marketTableWidget"));
+        marketTableWidget->setStyleSheet(QStringLiteral("text-align:center"));
 
-        horizontalLayout_5->addWidget(btnBold);
-
-        txtChatNick = new QLineEdit(OverviewPage);
-        txtChatNick->setObjectName(QStringLiteral("txtChatNick"));
-        txtChatNick->setMaximumSize(QSize(999, 27));
-        txtChatNick->setFont(font4);
-        txtChatNick->setStyleSheet(QLatin1String("background-color: rgb(255,255,255);\n"
-"border-radius:3px;\n"
-"border: 1px solid #C4C1BD;\n"
-"color: #4C4C4C;\n"
-"padding: 4px;\n"
-"margin: 0px 6px 0px 0px;"));
-        txtChatNick->setMaxLength(20);
-
-        horizontalLayout_5->addWidget(txtChatNick);
-
-        txtChatMsg = new QLineEdit(OverviewPage);
-        txtChatMsg->setObjectName(QStringLiteral("txtChatMsg"));
-        txtChatMsg->setMaximumSize(QSize(999, 27));
-        QFont font5;
-        font5.setPointSize(11);
-        txtChatMsg->setFont(font5);
-        txtChatMsg->setStyleSheet(QLatin1String("background-color: rgb(255,255,255);\n"
-"border-radius:3px;\n"
-"border: 1px solid #C4C1BD;\n"
-"color: #4C4C4C;\n"
-"padding: 4px;\n"
-"margin: 0px 6px 0px 0px;"));
-        txtChatMsg->setMaxLength(140);
-
-        horizontalLayout_5->addWidget(txtChatMsg);
-
-        btnSmiley = new QPushButton(OverviewPage);
-        btnSmiley->setObjectName(QStringLiteral("btnSmiley"));
-        btnSmiley->setMaximumSize(QSize(32, 27));
-        btnSmiley->setFont(font3);
-        btnSmiley->setStyleSheet(QLatin1String("background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240,240,240), stop:1 rgb(255, 255, 255));\n"
-"border-radius:3px;\n"
-"border: 1px solid #C4C1BD;\n"
-"color: #4C4C4C;\n"
-"padding: 4px 8px;\n"
-"margin: 0px 6px 0px 0px;"));
-        QIcon icon;
-        icon.addFile(QStringLiteral(":/icons/smiley-button"), QSize(), QIcon::Normal, QIcon::Off);
-        btnSmiley->setIcon(icon);
-
-        horizontalLayout_5->addWidget(btnSmiley);
-
-        btnChatSend = new QPushButton(OverviewPage);
-        btnChatSend->setObjectName(QStringLiteral("btnChatSend"));
-        btnChatSend->setMaximumSize(QSize(70, 27));
-        btnChatSend->setFont(font5);
-        btnChatSend->setStyleSheet(QLatin1String("background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240,240,240), stop:1 rgb(255, 255, 255));\n"
-"border-radius:3px;\n"
-"border: 1px solid #C4C1BD;\n"
-"color: #4C4C4C;\n"
-"padding: 4px 12px;"));
-
-        horizontalLayout_5->addWidget(btnChatSend);
+        horizontalLayout_5->addWidget(marketTableWidget);
 
 
         verticalLayout_7->addLayout(horizontalLayout_5);
@@ -658,20 +458,24 @@ public:
         unlockWalletButton->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
         unlockWalletButton->setText(QApplication::translate("OverviewPage", "wallet unlock button", 0));
-        rbLang_en->setText(QString());
-        rbLang_ru->setText(QString());
-        rbLang_cn->setText(QString());
-        btnBold->setText(QApplication::translate("OverviewPage", "B", 0));
-        txtChatNick->setInputMask(QString());
-        txtChatNick->setText(QString());
-        txtChatMsg->setText(QString());
-#ifndef QT_NO_TOOLTIP
-        btnSmiley->setToolTip(QApplication::translate("OverviewPage", "List of emoticons", 0));
-#endif // QT_NO_TOOLTIP
-#ifndef QT_NO_TOOLTIP
-        btnChatSend->setToolTip(QApplication::translate("OverviewPage", "1 CHAT", 0));
-#endif // QT_NO_TOOLTIP
-        btnChatSend->setText(QApplication::translate("OverviewPage", "Send", 0));
+        label_7->setText(QApplication::translate("OverviewPage", "Live Market Data", 0));
+        QTableWidgetItem *___qtablewidgetitem = marketTableWidget->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QApplication::translate("OverviewPage", "Bid", 0));
+        QTableWidgetItem *___qtablewidgetitem1 = marketTableWidget->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QApplication::translate("OverviewPage", "Ask", 0));
+        QTableWidgetItem *___qtablewidgetitem2 = marketTableWidget->horizontalHeaderItem(2);
+        ___qtablewidgetitem2->setText(QApplication::translate("OverviewPage", "Last", 0));
+        QTableWidgetItem *___qtablewidgetitem3 = marketTableWidget->verticalHeaderItem(0);
+        ___qtablewidgetitem3->setText(QApplication::translate("OverviewPage", "Bittrex", 0));
+        QTableWidgetItem *___qtablewidgetitem4 = marketTableWidget->verticalHeaderItem(1);
+        ___qtablewidgetitem4->setText(QApplication::translate("OverviewPage", "Cryptsy", 0));
+        QTableWidgetItem *___qtablewidgetitem5 = marketTableWidget->verticalHeaderItem(2);
+        ___qtablewidgetitem5->setText(QApplication::translate("OverviewPage", "Poloinex", 0));
+
+        const bool __sortingEnabled = marketTableWidget->isSortingEnabled();
+        marketTableWidget->setSortingEnabled(false);
+        marketTableWidget->setSortingEnabled(__sortingEnabled);
+
     } // retranslateUi
 
 };

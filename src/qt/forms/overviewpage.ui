@@ -481,6 +481,35 @@ padding: 4px 0;</string>
       </widget>
      </item>
      <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <property name="leftMargin">
+        <number>6</number>
+       </property>
+       <property name="topMargin">
+        <number>6</number>
+       </property>
+       <property name="rightMargin">
+        <number>6</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_7">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Live Market Data</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
       <layout class="QVBoxLayout" name="verticalLayout_7">
        <property name="spacing">
         <number>0</number>
@@ -497,280 +526,6 @@ padding: 4px 0;</string>
        <property name="bottomMargin">
         <number>0</number>
        </property>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
-         <property name="spacing">
-          <number>6</number>
-         </property>
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <spacer name="horizontalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="rbLang_en">
-           <property name="minimumSize">
-            <size>
-             <width>25</width>
-             <height>19</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>25</width>
-             <height>19</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QRadioButton::indicator {
-	subcontrol-position: top center;
-	image: url(:/icons/flag_en);
- }
-
- QRadioButton::indicator::unchecked {
-	width: 22px;
-	height: 16px;
- }
-
- QRadioButton::indicator:unchecked:hover {
-	background-color: blue;
-	width: 25px;
-	height: 19px;
- }
-
- QRadioButton::indicator:unchecked:pressed {
-	background-color: blue;
-	width: 25px;
-	height: 19px;
- }
-
- QRadioButton::indicator::checked {
-	background-color: black;
-	width: 25px;
-	height: 19px;
- }
-
- QRadioButton::indicator:checked:hover {
-	background-color: blue;
-	width: 25px;
-	height: 19px;
- }
-
- QRadioButton::indicator:checked:pressed {
-	background-color: blue;
-	width: 25px;
-	height: 19px;
- }</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="rbLang_ru">
-           <property name="minimumSize">
-            <size>
-             <width>25</width>
-             <height>19</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>25</width>
-             <height>19</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QRadioButton::indicator {
-	subcontrol-position: top center;
-	image: url(:/icons/flag_ru);
- }
-
- QRadioButton::indicator::unchecked {
-	width: 22px;
-	height: 16px;
- }
-
- QRadioButton::indicator:unchecked:hover {
-	background-color: blue;
-	width: 25px;
-	height: 19px;
- }
-
- QRadioButton::indicator:unchecked:pressed {
-	background-color: blue;
-	width: 25px;
-	height: 19px;
- }
-
- QRadioButton::indicator::checked {
-	background-color: black;
-	width: 25px;
-	height: 19px;
- }
-
- QRadioButton::indicator:checked:hover {
-	background-color: blue;
-	width: 25px;
-	height: 19px;
- }
-
- QRadioButton::indicator:checked:pressed {
-	background-color: blue;
-	width: 25px;
-	height: 19px;
- }</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="checked">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="rbLang_cn">
-           <property name="minimumSize">
-            <size>
-             <width>25</width>
-             <height>19</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>25</width>
-             <height>19</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QRadioButton::indicator {
-	subcontrol-position: top center;
-	image: url(:/icons/flag_cn);
- }
-
- QRadioButton::indicator::unchecked {
-	width: 22px;
-	height: 16px;
- }
-
- QRadioButton::indicator:unchecked:hover {
-	background-color: blue;
-	width: 25px;
-	height: 19px;
- }
-
- QRadioButton::indicator:unchecked:pressed {
-	background-color: blue;
-	width: 25px;
-	height: 19px;
- }
-
- QRadioButton::indicator::checked {
-	background-color: black;
-	width: 25px;
-	height: 19px;
- }
-
- QRadioButton::indicator:checked:hover {
-	background-color: blue;
-	width: 25px;
-	height: 19px;
- }
-
- QRadioButton::indicator:checked:pressed {
-	background-color: blue;
-	width: 25px;
-	height: 19px;
- }</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_7">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_8">
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>6</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QTextEdit" name="txtChat">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::Box</enum>
-           </property>
-           <property name="verticalScrollBarPolicy">
-            <enum>Qt::ScrollBarAlwaysOn</enum>
-           </property>
-           <property name="horizontalScrollBarPolicy">
-            <enum>Qt::ScrollBarAlwaysOff</enum>
-           </property>
-           <property name="textInteractionFlags">
-            <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <property name="spacing">
@@ -789,161 +544,130 @@ padding: 4px 0;</string>
           <number>6</number>
          </property>
          <item>
-          <widget class="QPushButton" name="btnBold">
-           <property name="maximumSize">
-            <size>
-             <width>32</width>
-             <height>27</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>11</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="toolTip">
-            <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;10 CHAT&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
+          <widget class="QTableWidget" name="marketTableWidget">
            <property name="styleSheet">
-            <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240,240,240), stop:1 rgb(255, 255, 255));
-border-radius:3px;
-border: 1px solid #C4C1BD;
-color: #4C4C4C;
-padding: 4px 8px;
-margin: 0px 6px 0px 0px;</string>
+            <string notr="true">text-align:center</string>
            </property>
-           <property name="text">
-            <string>B</string>
-           </property>
-           <property name="shortcut">
-            <string notr="true"/>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="txtChatNick">
-           <property name="maximumSize">
-            <size>
-             <width>999</width>
-             <height>27</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>11</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(255,255,255);
-border-radius:3px;
-border: 1px solid #C4C1BD;
-color: #4C4C4C;
-padding: 4px;
-margin: 0px 6px 0px 0px;</string>
-           </property>
-           <property name="inputMask">
-            <string/>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="maxLength">
-            <number>20</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="txtChatMsg">
-           <property name="maximumSize">
-            <size>
-             <width>999</width>
-             <height>27</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(255,255,255);
-border-radius:3px;
-border: 1px solid #C4C1BD;
-color: #4C4C4C;
-padding: 4px;
-margin: 0px 6px 0px 0px;</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="maxLength">
-            <number>140</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btnSmiley">
-           <property name="maximumSize">
-            <size>
-             <width>32</width>
-             <height>27</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="toolTip">
-            <string>List of emoticons</string>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240,240,240), stop:1 rgb(255, 255, 255));
-border-radius:3px;
-border: 1px solid #C4C1BD;
-color: #4C4C4C;
-padding: 4px 8px;
-margin: 0px 6px 0px 0px;</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../bitcoin.qrc">
-             <normaloff>:/icons/smiley-button</normaloff>:/icons/smiley-button</iconset>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btnChatSend">
-           <property name="maximumSize">
-            <size>
-             <width>70</width>
-             <height>27</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="toolTip">
-            <string>1 CHAT</string>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240,240,240), stop:1 rgb(255, 255, 255));
-border-radius:3px;
-border: 1px solid #C4C1BD;
-color: #4C4C4C;
-padding: 4px 12px;</string>
-           </property>
-           <property name="text">
-            <string>Send</string>
-           </property>
+           <row>
+            <property name="text">
+             <string>Bittrex</string>
+            </property>
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>Cryptsy</string>
+            </property>
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>Poloinex</string>
+            </property>
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </row>
+           <column>
+            <property name="text">
+             <string>Bid</string>
+            </property>
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Ask</string>
+            </property>
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Last</string>
+            </property>
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </column>
+           <item row="0" column="0">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </item>
+           <item row="0" column="1">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </item>
+           <item row="0" column="2">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </item>
+           <item row="1" column="0">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </item>
+           <item row="1" column="1">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </item>
+           <item row="1" column="2">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </item>
+           <item row="2" column="0">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </item>
+           <item row="2" column="1">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </item>
+           <item row="2" column="2">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </item>
           </widget>
          </item>
         </layout>

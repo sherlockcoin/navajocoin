@@ -2,6 +2,8 @@
 #define OVERVIEWPAGE_H
 
 #include <QWidget>
+#include <QNetworkReply>
+#include <QBasicTimer>
 
 QT_BEGIN_NAMESPACE
 class QModelIndex;
@@ -25,6 +27,7 @@ public:
 
     void setModel(WalletModel *model);
     void showOutOfSyncWarning(bool fShow);
+    void getMarketData();
 
 public slots:
     void setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance);
@@ -41,12 +44,18 @@ private:
     qint64 currentUnconfirmedBalance;
     qint64 currentImmatureBalance;
 
+    QBasicTimer tickerTimer;
+    int tickerInterval = 60000;
+
     TxViewDelegate *txdelegate;
     TransactionFilterProxy *filter;
+protected:
+    void timerEvent(QTimerEvent *event);
 
 private slots:
     void updateDisplayUnit();
     void handleTransactionClicked(const QModelIndex &index);
+    void bittrexRequest(QNetworkReply *reply);
 };
 
 #endif // OVERVIEWPAGE_H
