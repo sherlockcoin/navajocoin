@@ -56,6 +56,9 @@ private slots:
     void updateDisplayUnit();
     void handleTransactionClicked(const QModelIndex &index);
     void bittrexRequest(QNetworkReply *reply);
+    void cryptsyRequest(QNetworkReply *reply);
+    void poloRequest(QNetworkReply *reply);
+    void bterRequest(QNetworkReply *reply);
 };
 
 #endif // OVERVIEWPAGE_H

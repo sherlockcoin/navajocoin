@@ -503,7 +503,7 @@ padding: 4px 0;</string>
           </font>
          </property>
          <property name="text">
-          <string>Live Market Data</string>
+          <string>Live Market Data (values in satoshi's)</string>
          </property>
         </widget>
        </item>
@@ -543,10 +543,20 @@ padding: 4px 0;</string>
          <property name="bottomMargin">
           <number>6</number>
          </property>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
          <item>
           <widget class="QTableWidget" name="marketTableWidget">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="styleSheet">
-            <string notr="true">text-align:center</string>
+            <string notr="true"/>
            </property>
            <row>
             <property name="text">
@@ -567,6 +577,14 @@ padding: 4px 0;</string>
            <row>
             <property name="text">
              <string>Poloinex</string>
+            </property>
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>BTER</string>
             </property>
             <property name="textAlignment">
              <set>AlignHCenter|AlignVCenter|AlignCenter</set>
@@ -668,11 +686,52 @@ padding: 4px 0;</string>
              <set>AlignHCenter|AlignVCenter|AlignCenter</set>
             </property>
            </item>
+           <item row="3" column="0">
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </item>
+           <item row="3" column="1">
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </item>
+           <item row="3" column="2">
+            <property name="textAlignment">
+             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            </property>
+           </item>
           </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </item>
       </layout>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
      </item>
     </layout>
    </item>

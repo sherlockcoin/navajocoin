@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_OverviewPage_t {
-    QByteArrayData data[15];
-    char stringdata[191];
+    QByteArrayData data[18];
+    char stringdata[230];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -43,13 +43,17 @@ QT_MOC_LITERAL(10, 112, 17),
 QT_MOC_LITERAL(11, 130, 24),
 QT_MOC_LITERAL(12, 155, 14),
 QT_MOC_LITERAL(13, 170, 14),
-QT_MOC_LITERAL(14, 185, 5)
+QT_MOC_LITERAL(14, 185, 5),
+QT_MOC_LITERAL(15, 191, 14),
+QT_MOC_LITERAL(16, 206, 11),
+QT_MOC_LITERAL(17, 218, 11)
     },
     "OverviewPage\0transactionClicked\0\0index\0"
     "setBalance\0balance\0stake\0unconfirmedBalance\0"
     "immatureBalance\0unlockWallet\0"
     "updateDisplayUnit\0handleTransactionClicked\0"
-    "bittrexRequest\0QNetworkReply*\0reply"
+    "bittrexRequest\0QNetworkReply*\0reply\0"
+    "cryptsyRequest\0poloRequest\0bterRequest"
 };
 #undef QT_MOC_LITERAL
 
@@ -59,7 +63,7 @@ static const uint qt_meta_data_OverviewPage[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -67,14 +71,17 @@ static const uint qt_meta_data_OverviewPage[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   44,    2, 0x06 /* Public */,
+       1,    1,   59,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    4,   47,    2, 0x0a /* Public */,
-       9,    0,   56,    2, 0x0a /* Public */,
-      10,    0,   57,    2, 0x08 /* Private */,
-      11,    1,   58,    2, 0x08 /* Private */,
-      12,    1,   61,    2, 0x08 /* Private */,
+       4,    4,   62,    2, 0x0a /* Public */,
+       9,    0,   71,    2, 0x0a /* Public */,
+      10,    0,   72,    2, 0x08 /* Private */,
+      11,    1,   73,    2, 0x08 /* Private */,
+      12,    1,   76,    2, 0x08 /* Private */,
+      15,    1,   79,    2, 0x08 /* Private */,
+      16,    1,   82,    2, 0x08 /* Private */,
+      17,    1,   85,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QModelIndex,    3,
@@ -84,6 +91,9 @@ static const uint qt_meta_data_OverviewPage[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QModelIndex,    3,
+    QMetaType::Void, 0x80000000 | 13,   14,
+    QMetaType::Void, 0x80000000 | 13,   14,
+    QMetaType::Void, 0x80000000 | 13,   14,
     QMetaType::Void, 0x80000000 | 13,   14,
 
        0        // eod
@@ -100,12 +110,36 @@ void OverviewPage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 3: _t->updateDisplayUnit(); break;
         case 4: _t->handleTransactionClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         case 5: _t->bittrexRequest((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 6: _t->cryptsyRequest((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 7: _t->poloRequest((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 8: _t->bterRequest((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
         case 5:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 0:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QNetworkReply* >(); break;
+            }
+            break;
+        case 6:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 0:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QNetworkReply* >(); break;
+            }
+            break;
+        case 7:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 0:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QNetworkReply* >(); break;
+            }
+            break;
+        case 8:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -150,13 +184,13 @@ int OverviewPage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 9;
     }
     return _id;
 }

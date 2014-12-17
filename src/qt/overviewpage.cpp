@@ -149,17 +149,182 @@ void OverviewPage::getMarketData(){
     qDebug() << "getMarketData";
 
     QUrl bittrexUrl;
-    QByteArray postData;
 
     bittrexUrl.setUrl("https://bittrex.com/api/v1.1/public/getticker?market=BTC-NAV");
 
-    QNetworkRequest request(bittrexUrl);
+    QNetworkRequest bittrexReq(bittrexUrl);
 
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/octet-stream");
+    bittrexReq.setHeader(QNetworkRequest::ContentTypeHeader, "application/octet-stream");
 
     QNetworkAccessManager *networkManager = new QNetworkAccessManager(this);
     connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(bittrexRequest(QNetworkReply*)));
-    networkManager->get(request);
+    networkManager->get(bittrexReq);
+
+    //cryptsy
+
+    QUrl cryptsyUrl;
+
+    cryptsyUrl.setUrl("http://pubapi.cryptsy.com/api.php?method=singlemarketdata&marketid=252");
+
+    QNetworkRequest cryptsyReq(cryptsyUrl);
+
+    cryptsyReq.setHeader(QNetworkRequest::ContentTypeHeader, "application/octet-stream");
+
+    QNetworkAccessManager *cryptsyNetworkManager = new QNetworkAccessManager(this);
+    connect(cryptsyNetworkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(cryptsyRequest(QNetworkReply*)));
+    cryptsyNetworkManager->get(cryptsyReq);
+
+    //polo
+
+    QUrl poloUrl;
+
+    poloUrl.setUrl("https://poloniex.com/public?command=returnTicker");
+
+    QNetworkRequest poloReq(poloUrl);
+
+    poloReq.setHeader(QNetworkRequest::ContentTypeHeader, "application/octet-stream");
+
+    QNetworkAccessManager *poloNetworkManager = new QNetworkAccessManager(this);
+    connect(poloNetworkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(poloRequest(QNetworkReply*)));
+    poloNetworkManager->get(poloReq);
+
+    //bter
+
+    QUrl bterUrl;
+
+    bterUrl.setUrl("http://data.bter.com/api/1/ticker/NAV_BTC");
+
+    QNetworkRequest bterReq(bterUrl);
+
+    bterReq.setHeader(QNetworkRequest::ContentTypeHeader, "application/octet-stream");
+
+    QNetworkAccessManager *bterNetworkManager = new QNetworkAccessManager(this);
+    connect(bterNetworkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(bterRequest(QNetworkReply*)));
+    bterNetworkManager->get(bterReq);
+
+}
+
+void OverviewPage::bterRequest(QNetworkReply *reply){
+
+    QString rawReply = reply->readAll();
+
+    QJsonDocument jsonDoc =  QJsonDocument::fromJson(rawReply.toUtf8());
+
+    QJsonObject navObject = jsonDoc.object();
+
+    if(navObject["result"] == "true"){
+
+        QString bidString = navObject["buy"].toString();
+        double bidValue = bidString.toDouble()*100000000;
+        QTableWidgetItem *bid = new QTableWidgetItem();
+        bid->setFlags(bid->flags() ^ Qt::ItemIsEditable);
+        bid->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+        bid->setText(QString::number(bidValue));
+        ui->marketTableWidget->setItem(3,0,bid);
+
+        QString askString = navObject["sell"].toString();
+        double askValue = askString.toDouble()*100000000;
+        QTableWidgetItem *ask = new QTableWidgetItem();
+        ask->setFlags(ask->flags() ^ Qt::ItemIsEditable);
+        ask->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+        ask->setText(QString::number(askValue));
+        ui->marketTableWidget->setItem(3,1,ask);
+
+        QString lastString = navObject["last"].toString();
+        double lastValue = lastString.toDouble()*100000000;
+        QTableWidgetItem *last = new QTableWidgetItem();
+        last->setFlags(last->flags() ^ Qt::ItemIsEditable);
+        last->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+        last->setText(QString::number(lastValue));
+        ui->marketTableWidget->setItem(3,2,last);
+    }
+
+
+
+}
+
+void OverviewPage::poloRequest(QNetworkReply *reply){
+
+    QString rawReply = reply->readAll();
+
+    QJsonDocument jsonDoc =  QJsonDocument::fromJson(rawReply.toUtf8());
+
+    QJsonObject jsonObject = jsonDoc.object();
+
+    QJsonObject navObject = jsonObject["BTC_NAV"].toObject();
+
+    QString bidString = navObject["highestBid"].toString();
+    double bidValue = bidString.toDouble()*100000000;
+    QTableWidgetItem *bid = new QTableWidgetItem();
+    bid->setFlags(bid->flags() ^ Qt::ItemIsEditable);
+    bid->setText(QString::number(bidValue));
+    bid->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    ui->marketTableWidget->setItem(2,0,bid);
+
+    QString askString = navObject["lowestAsk"].toString();
+    double askValue = askString.toDouble()*100000000;
+    QTableWidgetItem *ask = new QTableWidgetItem();
+    ask->setFlags(ask->flags() ^ Qt::ItemIsEditable);
+    ask->setText(QString::number(askValue));
+    ask->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    ui->marketTableWidget->setItem(2,1,ask);
+
+    QString lastString = navObject["last"].toString();
+    double lastValue = lastString.toDouble()*100000000;
+    QTableWidgetItem *last = new QTableWidgetItem();
+    last->setFlags(last->flags() ^ Qt::ItemIsEditable);
+    last->setText(QString::number(lastValue));
+    last->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    ui->marketTableWidget->setItem(2,2,last);
+
+}
+
+
+void OverviewPage::cryptsyRequest(QNetworkReply *reply){
+
+    QString rawReply = reply->readAll();
+
+    QJsonDocument jsonDoc =  QJsonDocument::fromJson(rawReply.toUtf8());
+
+    QJsonObject jsonObject = jsonDoc.object();
+
+    bool success = jsonObject["success"].toInt();
+
+    if(success == 1){
+
+        QJsonObject returnObject = jsonObject["return"].toObject();
+        QJsonObject marketsObject = returnObject["markets"].toObject();
+        QJsonObject navObject = marketsObject["NAV"].toObject();
+        QJsonArray sellObject = navObject["sellorders"].toArray();
+        QJsonArray buyObject = navObject["buyorders"].toArray();
+
+        QJsonObject firstSell = sellObject[0].toObject();
+        QJsonObject firstBuy = buyObject[0].toObject();
+
+        QString bidString = firstBuy["price"].toString();
+        double bidValue = bidString.toDouble()*100000000;
+        QTableWidgetItem *bid = new QTableWidgetItem();
+        bid->setFlags(bid->flags() ^ Qt::ItemIsEditable);
+        bid->setText(QString::number(bidValue));
+        bid->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+        ui->marketTableWidget->setItem(1,0,bid);
+
+        QString askString = firstSell["price"].toString();
+        double askValue = askString.toDouble()*100000000;
+        QTableWidgetItem *ask = new QTableWidgetItem();
+        ask->setFlags(ask->flags() ^ Qt::ItemIsEditable);
+        ask->setText(QString::number(askValue));
+        ask->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+        ui->marketTableWidget->setItem(1,1,ask);
+
+        QString lastString = navObject["lasttradeprice"].toString();
+        double lastValue = lastString.toDouble()*100000000;
+        QTableWidgetItem *last = new QTableWidgetItem();
+        last->setFlags(last->flags() ^ Qt::ItemIsEditable);
+        last->setText(QString::number(lastValue));
+        last->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+        ui->marketTableWidget->setItem(1,2,last);
+    }
 
 }
 
@@ -172,8 +337,6 @@ void OverviewPage::bittrexRequest(QNetworkReply *reply){
 
     QJsonObject jsonObject = jsonDoc.object();
 
-    qDebug() << rawReply;
-
     bool success = jsonObject["success"].toBool();
 
     if(success){
@@ -182,27 +345,25 @@ void OverviewPage::bittrexRequest(QNetworkReply *reply){
 
         double bidValue = replyObject["Bid"].toDouble()*100000000;
         QTableWidgetItem *bid = new QTableWidgetItem();
+        bid->setFlags(bid->flags() ^ Qt::ItemIsEditable);
         bid->setText(QString::number(bidValue));
+        bid->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
         ui->marketTableWidget->setItem(0,0,bid);
 
         double askValue = replyObject["Ask"].toDouble()*100000000;
         QTableWidgetItem *ask = new QTableWidgetItem();
+        ask->setFlags(ask->flags() ^ Qt::ItemIsEditable);
         ask->setText(QString::number(askValue));
+        ask->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
         ui->marketTableWidget->setItem(0,1,ask);
 
         double lastValue = replyObject["Last"].toDouble()*100000000;
         QTableWidgetItem *last = new QTableWidgetItem();
+        last->setFlags(last->flags() ^ Qt::ItemIsEditable);
         last->setText(QString::number(lastValue));
+        last->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
         ui->marketTableWidget->setItem(0,2,last);
     }
-
-
-
-
-
-
-
-
 
 }
 
