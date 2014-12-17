@@ -73,8 +73,6 @@ public:
     QHBoxLayout *horizontalLayout_5;
     QHBoxLayout *horizontalLayout_8;
     QTableWidget *marketTableWidget;
-    QSpacerItem *horizontalSpacer_4;
-    QSpacerItem *verticalSpacer_2;
 
     void setupUi(QWidget *OverviewPage)
     {
@@ -431,19 +429,11 @@ public:
 
         horizontalLayout_8->addWidget(marketTableWidget);
 
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_8->addItem(horizontalSpacer_4);
-
 
         verticalLayout_7->addLayout(horizontalLayout_8);
 
 
         verticalLayout_3->addLayout(verticalLayout_7);
-
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_3->addItem(verticalSpacer_2);
 
 
         horizontalLayout->addLayout(verticalLayout_3);
