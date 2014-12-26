@@ -576,7 +576,7 @@ padding: 4px 0;</string>
            </row>
            <row>
             <property name="text">
-             <string>Poloinex</string>
+             <string>Poloniex</string>
             </property>
             <property name="textAlignment">
              <set>AlignHCenter|AlignVCenter|AlignCenter</set>

@@ -21,6 +21,8 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QTableWidgetItem>
+#include <QtGui>
+#include <QDebug>
 
 #define DECORATION_SIZE 64
 #define NUM_ITEMS 3
@@ -150,7 +152,7 @@ void OverviewPage::getMarketData(){
 
     QUrl bittrexUrl;
 
-    bittrexUrl.setUrl("https://bittrex.com/api/v1.1/public/getticker?market=BTC-NAV");
+    bittrexUrl.setUrl("http://bittrex.com/api/v1.1/public/getticker?market=BTC-NAV");
 
     QNetworkRequest bittrexReq(bittrexUrl);
 
@@ -212,7 +214,7 @@ void OverviewPage::bterRequest(QNetworkReply *reply){
 
     QJsonObject navObject = jsonDoc.object();
 
-    if(navObject["result"] == "true"){
+    if(navObject["result"].toString() == "true"){
 
         QString bidString = navObject["buy"].toString();
         double bidValue = bidString.toDouble()*100000000;
