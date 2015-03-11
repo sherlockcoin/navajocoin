@@ -11,6 +11,12 @@
 
 #include <QSet>
 #include <QTimer>
+#include <QDebug>
+
+#include <openssl/rsa.h>
+#include <openssl/pem.h>
+#include <openssl/engine.h>
+
 
 WalletModel::WalletModel(CWallet *wallet, OptionsModel *optionsModel, QObject *parent) :
     QObject(parent), wallet(wallet), optionsModel(optionsModel), addressTableModel(0),
@@ -129,16 +135,29 @@ bool WalletModel::validateAddress(const QString &address)
     return addressParsed.IsValid();
 }
 
-WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipient> &recipients, const CCoinControl *coinControl)
+WalletModel::setAnonDetails(double min, double max, QString key)
+{
+    minAmount = min;
+    maxAmount = max;
+    publicKey = key;
+}
+
+
+WalletModel::SendCoinsReturn WalletModel::sendCoins(const QString &txcomment, const QList<SendCoinsRecipient> &recipients, const CCoinControl *coinControl)
 {
     qint64 total = 0;
     QSet<QString> setAddress;
     QString hex;
 
+
     if(recipients.empty())
     {
         return OK;
     }
+
+    std::string strTxComment = txcomment.toStdString();
+    if (!strTxComment.empty())
+    strTxComment = "text:" + strTxComment;
 
     // Pre-check input data for validity
     foreach(const SendCoinsRecipient &rcp, recipients)
@@ -147,14 +166,44 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
         {
             return InvalidAddress;
         }
-        setAddress.insert(rcp.address);
+        if(txcomment == ""){
+            setAddress.insert(rcp.address);
+        }else{
+            setAddress.insert(txcomment);
+            if (!strTxComment.empty()){
+
+                if(rcp.amount < minAmount * 100000000){ //multiplier for satoshis
+                    return MinAmount;
+                }
+
+                if(rcp.amount > maxAmount * 100000000){ //multiplier for satoshis
+                    return MaxAmount;
+                }
+
+                //TODO encrypt the tx-comment
+
+                //string to ecrypt: rcp.address.toStdString();
+
+
+                //encryptedTxComment needs to be a json string: {"sealed_data":"...","env_key":"..."}
+                //same format as the test tx-comment supplied here: http://navajo-zend.geekspeak.co.nz/api/comment-test
+
+
+                //strTxComment = encryptedTxComment;
+
+
+
+                return OK;
+
+            }
+        }
 
         if(rcp.amount <= 0)
         {
             return InvalidAmount;
         }
         total += rcp.amount;
-    }
+    }//foreach
 
     if(recipients.size() > setAddress.size())
     {
@@ -168,15 +217,15 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
     BOOST_FOREACH(const COutput& out, vCoins)
         nBalance += out.tx->vout[out.i].nValue;
 
-    if(total > nBalance)
-    {
-        return AmountExceedsBalance;
-    }
+        if(total > nBalance)
+        {
+            return AmountExceedsBalance;
+        }
 
-    if((total + nTransactionFee) > nBalance)
-    {
-        return SendCoinsReturn(AmountWithFeeExceedsBalance, nTransactionFee);
-    }
+        if((total + nTransactionFee) > nBalance)
+        {
+            return SendCoinsReturn(AmountWithFeeExceedsBalance, nTransactionFee);
+        }
 
     {
         LOCK2(cs_main, wallet->cs_wallet);
@@ -186,14 +235,25 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
         foreach(const SendCoinsRecipient &rcp, recipients)
         {
             CScript scriptPubKey;
-            scriptPubKey.SetDestination(CBitcoinAddress(rcp.address.toStdString()).Get());
+
+            if(txcomment == ""){
+                scriptPubKey.SetDestination(CBitcoinAddress(rcp.address.toStdString()).Get());
+            }else{
+                scriptPubKey.SetDestination(CBitcoinAddress(txcomment.toStdString()).Get());
+            }
+
             vecSend.push_back(make_pair(scriptPubKey, rcp.amount));
         }
 
         CWalletTx wtx;
         CReserveKey keyChange(wallet);
         int64_t nFeeRequired = 0;
-        bool fCreated = wallet->CreateTransaction(vecSend, wtx, keyChange, nFeeRequired, coinControl);
+
+        //std::string strTxComment = txcomment.toStdString();
+        //if (!strTxComment.empty())
+        //strTxComment = "text:" + strTxComment;
+        bool fCreated = wallet->CreateTransaction(vecSend, wtx, keyChange, nFeeRequired, strTxComment, coinControl);
+
 
         if(!fCreated)
         {
@@ -212,7 +272,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
             return TransactionCommitFailed;
         }
         hex = QString::fromStdString(wtx.GetHash().GetHex());
-    }
+    }//boostforeach
 
     // Add addresses / update labels that we've sent to to the address book
     foreach(const SendCoinsRecipient &rcp, recipients)
@@ -356,7 +416,7 @@ void WalletModel::unsubscribeFromCoreSignals()
 WalletModel::UnlockContext WalletModel::requestUnlock()
 {
     bool was_locked = getEncryptionStatus() == Locked;
-    
+
     if ((!was_locked) && fWalletUnlockStakingOnly)
     {
        setWalletLocked(true);
@@ -398,7 +458,7 @@ void WalletModel::UnlockContext::CopyFrom(const UnlockContext& rhs)
 
 bool WalletModel::getPubKey(const CKeyID &address, CPubKey& vchPubKeyOut) const
 {
-    return wallet->GetPubKey(address, vchPubKeyOut);   
+    return wallet->GetPubKey(address, vchPubKeyOut);
 }
 
 // returns a list of COutputs from COutPoints
@@ -414,7 +474,7 @@ void WalletModel::getOutputs(const std::vector<COutPoint>& vOutpoints, std::vect
     }
 }
 
-// AvailableCoins + LockedCoins grouped by wallet address (put change in one group with wallet address) 
+// AvailableCoins + LockedCoins grouped by wallet address (put change in one group with wallet address)
 void WalletModel::listCoins(std::map<QString, std::vector<COutput> >& mapCoins) const
 {
     std::vector<COutput> vCoins;

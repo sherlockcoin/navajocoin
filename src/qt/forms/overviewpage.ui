@@ -582,14 +582,6 @@ padding: 4px 0;</string>
              <set>AlignHCenter|AlignVCenter|AlignCenter</set>
             </property>
            </row>
-           <row>
-            <property name="text">
-             <string>BTER</string>
-            </property>
-            <property name="textAlignment">
-             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
-            </property>
-           </row>
            <column>
             <property name="text">
              <string>Bid</string>
@@ -682,21 +674,6 @@ padding: 4px 0;</string>
             <property name="text">
              <string/>
             </property>
-            <property name="textAlignment">
-             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
-            </property>
-           </item>
-           <item row="3" column="0">
-            <property name="textAlignment">
-             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
-            </property>
-           </item>
-           <item row="3" column="1">
-            <property name="textAlignment">
-             <set>AlignHCenter|AlignVCenter|AlignCenter</set>
-            </property>
-           </item>
-           <item row="3" column="2">
             <property name="textAlignment">
              <set>AlignHCenter|AlignVCenter|AlignCenter</set>
             </property>

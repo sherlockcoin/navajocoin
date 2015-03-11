@@ -1009,13 +1009,13 @@ void PrintExceptionContinue(std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\SummerCoinV2
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\SummerCoinV2
-    // Mac: ~/Library/Application Support/SummerCoinV2
-    // Unix: ~/.summercoinv2
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\NavajoCoin
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\NavajoCoin
+    // Mac: ~/Library/Application Support/NavajoCoin
+    // Unix: ~/.navajocoin
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "SummerCoinV2";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "NavajoCoin";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -1027,10 +1027,10 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     fs::create_directory(pathRet);
-    return pathRet / "SummerCoinV2";
+    return pathRet / "NavajoCoin";
 #else
     // Unix
-    return pathRet / ".summercoinv2";
+    return pathRet / ".navajocoin";
 #endif
 #endif
 }
@@ -1072,7 +1072,7 @@ const boost::filesystem::path &GetDataDir(bool fNetSpecific)
 
 boost::filesystem::path GetConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-conf", "summercoinv2.conf"));
+    boost::filesystem::path pathConfigFile(GetArg("-conf", "navajocoin.conf"));
     if (!pathConfigFile.is_complete()) pathConfigFile = GetDataDir(false) / pathConfigFile;
     return pathConfigFile;
 }
@@ -1236,7 +1236,7 @@ void AddTimeData(const CNetAddr& ip, int64_t nTime)
                     string strMessage = _("Warning: Please check that your computer's date and time are correct! If your clock is wrong NavajoCoin/SummerCoinV2 will not work properly.");
                     strMiscWarning = strMessage;
                     printf("*** %s\n", strMessage.c_str());
-                    uiInterface.ThreadSafeMessageBox(strMessage+" ", string("SummerCoinV2"), CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION);
+                    uiInterface.ThreadSafeMessageBox(strMessage+" ", string("NavajoCoin/SummerCoinV2"), CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION);
                 }
             }
         }

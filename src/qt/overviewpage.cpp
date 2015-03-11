@@ -129,6 +129,7 @@ OverviewPage::OverviewPage(QWidget *parent) :
     showOutOfSyncWarning(true);
 
     //start ticker
+    tickerInterval =60000;
 
     tickerTimer.start(tickerInterval, this);
 
@@ -144,67 +145,78 @@ void OverviewPage::timerEvent(QTimerEvent *event)
     }
 }
 
-void OverviewPage::getMarketData(){
+
+void OverviewPage::getMarketData()
+{
+
+    qDebug() << "getMarketData";
+
+
+    static bool bPrepare1st = true;
+
+    // allocate only 1 time
+    static QNetworkAccessManager *networkManager = new QNetworkAccessManager(this);
+    static QNetworkAccessManager *cryptsyNetworkManager = new QNetworkAccessManager(this);
+    static QNetworkAccessManager *poloNetworkManager = new QNetworkAccessManager(this);
+    static QNetworkAccessManager *bterNetworkManager = new QNetworkAccessManager(this);
+
 
     //bittrex
 
     qDebug() << "getMarketData";
 
     QUrl bittrexUrl;
-
-    bittrexUrl.setUrl("http://bittrex.com/api/v1.1/public/getticker?market=BTC-NAV");
-
-    QNetworkRequest bittrexReq(bittrexUrl);
-
+    bittrexUrl.setUrl("https://bittrex.com/api/v1.1/public/getticker?market=BTC-NAV");
+    static QNetworkRequest bittrexReq(bittrexUrl);
     bittrexReq.setHeader(QNetworkRequest::ContentTypeHeader, "application/octet-stream");
 
-    QNetworkAccessManager *networkManager = new QNetworkAccessManager(this);
-    connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(bittrexRequest(QNetworkReply*)));
-    networkManager->get(bittrexReq);
+
 
     //cryptsy
 
     QUrl cryptsyUrl;
-
     cryptsyUrl.setUrl("http://pubapi.cryptsy.com/api.php?method=singlemarketdata&marketid=252");
-
-    QNetworkRequest cryptsyReq(cryptsyUrl);
-
+    static QNetworkRequest cryptsyReq(cryptsyUrl);
     cryptsyReq.setHeader(QNetworkRequest::ContentTypeHeader, "application/octet-stream");
 
-    QNetworkAccessManager *cryptsyNetworkManager = new QNetworkAccessManager(this);
-    connect(cryptsyNetworkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(cryptsyRequest(QNetworkReply*)));
-    cryptsyNetworkManager->get(cryptsyReq);
+
 
     //polo
 
     QUrl poloUrl;
-
     poloUrl.setUrl("https://poloniex.com/public?command=returnTicker");
-
-    QNetworkRequest poloReq(poloUrl);
-
+    static QNetworkRequest poloReq(poloUrl);
     poloReq.setHeader(QNetworkRequest::ContentTypeHeader, "application/octet-stream");
 
-    QNetworkAccessManager *poloNetworkManager = new QNetworkAccessManager(this);
-    connect(poloNetworkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(poloRequest(QNetworkReply*)));
-    poloNetworkManager->get(poloReq);
+
 
     //bter
-
+    /*
     QUrl bterUrl;
-
     bterUrl.setUrl("http://data.bter.com/api/1/ticker/NAV_BTC");
-
-    QNetworkRequest bterReq(bterUrl);
-
+    static QNetworkRequest bterReq(bterUrl);
     bterReq.setHeader(QNetworkRequest::ContentTypeHeader, "application/octet-stream");
+    */
 
-    QNetworkAccessManager *bterNetworkManager = new QNetworkAccessManager(this);
-    connect(bterNetworkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(bterRequest(QNetworkReply*)));
-    bterNetworkManager->get(bterReq);
+    // connect only first time
+    if (bPrepare1st)
+    {
+        qDebug() << "getMarketData connect";
+        connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(bittrexRequest(QNetworkReply*)));
+        connect(cryptsyNetworkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(cryptsyRequest(QNetworkReply*)));
+        connect(poloNetworkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(poloRequest(QNetworkReply*)));
+        connect(bterNetworkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(bterRequest(QNetworkReply*)));
+        bPrepare1st = false;
+    }
+
+    // start get
+    networkManager->get(bittrexReq);
+    cryptsyNetworkManager->get(cryptsyReq);
+    poloNetworkManager->get(poloReq);
+    //bterNetworkManager->get(bterReq);
 
 }
+
 
 void OverviewPage::bterRequest(QNetworkReply *reply){
 
@@ -239,10 +251,13 @@ void OverviewPage::bterRequest(QNetworkReply *reply){
         last->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
         last->setText(QString::number(lastValue));
         ui->marketTableWidget->setItem(3,2,last);
+
+        ui->marketTableWidget->verticalHeaderItem(3)->setToolTip(
+                    GUIUtil::dateTimeStr(QDateTime::currentDateTime()));
     }
 
 
-
+    reply->deleteLater();
 }
 
 void OverviewPage::poloRequest(QNetworkReply *reply){
@@ -279,6 +294,10 @@ void OverviewPage::poloRequest(QNetworkReply *reply){
     last->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     ui->marketTableWidget->setItem(2,2,last);
 
+    ui->marketTableWidget->verticalHeaderItem(2)->setToolTip(
+                GUIUtil::dateTimeStr(QDateTime::currentDateTime()));
+
+    reply->deleteLater();
 }
 
 
@@ -326,8 +345,12 @@ void OverviewPage::cryptsyRequest(QNetworkReply *reply){
         last->setText(QString::number(lastValue));
         last->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
         ui->marketTableWidget->setItem(1,2,last);
+
+        ui->marketTableWidget->verticalHeaderItem(1)->setToolTip(
+                    GUIUtil::dateTimeStr(QDateTime::currentDateTime()));
     }
 
+    reply->deleteLater();
 }
 
 void OverviewPage::bittrexRequest(QNetworkReply *reply){
@@ -365,8 +388,13 @@ void OverviewPage::bittrexRequest(QNetworkReply *reply){
         last->setText(QString::number(lastValue));
         last->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
         ui->marketTableWidget->setItem(0,2,last);
+
+        ui->marketTableWidget->verticalHeaderItem(0)->setToolTip(
+                    GUIUtil::dateTimeStr(QDateTime::currentDateTime()));
+
     }
 
+    reply->deleteLater();
 }
 
 void OverviewPage::handleTransactionClicked(const QModelIndex &index)

@@ -59,7 +59,8 @@ void WalletTxToJSON(const CWalletTx& wtx, Object& entry)
     entry.push_back(Pair("txid", wtx.GetHash().GetHex()));
     entry.push_back(Pair("time", (boost::int64_t)wtx.GetTxTime()));
     entry.push_back(Pair("timereceived", (boost::int64_t)wtx.nTimeReceived));
-    BOOST_FOREACH(const PAIRTYPE(string,string)& item, wtx.mapValue)
+    entry.push_back(Pair("tx-comment", wtx.strTxComment));
+	BOOST_FOREACH(const PAIRTYPE(string,string)& item, wtx.mapValue)
         entry.push_back(Pair(item.first, item.second));
 }
 
@@ -299,7 +300,7 @@ Value sendtoaddress(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() < 2 || params.size() > 4)
         throw runtime_error(
-            "sendtoaddress <summercoinv2address> <amount> [comment] [comment-to]\n"
+            "sendtoaddress <summercoinv2address> <amount> [comment] [comment-to] [tx-comment]\n"
             "<amount> is a real and is rounded to the nearest 0.000001"
             + HelpRequiringPassphrase());
 
@@ -316,11 +317,23 @@ Value sendtoaddress(const Array& params, bool fHelp)
         wtx.mapValue["comment"] = params[2].get_str();
     if (params.size() > 3 && params[3].type() != null_type && !params[3].get_str().empty())
         wtx.mapValue["to"]      = params[3].get_str();
+	
+	// Transaction comment
+	std::string txcomment;
+    if (params.size() > 4 && params[4].type() != null_type && !params[4].get_str().empty())
+	{
+    unsigned int TxCommentMaxLen = MAX_TX_COMMENT_LEN_V1;
+        if (nBestHeight >= (int)TX_COMMENT_V2_HEIGHT)
+            TxCommentMaxLen = MAX_TX_COMMENT_LEN_V2;
+        txcomment = params[4].get_str();
+		if (txcomment.length() > TxCommentMaxLen)
+			txcomment.resize(TxCommentMaxLen);
+	}
 
     if (pwalletMain->IsLocked())
         throw JSONRPCError(RPC_WALLET_UNLOCK_NEEDED, "Error: Please enter the wallet passphrase with walletpassphrase first.");
 
-    string strError = pwalletMain->SendMoneyToDestination(address.Get(), nAmount, wtx);
+    string strError = pwalletMain->SendMoneyToDestination(address.Get(), nAmount, wtx, false, txcomment);
     if (strError != "")
         throw JSONRPCError(RPC_WALLET_ERROR, strError);
 
@@ -662,7 +675,7 @@ Value sendfrom(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() < 3 || params.size() > 6)
         throw runtime_error(
-            "sendfrom <fromaccount> <tosummercoinv2address> <amount> [minconf=1] [comment] [comment-to]\n"
+            "sendfrom <fromaccount> <tosummercoinv2address> <amount> [minconf=1] [comment] [comment-to] [tx-comment]\n"
             "<amount> is a real and is rounded to the nearest 0.000001"
             + HelpRequiringPassphrase());
 
@@ -682,6 +695,16 @@ Value sendfrom(const Array& params, bool fHelp)
         wtx.mapValue["comment"] = params[4].get_str();
     if (params.size() > 5 && params[5].type() != null_type && !params[5].get_str().empty())
         wtx.mapValue["to"]      = params[5].get_str();
+		std::string txcomment;
+    if (params.size() > 6 && params[6].type() != null_type && !params[6].get_str().empty())
+	{
+	 unsigned int TxCommentMaxLen = MAX_TX_COMMENT_LEN_V1;
+        if (nBestHeight >= (int)TX_COMMENT_V2_HEIGHT)
+            TxCommentMaxLen = MAX_TX_COMMENT_LEN_V2;
+        txcomment = params[6].get_str();
+		if (txcomment.length() > TxCommentMaxLen)
+			txcomment.resize(TxCommentMaxLen);
+	}
 
     EnsureWalletIsUnlocked();
 
@@ -691,7 +714,7 @@ Value sendfrom(const Array& params, bool fHelp)
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, "Account has insufficient funds");
 
     // Send
-    string strError = pwalletMain->SendMoneyToDestination(address.Get(), nAmount, wtx);
+    string strError = pwalletMain->SendMoneyToDestination(address.Get(), nAmount, wtx, false, txcomment);
     if (strError != "")
         throw JSONRPCError(RPC_WALLET_ERROR, strError);
 
@@ -703,7 +726,7 @@ Value sendmany(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() < 2 || params.size() > 4)
         throw runtime_error(
-            "sendmany <fromaccount> {address:amount,...} [minconf=1] [comment]\n"
+            "sendmany <fromaccount> {address:amount,...} [minconf=1] [comment] [tx-comment]\n"
             "amounts are double-precision floating point numbers"
             + HelpRequiringPassphrase());
 
@@ -714,9 +737,12 @@ Value sendmany(const Array& params, bool fHelp)
         nMinDepth = params[2].get_int();
 
     CWalletTx wtx;
+	std::string strTxComment;
     wtx.strFromAccount = strAccount;
     if (params.size() > 3 && params[3].type() != null_type && !params[3].get_str().empty())
         wtx.mapValue["comment"] = params[3].get_str();
+	if (params.size() > 4 && params[4].type() != null_type && !params[4].get_str().empty())
+        strTxComment = params[4].get_str();
 
     set<CBitcoinAddress> setAddress;
     vector<pair<CScript, int64_t> > vecSend;
@@ -751,7 +777,7 @@ Value sendmany(const Array& params, bool fHelp)
     // Send
     CReserveKey keyChange(pwalletMain);
     int64_t nFeeRequired = 0;
-    bool fCreated = pwalletMain->CreateTransaction(vecSend, wtx, keyChange, nFeeRequired);
+    bool fCreated = pwalletMain->CreateTransaction(vecSend, wtx, keyChange, nFeeRequired, strTxComment);
     if (!fCreated)
     {
         if (totalAmount + nFeeRequired > pwalletMain->GetBalance())

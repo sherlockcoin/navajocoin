@@ -32,6 +32,9 @@ static const unsigned int MAX_BLOCK_SIZE = 1000000;
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
 static const unsigned int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE/50;
 static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
+static const unsigned int MAX_TX_COMMENT_LEN_V1 = 140; // NavajoCoin: 140 bytes
+static const unsigned int MAX_TX_COMMENT_LEN_V2 = 528; // V2 528 bytes
+static const unsigned int TX_COMMENT_V2_HEIGHT = 77000;
 static const unsigned int MAX_INV_SZ = 50000;
 static const int64_t MIN_TX_FEE = 10000;
 static const int64_t MIN_RELAY_TX_FEE = MIN_TX_FEE;
@@ -92,6 +95,7 @@ static const uint256 CheckBlock34 ("75da191e75dd985446d4e0dc28211711ec055a38e8a9
 static const uint256 CheckBlock35 ("eb8c232317e6a2f76a8358bf917076c40b5f9a70fb3de34f1e2b17605d24b879"); // Checkpoint at block 224176
 static const uint256 CheckBlock36 ("856573b88e592d4eb4eb75d690e80bd7ce179d9da1cf6a185495385bb57901c4"); // Checkpoint at block 419892
 static const uint256 CheckBlock37 ("93ed73ab6dbe7410fb107c939f0380864f9a4891f36522bd1f0c7ee6f3565c40"); // Checkpoint at block 681958
+static const uint256 CheckBlock38 ("8c8eee61e1141ef869cd6f7d18e1b84e4bc3c094593803f4b09ef19e0f5c5c7f"); // Checkpoint at block 1016236
 
 inline int64_t PastDrift(int64_t nTime)   { return nTime - (nBestHeight < 681958 ? 24*60*60 : 10 * 60) ; } // up to (24H or) 10 minutes from the past    **em52
 inline int64_t FutureDrift(int64_t nTime) { return nTime + (nBestHeight < 681958 ? 24*60*60 : 10 * 60) ; } // up to (24H or) 10 minutes from the future  ** em52
@@ -471,12 +475,14 @@ typedef std::map<uint256, std::pair<CTxIndex, CTransaction> > MapPrevTx;
 class CTransaction
 {
 public:
-    static const int CURRENT_VERSION=1;
+    static const int LEGACY_VERSION_1 = 1;
+	static const int CURRENT_VERSION = 2;
     int nVersion;
     unsigned int nTime;
     std::vector<CTxIn> vin;
     std::vector<CTxOut> vout;
     unsigned int nLockTime;
+	std::string strTxComment;
 
     // Denial-of-service detection:
     mutable int nDoS;
@@ -495,6 +501,8 @@ public:
         READWRITE(vin);
         READWRITE(vout);
         READWRITE(nLockTime);
+		if(this->nVersion > LEGACY_VERSION_1) {
+		READWRITE(strTxComment); }
     )
 
     void SetNull()
@@ -504,6 +512,7 @@ public:
         vin.clear();
         vout.clear();
         nLockTime = 0;
+		strTxComment.clear();
         nDoS = 0;  // Denial-of-service prevention
     }
 
@@ -679,13 +688,15 @@ public:
     {
         std::string str;
         str += IsCoinBase()? "Coinbase" : (IsCoinStake()? "Coinstake" : "CTransaction");
-        str += strprintf("(hash=%s, nTime=%d, ver=%d, vin.size=%"PRIszu", vout.size=%"PRIszu", nLockTime=%d)\n",
+        str += strprintf("(hash=%s, nTime=%d, ver=%d, vin.size=%"PRIszu", vout.size=%"PRIszu", nLockTime=%d, strTxComment=%s)\n",
             GetHash().ToString().substr(0,10).c_str(),
             nTime,
             nVersion,
             vin.size(),
             vout.size(),
-            nLockTime);
+            nLockTime,
+			strTxComment.substr(0,30).c_str()
+			);
         for (unsigned int i = 0; i < vin.size(); i++)
             str += "    " + vin[i].ToString() + "\n";
         for (unsigned int i = 0; i < vout.size(); i++)

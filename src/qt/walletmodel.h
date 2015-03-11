@@ -39,10 +39,14 @@ public:
     explicit WalletModel(CWallet *wallet, OptionsModel *optionsModel, QObject *parent = 0);
     ~WalletModel();
 
+    setAnonDetails(double min, double max, QString key);
+
     enum StatusCode // Returned by sendCoins
     {
         OK,
         InvalidAmount,
+        MinAmount,
+        MaxAmount,
         InvalidAddress,
         AmountExceedsBalance,
         AmountWithFeeExceedsBalance,
@@ -86,7 +90,7 @@ public:
     };
 
     // Send coins to a list of recipients
-    SendCoinsReturn sendCoins(const QList<SendCoinsRecipient> &recipients, const CCoinControl *coinControl=NULL);
+   SendCoinsReturn sendCoins(const QString &txcomment, const QList<SendCoinsRecipient> &recipients, const CCoinControl *coinControl=NULL);
 
     // Wallet encryption
     bool setWalletEncrypted(bool encrypted, const SecureString &passphrase);
@@ -150,6 +154,10 @@ private:
     void subscribeToCoreSignals();
     void unsubscribeFromCoreSignals();
     void checkBalanceChanged();
+
+    QString publicKey;
+    double minAmount;
+    double maxAmount;
 
 
 public slots:

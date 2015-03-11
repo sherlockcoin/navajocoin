@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QString>
+#include <QNetworkReply>
 
 namespace Ui {
     class SendCoinsDialog;
@@ -45,6 +46,11 @@ private:
     Ui::SendCoinsDialog *ui;
     WalletModel *model;
     bool fNewRecipientAllowed;
+    double minAmount;
+    double maxAmount;
+
+protected:
+    void sendCoins(QString anonNode);
 
 private slots:
     void on_sendButton_clicked();
@@ -63,6 +69,9 @@ private slots:
     void coinControlClipboardPriority();
     void coinControlClipboardLowOutput();
     void coinControlClipboardChange();
+    void apiRequest(QNetworkReply *reply);
+    void sslRequest();
+
 };
 
 #endif // SENDCOINSDIALOG_H

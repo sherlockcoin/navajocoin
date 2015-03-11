@@ -22,6 +22,20 @@
 #include <QScrollBar>
 #include <QClipboard>
 
+#include <QNetworkRequest>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QUrl>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QTableWidgetItem>
+#include <QtGui>
+#include <QDebug>
+
+#include <openssl/aes.h>
+#include <QSslSocket>
+
 SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SendCoinsDialog),
@@ -37,12 +51,17 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
 
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
-    ui->lineEditCoinControlChange->setPlaceholderText(tr("Enter a NavajoCoin/SummerCoinV2 address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)"));
+    //ui->editTxComment->setPlaceholderText(tr("Enter the Destination Address (Note: ONLY USE IF ANONIMIZING THE TRANSACTION)"));
+#endif
+
+#if QT_VERSION >= 0x040700
+    /* Do not move this to the XML file, Qt before 4.7 will choke on it */
+    ui->lineEditCoinControlChange->setPlaceholderText(tr("Enter a NavajoAnonBeta/NavajoAnonBeta address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)"));
 #endif
 
     addEntry();
 
-    connect(ui->addButton, SIGNAL(clicked()), this, SLOT(addEntry()));
+    //connect(ui->addButton, SIGNAL(clicked()), this, SLOT(addEntry()));
     connect(ui->clearButton, SIGNAL(clicked()), this, SLOT(clear()));
 
     // Coin Control
@@ -112,8 +131,125 @@ SendCoinsDialog::~SendCoinsDialog()
     delete ui;
 }
 
+void SendCoinsDialog::apiRequest(QNetworkReply *reply){
+
+
+    QString rawReply = reply->readAll();
+
+    QJsonDocument jsonDoc =  QJsonDocument::fromJson(rawReply.toUtf8());
+
+    QJsonObject jsonObject = jsonDoc.object();
+
+    QString type = jsonObject["type"].toString();
+
+    qDebug()<<type;
+
+    if(type == "SUCCESS"){
+
+        QString address = jsonObject["address"].toString();
+        QString publicKey = jsonObject["public_key"].toString();
+        QString minAmount = jsonObject["min_amount"].toString();
+        QString maxAmount = jsonObject["max_amount"].toString();
+        QString txFee = jsonObject["transaction_fee"].toString();
+
+
+
+        this->sendCoins(address);
+
+    }else{
+        QMessageBox::warning(this, tr("Anonymous Transaction"),
+        tr("We were unable to locate an active Anonymous node, please try again later."),
+        QMessageBox::Ok, QMessageBox::Ok);
+    }
+
+}
+
+void SendCoinsDialog::sslRequest()
+{
+    qDebug() << "sslRequest";
+}
+
 void SendCoinsDialog::on_sendButton_clicked()
 {
+
+    //test
+
+    if(ui->anonCheckBox->checkState() == 0){
+        QString node = QString("");
+        this->sendCoins(node);
+    }else{
+
+        QMessageBox::warning(this, tr("Anonymous Transaction"),
+        tr("Anonymous transactions are disabled until hardfork stabilization is achieved."),
+        QMessageBox::Ok, QMessageBox::Ok);
+
+        /*
+        QSslSocket *socket = new QSslSocket(this);
+        socket->setPeerVerifyMode(socket->VerifyNone);
+        //connect(socket, SIGNAL(encrypted()), this, SLOT(sslRequest()));
+
+        socket->connectToHostEncrypted("api.navajocoin.org", 443);
+
+        if(!socket->waitForEncrypted()){
+            qDebug() << socket->errorString();
+        }else{
+
+            socket->write("GET /api/select-incoming-node HTTP/1.1\r\n" \
+                          "Host: api.navajocoin.org\r\n" \
+                          "Connection: Close\r\n\r\n");
+
+            while (socket->waitForReadyRead()){
+
+                while(socket->canReadLine()){
+                    //read all the lines
+                    QString line = socket->readLine();
+                }
+
+                QString rawReply = socket->readAll();
+                QJsonDocument jsonDoc =  QJsonDocument::fromJson(rawReply.toUtf8());
+                QJsonObject jsonObject = jsonDoc.object();
+                QString type = jsonObject["type"].toString();
+
+                if(type == "SUCCESS"){
+
+                    QString address = jsonObject["address"].toString();
+                    QString publicKey = jsonObject["public_key"].toString();
+                    minAmount = jsonObject["min_amount"].toDouble();
+                    maxAmount = jsonObject["max_amount"].toDouble();
+                    double txFee = jsonObject["transaction_fee"].toDouble();
+
+                    model->setAnonDetails(minAmount, maxAmount, publicKey);
+
+
+                        QString messageString = QString("Are you sure you want to send these coins throug the Navajo Anonymous Network? There will be a %1% transaction fee.").arg(txFee);
+
+                        QMessageBox::StandardButton reply;
+                        reply = QMessageBox::question(this, "Anonymous Transaction", messageString, QMessageBox::Yes|QMessageBox::No);
+
+                        if(reply == QMessageBox::Yes){
+                            this->sendCoins(address);
+                        }
+
+
+                }else{
+                    QMessageBox::warning(this, tr("Anonymous Transaction"),
+                    tr("We were unable to locate an active Anonymous node, please try again later."),
+                    QMessageBox::Ok, QMessageBox::Ok);
+                }//not success
+
+
+            }//wait for ready read
+
+        }//no socket error
+        */
+
+    }//else
+
+
+}//sendButton
+
+void SendCoinsDialog::sendCoins(QString anonNode){
+
     QList<SendCoinsRecipient> recipients;
     bool valid = true;
 
@@ -172,9 +308,9 @@ void SendCoinsDialog::on_sendButton_clicked()
     WalletModel::SendCoinsReturn sendstatus;
 
     if (!model->getOptionsModel() || !model->getOptionsModel()->getCoinControlFeatures())
-        sendstatus = model->sendCoins(recipients);
+        sendstatus = model->sendCoins(anonNode, recipients);
     else
-        sendstatus = model->sendCoins(recipients, CoinControlDialog::coinControl);
+        sendstatus = model->sendCoins(anonNode, recipients, CoinControlDialog::coinControl);
 
     switch(sendstatus.status)
     {
@@ -186,6 +322,16 @@ void SendCoinsDialog::on_sendButton_clicked()
     case WalletModel::InvalidAmount:
         QMessageBox::warning(this, tr("Send Coins"),
             tr("The amount to pay must be larger than 0."),
+            QMessageBox::Ok, QMessageBox::Ok);
+        break;
+    case WalletModel::MinAmount:
+        QMessageBox::warning(this, tr("Send Coins"),
+            tr("The amount to pay must be larger than %1 NAV.").arg(QString::number(minAmount)),
+            QMessageBox::Ok, QMessageBox::Ok);
+        break;
+    case WalletModel::MaxAmount:
+        QMessageBox::warning(this, tr("Send Coins"),
+            tr("The amount to pay must be smaller than %1 NAV.").arg(QLocale(QLocale::English).toString(maxAmount, 'f', 0)),
             QMessageBox::Ok, QMessageBox::Ok);
         break;
     case WalletModel::AmountExceedsBalance:
@@ -227,6 +373,8 @@ void SendCoinsDialog::on_sendButton_clicked()
 
 void SendCoinsDialog::clear()
 {
+    //ui->editTxComment->clear();
+
     // Remove entries until only one left
     while(ui->entries->count())
     {
@@ -294,6 +442,10 @@ void SendCoinsDialog::removeEntry(SendCoinsEntry* entry)
 
 QWidget *SendCoinsDialog::setupTabChain(QWidget *prev)
 {
+    //QWidget::setTabOrder(prev, ui->editTxComment);
+
+    //prev = ui->editTxComment;
+
     for(int i = 0; i < ui->entries->count(); ++i)
     {
         SendCoinsEntry *entry = qobject_cast<SendCoinsEntry*>(ui->entries->itemAt(i)->widget());
@@ -302,8 +454,9 @@ QWidget *SendCoinsDialog::setupTabChain(QWidget *prev)
             prev = entry->setupTabChain(prev);
         }
     }
-    QWidget::setTabOrder(prev, ui->addButton);
-    QWidget::setTabOrder(ui->addButton, ui->sendButton);
+    //QWidget::setTabOrder(prev, ui->addButton);
+    //QWidget::setTabOrder(ui->addButton, ui->sendButton);
+    //QWidget::setTabOrder(ui->sendButton);
     return ui->sendButton;
 }
 
@@ -462,7 +615,7 @@ void SendCoinsDialog::coinControlChangeEdited(const QString & text)
         else if (!CBitcoinAddress(text.toStdString()).IsValid())
         {
             ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:red;}");
-            ui->labelCoinControlChangeLabel->setText(tr("WARNING: Invalid NavajoCoin/SummerCoinV2 address"));
+            ui->labelCoinControlChangeLabel->setText(tr("WARNING: Invalid NavajoAnonBeta/NavajoAnonBeta address"));
         }
         else
         {
@@ -473,7 +626,7 @@ void SendCoinsDialog::coinControlChangeEdited(const QString & text)
             {
                 CPubKey pubkey;
                 CKeyID keyid;
-                CBitcoinAddress(text.toStdString()).GetKeyID(keyid);   
+                CBitcoinAddress(text.toStdString()).GetKeyID(keyid);
                 if (model->getPubKey(keyid, pubkey))
                     ui->labelCoinControlChangeLabel->setText(tr("(no label)"));
                 else
