@@ -528,7 +528,7 @@ bool AppInit2()
     std::ostringstream strErrors;
 
     if (fDaemon)
-        fprintf(stdout, "SummerCoinV2 server starting\n");
+        fprintf(stdout, "NavajoCoin server starting\n");
 
     int64_t nStart;
 

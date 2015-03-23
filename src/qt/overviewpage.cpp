@@ -166,7 +166,7 @@ void OverviewPage::getMarketData()
     qDebug() << "getMarketData";
 
     QUrl bittrexUrl;
-    bittrexUrl.setUrl("https://bittrex.com/api/v1.1/public/getticker?market=BTC-NAV");
+    bittrexUrl.setUrl("http://bittrex.com/api/v1.1/public/getticker?market=BTC-NAV");
     static QNetworkRequest bittrexReq(bittrexUrl);
     bittrexReq.setHeader(QNetworkRequest::ContentTypeHeader, "application/octet-stream");
 

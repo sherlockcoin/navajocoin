@@ -581,7 +581,7 @@ void BitcoinGUI::urlClicked3()
 
 void BitcoinGUI::urlClicked4()
 {
-    QDesktopServices::openUrl(QUrl("", QUrl::TolerantMode));
+    QDesktopServices::openUrl(QUrl("http://www.navajocoin.org/block-explorer", QUrl::TolerantMode));
 }
 
 void BitcoinGUI::urlClicked5()
@@ -591,7 +591,7 @@ void BitcoinGUI::urlClicked5()
 
 void BitcoinGUI::urlClicked6()
 {
-    QDesktopServices::openUrl(QUrl("", QUrl::TolerantMode));
+    QDesktopServices::openUrl(QUrl("http://www.navajocoin.org/rich-list", QUrl::TolerantMode));
 }
 
 void BitcoinGUI::setNumConnections(int count)

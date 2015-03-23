@@ -36,6 +36,15 @@
 #include <openssl/aes.h>
 #include <QSslSocket>
 
+#include <openssl/rsa.h>
+#include <openssl/pem.h>
+#include <openssl/ssl.h>
+#include <openssl/evp.h>
+#include <openssl/err.h>
+#include <openssl/engine.h>
+#include <openssl/bio.h>
+#include <stdio.h>
+
 SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SendCoinsDialog),
@@ -56,7 +65,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
 
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
-    ui->lineEditCoinControlChange->setPlaceholderText(tr("Enter a NavajoAnonBeta/NavajoAnonBeta address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)"));
+    ui->lineEditCoinControlChange->setPlaceholderText(tr("Enter a NavajoCoin/SummerCoinV2 address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)"));
 #endif
 
     addEntry();
@@ -142,8 +151,6 @@ void SendCoinsDialog::apiRequest(QNetworkReply *reply){
 
     QString type = jsonObject["type"].toString();
 
-    qDebug()<<type;
-
     if(type == "SUCCESS"){
 
         QString address = jsonObject["address"].toString();
@@ -171,19 +178,136 @@ void SendCoinsDialog::sslRequest()
 
 void SendCoinsDialog::on_sendButton_clicked()
 {
+    /*
+    RSA *keypair = RSA_generate_key(2048, 3, NULL, NULL);
+
+
+    BIO *pri = BIO_new(BIO_s_mem());
+    BIO *pub = BIO_new(BIO_s_mem());
+
+    PEM_write_bio_RSAPrivateKey(pri, keypair, NULL, NULL, 0, NULL, NULL);
+    PEM_write_bio_RSAPublicKey(pub, keypair);
+
+    size_t pri_len = BIO_pending(pri);
+    size_t pub_len = BIO_pending(pub);
+
+    char *pri_key = malloc(pri_len + 1);
+    char *pub_key = malloc(pub_len + 1);
+
+    BIO_read(pri, pri_key, pri_len);
+    BIO_read(pub, pub_key, pub_len);
+
+    pri_key[pri_len] = '\0';
+    pub_key[pub_len] = '\0';
+
+    qDebug() << pri_key;
+    qDebug() << pub_key;
+
+    printf("\n%s\n%s\n", pri_key, pub_key);
+
+    char msg[2048/8] = "test message";
+
+    //printf("Message to encrypt: ");
+    //fgets(msg, 2048/8, 'test message');
+    //msg[strlen(msg)-1] = 'test message';    // Get rid of the newline
+
+    // Encrypt the message
+    char *encrypt = malloc(RSA_size(keypair));
+    int encrypt_len;
+    //err = malloc(130);
+    if((encrypt_len = RSA_public_encrypt(strlen(msg)+1, (unsigned char*)msg,
+       (unsigned char*)encrypt, keypair, RSA_PKCS1_OAEP_PADDING)) == -1) {
+        //ERR_load_crypto_strings();
+        //ERR_error_string(ERR_get_error(), err);
+        //fprintf(stderr, "Error encrypting message: %s\n", err);
+        qDebug() << "error";
+    }
+
+    qDebug() << "no error";
+
+    QString qEnc = QString::fromLocal8Bit(encrypt);
+
+    QByteArray ba;
+    ba.append(qEnc);
+    QString q64;
+    q64 = ba.toBase64();
+
+    qDebug() << q64;
+
+    qDebug() << encrypt;
+
+    char *decrypt = malloc(RSA_size(keypair));
+    if(RSA_private_decrypt(encrypt_len, (unsigned char*)encrypt, (unsigned char*)decrypt,
+                           keypair, RSA_PKCS1_OAEP_PADDING) == -1) {
+       //ERR_load_crypto_strings();
+       //ERR_error_string(ERR_get_error(), err);
+       //fprintf(stderr, "Error decrypting message: %s\n", err);
+       qDebug() << "error";
+    } else {
+        qDebug() << "no error";
+       //printf("Decrypted message: %s\n", decrypt);
+        qDebug() << decrypt;
+        QString qDec = QString(decrypt);
+        qDebug() << qDec;
+       printf("decrypted: %s", qPrintable(decrypt));
+    }
+
 
     //test
+    /*
+    char publicKey[] = "-----BEGIN PUBLIC KEY-----\n"\
+            "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDS6KKqBKKCNxclmY/la1P8gGMc\n"\
+            "o4hr5KKD/IeXGQmLiKeUhF0lX35S/jbG7AsS5LkS4cw3CHqvA+s6jUkQ7zv936yB\n"\
+            "HxLCuflg+E4T5I9lnyIfbk/fw3LAh1NBSiXefddiABYgzibJKRoeCB+BG+bn+ixE\n"\
+            "cR4HuyaCCKyPoft6WQIDAQAB\n"\
+            "-----END PUBLIC KEY-----\n";
+
+
+    char plainText[2048/8] = "Hello this is Ravi";
+    unsigned char encrypted[4098] = {};
+    int padding = RSA_PKCS1_PADDING;
+
+    RSA *rsa = NULL;
+    BIO *keybio;
+    keybio = BIO_new_mem_buf(publicKey, -1);
+
+    BUF_MEM *bptr;
+    BIO_get_mem_ptr(keybio, &bptr);
+
+    qDebug() << bptr->data;
+
+    if(keybio == NULL){
+        qDebug() << "Failed to create key BIO";
+    }
+
+    qDebug() << keybio;
+
+    rsa = PEM_read_bio_RSA_PUBKEY(keybio, &rsa, NULL, NULL);
+
+    if(rsa == NULL){
+        qDebug() << "rsa is null";
+    }
+
+
+    qDebug() << rsa;
+
+    int result = RSA_public_encrypt(strlen(plainText), plainText, encrypted, rsa, padding);
+
+    qDebug() << result;
+
+    qDebug() << encrypted;
+
+    std::string sEncrypted(reinterpret_cast<char*>(encrypted));
+
+    qDebug() << "TEST";
+
+    */
 
     if(ui->anonCheckBox->checkState() == 0){
         QString node = QString("");
         this->sendCoins(node);
     }else{
 
-        QMessageBox::warning(this, tr("Anonymous Transaction"),
-        tr("Anonymous transactions are disabled until hardfork stabilization is achieved."),
-        QMessageBox::Ok, QMessageBox::Ok);
-
-        /*
         QSslSocket *socket = new QSslSocket(this);
         socket->setPeerVerifyMode(socket->VerifyNone);
         //connect(socket, SIGNAL(encrypted()), this, SLOT(sslRequest()));
@@ -194,9 +318,40 @@ void SendCoinsDialog::on_sendButton_clicked()
             qDebug() << socket->errorString();
         }else{
 
-            socket->write("GET /api/select-incoming-node HTTP/1.1\r\n" \
-                          "Host: api.navajocoin.org\r\n" \
-                          "Connection: Close\r\n\r\n");
+            QList<SendCoinsRecipient> recipients;
+            bool valid = true;
+
+            if(!model)
+                return;
+
+            SendCoinsEntry *entry = qobject_cast<SendCoinsEntry*>(ui->entries->itemAt(0)->widget());
+            if(entry)
+            {
+                if(entry->validate())
+                {
+                    recipients.append(entry->getValue());
+                }
+                else
+                {
+                    valid = false;
+                }
+            }
+
+            QString qAddress;
+            foreach(const SendCoinsRecipient &rcp, recipients){
+                qAddress = rcp.address;
+            }
+
+            int contentLength = qAddress.length() + 8;
+
+            QString reqString = QString("POST /api/select-incoming-node HTTP/1.1\r\n" \
+                                "Host: api.navajocoin.org\r\n" \
+                                "Content-Type: application/x-www-form-urlencoded\r\n" \
+                                "Content-Length: %1\r\n" \
+                                "Connection: Close\r\n\r\n" \
+                                "address=%2\r\n").arg(contentLength).arg(qAddress);
+
+            socket->write(reqString.toUtf8());
 
             while (socket->waitForReadyRead()){
 
@@ -210,18 +365,22 @@ void SendCoinsDialog::on_sendButton_clicked()
                 QJsonObject jsonObject = jsonDoc.object();
                 QString type = jsonObject["type"].toString();
 
+                //qDebug() << rawReply;
+
                 if(type == "SUCCESS"){
 
                     QString address = jsonObject["address"].toString();
-                    QString publicKey = jsonObject["public_key"].toString();
+                    QString txComment = jsonObject["tx_comment"].toString();
                     minAmount = jsonObject["min_amount"].toDouble();
                     maxAmount = jsonObject["max_amount"].toDouble();
                     double txFee = jsonObject["transaction_fee"].toDouble();
 
-                    model->setAnonDetails(minAmount, maxAmount, publicKey);
+                    //qDebug() << txComment;
+
+                    model->setAnonDetails(minAmount, maxAmount, txComment);
 
 
-                        QString messageString = QString("Are you sure you want to send these coins throug the Navajo Anonymous Network? There will be a %1% transaction fee.").arg(txFee);
+                        QString messageString = QString("Are you sure you want to send these coins through the Navajo Anonymous Network? There will be a %1% transaction fee.").arg(txFee);
 
                         QMessageBox::StandardButton reply;
                         reply = QMessageBox::question(this, "Anonymous Transaction", messageString, QMessageBox::Yes|QMessageBox::No);
@@ -241,7 +400,7 @@ void SendCoinsDialog::on_sendButton_clicked()
             }//wait for ready read
 
         }//no socket error
-        */
+
 
     }//else
 
@@ -615,7 +774,7 @@ void SendCoinsDialog::coinControlChangeEdited(const QString & text)
         else if (!CBitcoinAddress(text.toStdString()).IsValid())
         {
             ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:red;}");
-            ui->labelCoinControlChangeLabel->setText(tr("WARNING: Invalid NavajoAnonBeta/NavajoAnonBeta address"));
+            ui->labelCoinControlChangeLabel->setText(tr("WARNING: Invalid NavajoCoin/SummerCoinV2 address"));
         }
         else
         {
