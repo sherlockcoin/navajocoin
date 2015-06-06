@@ -20,6 +20,7 @@
 #include "transactionview.h"
 #include "overviewpage.h"
 #include "ChatWindow.h"
+#include "rpcchatwindow.h"
 #include "bitcoinunits.h"
 #include "guiconstants.h"
 #include "askpassphrasedialog.h"
@@ -121,6 +122,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 	
 	chatWindow = new ChatWindow(this);
     chatWindow->setGUI(this);
+	
+    rpcChatWindow = new RpcChatWindow(this);
 
     signVerifyMessageDialog = new SignVerifyMessageDialog(this);
 
@@ -131,6 +134,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     centralWidget->addWidget(receiveCoinsPage);
     centralWidget->addWidget(sendCoinsPage);
 	centralWidget->addWidget(chatWindow);
+	centralWidget->addWidget(rpcChatWindow);
     setCentralWidget(centralWidget);
 
     // Create status bar
@@ -229,6 +233,11 @@ void BitcoinGUI::createActions()
     chatAction->setCheckable(true);
     chatAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
     tabGroup->addAction(chatAction);
+	
+	rpcChatAction = new QAction(QIcon(":/icons/social"), tr("&Social/Exchange"), this);
+    rpcChatAction->setToolTip(tr("View chat, links to social media and exchanges"));
+    rpcChatAction->setCheckable(true);
+    tabGroup->addAction(rpcChatAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send coins"), this);
     sendCoinsAction->setToolTip(tr("Send coins to a SummerCoinV2 address"));
@@ -258,6 +267,7 @@ void BitcoinGUI::createActions()
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(gotoSendCoinsPage()));
+	connect(rpcChatAction, SIGNAL(triggered()), this, SLOT(gotoRpcChatPage()));
 	connect(chatAction, SIGNAL(triggered()), this, SLOT(gotoChatWindow()));
     connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(gotoReceiveCoinsPage()));
@@ -399,6 +409,7 @@ void BitcoinGUI::createToolBars()
     toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     toolbar->addAction(overviewAction);
 	toolbar->addAction(chatAction);
+	toolbar->addAction(rpcChatAction);
     toolbar->addAction(sendCoinsAction);
     toolbar->addAction(receiveCoinsAction);
     toolbar->addAction(historyAction);
@@ -465,6 +476,7 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
         addressBookPage->setModel(walletModel->getAddressTableModel());
         receiveCoinsPage->setModel(walletModel->getAddressTableModel());
         sendCoinsPage->setModel(walletModel);
+		rpcChatWindow->setModel(clientModel);
         signVerifyMessageDialog->setModel(walletModel);
 
         setEncryptionStatus(walletModel->getEncryptionStatus());
@@ -861,6 +873,15 @@ void BitcoinGUI::gotoChatWindow()
 {
     chatAction->setChecked(true);
     centralWidget->setCurrentWidget(chatWindow);
+
+    exportAction->setEnabled(false);
+    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+}
+
+void BitcoinGUI::gotoRpcChatPage()
+{
+    rpcChatAction->setChecked(true);
+    centralWidget->setCurrentWidget(rpcChatWindow);
 
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);

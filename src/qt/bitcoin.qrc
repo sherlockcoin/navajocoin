@@ -52,6 +52,16 @@
         <file alias="chat">res/icons/chat.png</file>
         <file>res/icons/power.png</file>
         <file>res/icons/chat_alt.png</file>
+		<file alias="reddit">res/icons/reddit.png</file>
+		<file alias="twitter">res/icons/twitter.png</file>
+		<file alias="website">res/icons/website.png</file>
+        <file alias="face">res/icons/face.png</file>
+        <file alias="forums">res/icons/forums.png</file>
+        <file alias="bittrex">res/icons/bittrex.png</file>
+        <file alias="poloniex">res/icons/poloniex.png</file>
+        <file alias="cryptsy">res/icons/cryptsy.png</file>
+		<file alias="alcurex">res/icons/alcurex.png</file>
+        <file alias="social">res/icons/social.png</file>
     </qresource>
     <qresource prefix="/smileys">
         <file alias="icon_smile">res/icons/smileys/icon_smile.png</file>

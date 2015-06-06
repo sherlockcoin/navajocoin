@@ -2709,7 +2709,6 @@ bool LoadBlockIndex(bool fAllowNew)
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         txNew.vout[0].SetEmpty();
-        txNew.strTxComment = "text:NavajoCoin genesis block";
 		CBlock block;
         block.vtx.push_back(txNew);
         block.hashPrevBlock = 0;

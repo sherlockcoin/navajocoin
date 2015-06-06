@@ -96,6 +96,8 @@ static const uint256 CheckBlock35 ("eb8c232317e6a2f76a8358bf917076c40b5f9a70fb3d
 static const uint256 CheckBlock36 ("856573b88e592d4eb4eb75d690e80bd7ce179d9da1cf6a185495385bb57901c4"); // Checkpoint at block 419892
 static const uint256 CheckBlock37 ("93ed73ab6dbe7410fb107c939f0380864f9a4891f36522bd1f0c7ee6f3565c40"); // Checkpoint at block 681958
 static const uint256 CheckBlock38 ("8c8eee61e1141ef869cd6f7d18e1b84e4bc3c094593803f4b09ef19e0f5c5c7f"); // Checkpoint at block 1016236
+static const uint256 CheckBlock39 ("1b82ec6247c70b7c416651be0f1a60b830e9754f43034135f65d52ed5dbf952b"); // Checkpoint at block 1263735
+static const uint256 CheckBlock40 ("08fa78e56bd87318d1e40feea883ec83622d0aa774ad5e4d323d2b357e57a5c0"); // Checkpoint at block 1302017
 
 inline int64_t PastDrift(int64_t nTime)   { return nTime - (nBestHeight < 681958 ? 24*60*60 : 10 * 60) ; } // up to (24H or) 10 minutes from the past    **em52
 inline int64_t FutureDrift(int64_t nTime) { return nTime + (nBestHeight < 681958 ? 24*60*60 : 10 * 60) ; } // up to (24H or) 10 minutes from the future  ** em52
@@ -475,8 +477,7 @@ typedef std::map<uint256, std::pair<CTxIndex, CTransaction> > MapPrevTx;
 class CTransaction
 {
 public:
-    static const int LEGACY_VERSION_1 = 1;
-	static const int CURRENT_VERSION = 2;
+	static const int CURRENT_VERSION = 1;
     int nVersion;
     unsigned int nTime;
     std::vector<CTxIn> vin;
@@ -501,7 +502,7 @@ public:
         READWRITE(vin);
         READWRITE(vout);
         READWRITE(nLockTime);
-		if(this->nVersion > LEGACY_VERSION_1) {
+		if(this->nVersion > CURRENT_VERSION) {
 		READWRITE(strTxComment); }
     )
 
