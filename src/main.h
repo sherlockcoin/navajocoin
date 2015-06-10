@@ -32,9 +32,7 @@ static const unsigned int MAX_BLOCK_SIZE = 1000000;
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
 static const unsigned int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE/50;
 static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
-static const unsigned int MAX_TX_COMMENT_LEN_V1 = 140; // NavajoCoin: 140 bytes
-static const unsigned int MAX_TX_COMMENT_LEN_V2 = 528; // V2 528 bytes
-static const unsigned int TX_COMMENT_V2_HEIGHT = 77000;
+static const unsigned int MAX_TX_COMMENT_LEN = 528;
 static const unsigned int MAX_INV_SZ = 50000;
 static const int64_t MIN_TX_FEE = 10000;
 static const int64_t MIN_RELAY_TX_FEE = MIN_TX_FEE;
@@ -98,6 +96,7 @@ static const uint256 CheckBlock37 ("93ed73ab6dbe7410fb107c939f0380864f9a4891f365
 static const uint256 CheckBlock38 ("8c8eee61e1141ef869cd6f7d18e1b84e4bc3c094593803f4b09ef19e0f5c5c7f"); // Checkpoint at block 1016236
 static const uint256 CheckBlock39 ("1b82ec6247c70b7c416651be0f1a60b830e9754f43034135f65d52ed5dbf952b"); // Checkpoint at block 1263735
 static const uint256 CheckBlock40 ("08fa78e56bd87318d1e40feea883ec83622d0aa774ad5e4d323d2b357e57a5c0"); // Checkpoint at block 1302017
+static const uint256 CheckBlock41 ("e73a816389ef2ec97fb359f202648b0bc503d41999a9f7267c30ed39fe5c1255"); // Checkpoint at block 1314734
 
 inline int64_t PastDrift(int64_t nTime)   { return nTime - (nBestHeight < 681958 ? 24*60*60 : 10 * 60) ; } // up to (24H or) 10 minutes from the past    **em52
 inline int64_t FutureDrift(int64_t nTime) { return nTime + (nBestHeight < 681958 ? 24*60*60 : 10 * 60) ; } // up to (24H or) 10 minutes from the future  ** em52
@@ -477,7 +476,8 @@ typedef std::map<uint256, std::pair<CTxIndex, CTransaction> > MapPrevTx;
 class CTransaction
 {
 public:
-	static const int CURRENT_VERSION = 1;
+    static const int CURRENT_VERSION=1;
+    static const int TXMSG_VERSION=2;
     int nVersion;
     unsigned int nTime;
     std::vector<CTxIn> vin;
@@ -502,8 +502,8 @@ public:
         READWRITE(vin);
         READWRITE(vout);
         READWRITE(nLockTime);
-		if(this->nVersion > CURRENT_VERSION) {
-		READWRITE(strTxComment); }
+        if(this->nVersion >= TXMSG_VERSION) { 
+        READWRITE(strTxComment); }
     )
 
     void SetNull()
