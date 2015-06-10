@@ -119,7 +119,7 @@
              <cursorShape>IBeamCursor</cursorShape>
             </property>
             <property name="text">
-             <string notr="true">2.0.9 - UT-ZAH</string>
+             <string notr="true">3.0.0 - UT-ZAH</string>
             </property>
             <property name="textInteractionFlags">
              <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>

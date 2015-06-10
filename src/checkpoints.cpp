@@ -65,7 +65,8 @@ namespace Checkpoints
 		(1016236, CheckBlock38 )
 		(1263735, CheckBlock39 )
 		(1302017, CheckBlock40 )
-    ;
+		(1314734, CheckBlock41 )
+		;
 
     // TestNet has no checkpoints
     static MapCheckpoints mapCheckpointsTestnet =
