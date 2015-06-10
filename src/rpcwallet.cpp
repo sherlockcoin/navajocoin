@@ -318,15 +318,17 @@ Value sendtoaddress(const Array& params, bool fHelp)
     if (params.size() > 3 && params[3].type() != null_type && !params[3].get_str().empty())
         wtx.mapValue["to"]      = params[3].get_str();
 	
-    // Transaction comment
+	// Transaction comment
 	std::string txcomment;
     if (params.size() > 4 && params[4].type() != null_type && !params[4].get_str().empty())
 	{
+    unsigned int TxCommentMaxLen = MAX_TX_COMMENT_LEN_V1;
+        if (nBestHeight >= (int)TX_COMMENT_V2_HEIGHT)
+            TxCommentMaxLen = MAX_TX_COMMENT_LEN_V2;
         txcomment = params[4].get_str();
-		if (txcomment.length() > MAX_TX_COMMENT_LEN)
-			txcomment.resize(MAX_TX_COMMENT_LEN);
+		if (txcomment.length() > TxCommentMaxLen)
+			txcomment.resize(TxCommentMaxLen);
 	}
-    
 
     if (pwalletMain->IsLocked())
         throw JSONRPCError(RPC_WALLET_UNLOCK_NEEDED, "Error: Please enter the wallet passphrase with walletpassphrase first.");
@@ -696,9 +698,12 @@ Value sendfrom(const Array& params, bool fHelp)
 		std::string txcomment;
     if (params.size() > 6 && params[6].type() != null_type && !params[6].get_str().empty())
 	{
+	 unsigned int TxCommentMaxLen = MAX_TX_COMMENT_LEN_V1;
+        if (nBestHeight >= (int)TX_COMMENT_V2_HEIGHT)
+            TxCommentMaxLen = MAX_TX_COMMENT_LEN_V2;
         txcomment = params[6].get_str();
-		if (txcomment.length() > MAX_TX_COMMENT_LEN)
-			txcomment.resize(MAX_TX_COMMENT_LEN);
+		if (txcomment.length() > TxCommentMaxLen)
+			txcomment.resize(TxCommentMaxLen);
 	}
 
     EnsureWalletIsUnlocked();

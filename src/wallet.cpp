@@ -1377,11 +1377,9 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
     wtxNew.BindWallet(this);
 
 	// transaction comment
-	wtxNew.strTxComment = strTxComment;
-	if (wtxNew.strTxComment.length() > MAX_TX_COMMENT_LEN)
-		wtxNew.strTxComment.resize(MAX_TX_COMMENT_LEN);
-    if (wtxNew.strTxComment.length() > 0)
-        wtxNew.nVersion = CTransaction::TXMSG_VERSION;	
+		wtxNew.strTxComment = strTxComment;
+	if (wtxNew.strTxComment.length() > MAX_TX_COMMENT_LEN_V2)
+ 		wtxNew.strTxComment.resize(MAX_TX_COMMENT_LEN_V2);	
 	
     {
         LOCK2(cs_main, cs_wallet);
