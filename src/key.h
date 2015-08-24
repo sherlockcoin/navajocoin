@@ -92,6 +92,10 @@ public:
     bool IsCompressed() const {
         return vchPubKey.size() == 33;
     }
+	
+    // Derive BIP32 child pubkey.
+    bool Derive(CPubKey& pubkeyChild, unsigned char ccChild[32], unsigned int nChild, const unsigned char cc[32]) const;
+ };
 
     std::vector<unsigned char> Raw() const {
         return vchPubKey;
@@ -125,6 +129,11 @@ public:
     CKey& operator=(const CKey& b);
 
     ~CKey();
+	
+    friend bool operator==(const CKey &a, const CKey &b) {
+        return a.fCompressed == b.fCompressed && memcmp(&a.vch[0], &b.vch[0], 32);
+    }
+
 
     bool IsNull() const;
     bool IsCompressed() const;
@@ -150,6 +159,45 @@ public:
     // If this function succeeds, the recovered public key is guaranteed to be valid
     // (the signature is a valid signature of the given data for that key)
     bool SetCompactSignature(uint256 hash, const std::vector<unsigned char>& vchSig);
+	
+    // Derive BIP32 child key.
+    bool Derive(CKey& keyChild, unsigned char ccChild[32], unsigned int nChild, const unsigned char cc[32]) const;
+};
+
+struct CExtPubKey {
+    unsigned char nDepth;
+    unsigned char vchFingerprint[4];
+    unsigned int nChild;
+    unsigned char vchChainCode[32];
+    CPubKey pubkey;
+
+    friend bool operator==(const CExtPubKey &a, const CExtPubKey &b) {
+        return a.nDepth == b.nDepth && memcmp(&a.vchFingerprint[0], &b.vchFingerprint[0], 4) == 0 && a.nChild == b.nChild &&
+               memcmp(&a.vchChainCode[0], &b.vchChainCode[0], 32) == 0 && a.pubkey == b.pubkey;
+    }
+
+    void Encode(unsigned char code[74]) const;
+    void Decode(const unsigned char code[74]);
+    bool Derive(CExtPubKey &out, unsigned int nChild) const;
+};
+
+struct CExtKey {
+    unsigned char nDepth;
+    unsigned char vchFingerprint[4];
+    unsigned int nChild;
+    unsigned char vchChainCode[32];
+    CKey key;
+
+    friend bool operator==(const CExtKey &a, const CExtKey &b) {
+        return a.nDepth == b.nDepth && memcmp(&a.vchFingerprint[0], &b.vchFingerprint[0], 4) == 0 && a.nChild == b.nChild &&
+               memcmp(&a.vchChainCode[0], &b.vchChainCode[0], 32) == 0 && a.key == b.key;
+    }
+
+    void Encode(unsigned char code[74]) const;
+    void Decode(const unsigned char code[74]);
+    bool Derive(CExtKey &out, unsigned int nChild) const;
+    CExtPubKey Neuter() const;
+    void SetMaster(const unsigned char *seed, unsigned int nSeedLen);
 
     bool Verify(uint256 hash, const std::vector<unsigned char>& vchSig);
 
