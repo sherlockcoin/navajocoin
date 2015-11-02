@@ -174,13 +174,13 @@ inline bool DecodeBase58Check(const std::string& str, std::vector<unsigned char>
 class CBase58Data
 {
 protected:
-    // the version byte(s)
-    std::vector<unsigned char> vchVersion;
+    // the version byte
+    unsigned char nVersion;
 
     // the actually encoded data
     std::vector<unsigned char> vchData;
 
-    vchVersion.clear();
+    CBase58Data()
     {
         nVersion = 0;
         vchData.clear();
@@ -193,34 +193,34 @@ protected:
             memset(&vchData[0], 0, vchData.size());
     }
 
-    void SetData(const std::vector<unsigned char> &vchVersionIn, const void* pdata, size_t nSize)
+    void SetData(int nVersionIn, const void* pdata, size_t nSize)
     {
-        vchVersion = vchVersionIn;
+        nVersion = nVersionIn;
         vchData.resize(nSize);
         if (!vchData.empty())
             memcpy(&vchData[0], pdata, nSize);
     }
 
-    void SetData(const std::vector<unsigned char> &vchVersionIn, const unsigned char *pbegin, const unsigned char *pend)
+    void SetData(int nVersionIn, const unsigned char *pbegin, const unsigned char *pend)
     {
-        SetData(vchVersionIn, (void*)pbegin, pend - pbegin);
+        SetData(nVersionIn, (void*)pbegin, pend - pbegin);
     }
 
 public:
     bool SetString(const char* psz)
     {
-        bool SetString(const char* psz, unsigned int nVersionBytes = 1)
+        std::vector<unsigned char> vchTemp;
         DecodeBase58Check(psz, vchTemp);
-        if (vchTemp.size() < nVersionBytes)
+        if (vchTemp.empty())
         {
             vchData.clear();
-            vchVersion.clear();
+            nVersion = 0;
             return false;
         }
-        vchVersion.assign(vchTemp.begin(), vchTemp.begin() + nVersionBytes);
-        vchData.resize(vchTemp.size() - nVersionBytes);
+        nVersion = vchTemp[0];
+        vchData.resize(vchTemp.size() - 1);
         if (!vchData.empty())
-            memcpy(&vchData[0], &vchTemp[nVersionBytes], vchData.size());
+            memcpy(&vchData[0], &vchTemp[1], vchData.size());
         memset(&vchTemp[0], 0, vchTemp.size());
         return true;
     }
@@ -232,15 +232,15 @@ public:
 
     std::string ToString() const
     {
-        std::vector<unsigned char> vch = vchVersion;
+        std::vector<unsigned char> vch(1, nVersion);
         vch.insert(vch.end(), vchData.begin(), vchData.end());
         return EncodeBase58Check(vch);
     }
 
     int CompareTo(const CBase58Data& b58) const
     {
-        if (vchVersion < b58.vchVersion) return -1;
-        if (vchVersion > b58.vchVersion) return  1;
+        if (nVersion < b58.nVersion) return -1;
+        if (nVersion > b58.nVersion) return  1;
         if (vchData < b58.vchData)   return -1;
         if (vchData > b58.vchData)   return  1;
         return 0;
@@ -456,31 +456,5 @@ public:
     {
     }
 };
-
-
-template<typename K, int Size, CChainParams::Base58Type Type> class CBitcoinExtKeyBase : public CBase58Data
-{
-public:
-    void SetKey(const K &key) {
-        unsigned char vch[Size];
-        key.Encode(vch);
-        SetData(Params().Base58Prefix(Type), vch, vch+Size);
-    }
-
-    K GetKey() {
-        K ret;
-        ret.Decode(&vchData[0], &vchData[Size]);
-        return ret;
-    }
-
-    CBitcoinExtKeyBase(const K &key) {
-        SetKey(key);
-    }
-
-    CBitcoinExtKeyBase() {}
-};
-
-typedef CBitcoinExtKeyBase<CExtKey, 74, CChainParams::EXT_SECRET_KEY> CBitcoinExtKey;
-typedef CBitcoinExtKeyBase<CExtPubKey, 74, CChainParams::EXT_PUBLIC_KEY> CBitcoinExtPubKey;
 
 #endif
