@@ -1,4 +1,3 @@
-
 #ifdef WIN32
 #include <winsock2.h>
 #else
@@ -508,7 +507,7 @@ void ThreadNtpSamples(void* parg) {
                 nNtpOffset = INT64_MAX;
                 int nSleepMinutes = 1 + GetRandInt(4); // Sleep for 1-5 minutes.
                 for (int i = 0; i < nSleepMinutes * 60 && !fShutdown; i++) 
-                    Sleep(1000);
+                    sleep(1000);
                 continue;
             }
         }
@@ -526,7 +525,7 @@ void ThreadNtpSamples(void* parg) {
 
         int nSleepHours = 1 + GetRandInt(5); // Sleep for 1-6 hours.
         for (int i = 0; i < nSleepHours * 3600 && !fShutdown; i++)
-            Sleep(1000);
+            sleep(1000);
     }
 
     vnThreadsRunning[THREAD_NTP]--;
