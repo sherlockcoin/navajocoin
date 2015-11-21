@@ -2,7 +2,7 @@ TEMPLATE = app
 TARGET = navajocoin-qt
 VERSION = 3.1.0
 INCLUDEPATH += src src/json src/qt
-DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
+DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE __STDC_FORMAT_MACROS __STDC_LIMIT_MACROS
 CONFIG += no_include_pwd
 CONFIG += thread
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -267,6 +267,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/ui_interface.h \
     src/qt/rpcconsole.h \
     src/version.h \
+	src/ntp.h \
     src/netbase.h \
     src/clientversion.h \
     src/bloom.h \
@@ -312,6 +313,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/sync.cpp \
     src/util.cpp \
     src/netbase.cpp \
+	src/ntp.cpp \
     src/key.cpp \
     src/script.cpp \
     src/main.cpp \

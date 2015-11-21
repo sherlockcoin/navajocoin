@@ -33,7 +33,7 @@ LIBS= \
  -l ssl \
  -l crypto
 
-DEFS=-D_MT -DWIN32 -DWIN32_LEAN_AND_MEAN -D_WINDOWS -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE
+DEFS=-D_MT -DWIN32 -DWIN32_LEAN_AND_MEAN -D_WINDOWS -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
 DEBUGFLAGS=-g
 CFLAGS=${ADDITIONALCCFLAGS} -mthreads -O3 -msse2 -w -Wall -Wextra -Wno-ignored-qualifiers -Wformat -Wformat-security -Wno-unused-parameter $(DEBUGFLAGS) $(DEFS) $(INCLUDEPATHS)
 LDFLAGS=-Wl,--dynamicbase -Wl,--nxcompat
@@ -87,6 +87,7 @@ OBJS= \
     obj/miner.o \
     obj/main.o \
     obj/net.o \
+	obj/ntp.o \
     obj/protocol.o \
     obj/bitcoinrpc.o \
     obj/rpcdump.o \
