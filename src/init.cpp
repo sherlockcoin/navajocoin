@@ -895,7 +895,7 @@ bool AppInit2()
 
     if (fServer)
         NewThread(ThreadRPCServer, NULL);
-
+	
     // ********************************************************* Step 12: finished
 
     uiInterface.InitMessage(_("Done loading"));
