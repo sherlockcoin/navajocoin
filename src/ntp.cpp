@@ -12,9 +12,9 @@
 #endif
 
 #include "netbase.h"
-#include "ui_interface.h"
 #include "net.h"
 //#include "util.h"
+#include "ui_interface.h"
 
 extern int GetRandInt(int nMax);
 
@@ -52,7 +52,7 @@ typedef struct {
 } l_fp;
 
 
-inline void Ntp2Unix(uint32_t &n, time_t &u) {
+inline void Ntp2Unix(const uint32_t &n, time_t &u) {
     // Ntp's time scale starts in 1900, Unix in 1970.
 
     u = n - 0x83aa7e80; // 2208988800 1970 - 1900 in seconds
@@ -91,7 +91,7 @@ std::string NtpServers[162] = {
     "time2.google.com",
     "time3.google.com",
     "time4.google.com",
-	
+
     // Hurricane Electric
     "clock.sjc.he.net",
     "clock.nyc.he.net",
@@ -228,7 +228,7 @@ std::string NtpServers[162] = {
     // United Kingdom
     "ntp2d.mcc.ac.uk",
     "ntp2c.mcc.ac.uk",
-	"ntp2b.mcc.ac.uk",
+    "ntp2b.mcc.ac.uk",
     "ntp.exnet.com",
     "ntp.cis.strath.ac.uk",
     "ntppub.le.ac.uk",
@@ -236,7 +236,7 @@ std::string NtpServers[162] = {
     "1.uk.pool.ntp.org",
     "2.uk.pool.ntp.org",
     "3.uk.pool.ntp.org",
-	
+
     // Canada
     "chime.utoronto.ca",
     "tick.utoronto.ca",
@@ -256,7 +256,7 @@ std::string NtpServers[162] = {
     "1.jp.pool.ntp.org",
     "2.jp.pool.ntp.org",
     "3.jp.pool.ntp.org",
-	
+
     // Australia
     "ntp.cs.mu.oz.au",
     "augean.eleceng.adelaide.edu.au",
@@ -267,7 +267,7 @@ std::string NtpServers[162] = {
 
     // Slovenia
     "time.ijs.si",
-	
+
     // Austria
     "0.at.pool.ntp.org",
     "1.at.pool.ntp.org",
@@ -280,14 +280,15 @@ std::string NtpServers[162] = {
     // ... To be continued
 };
 
-bool InitWithHost(std::string &strHostName, SOCKET &sockfd, socklen_t &servlen, struct sockaddr *pcliaddr) {
-    sockfd = -1;
+bool InitWithHost(const std::string &strHostName, SOCKET &sockfd, socklen_t &servlen, struct sockaddr *pcliaddr) {
+  
+    sockfd = INVALID_SOCKET;
 
     std::vector<CNetAddr> vIP;
     bool fRet = LookupHost(strHostName.c_str(), vIP, 10, true);
     if (!fRet) {
         return false;
-	}
+    }
 
     struct sockaddr_in servaddr;
     servaddr.sin_family = AF_INET;
@@ -295,24 +296,24 @@ bool InitWithHost(std::string &strHostName, SOCKET &sockfd, socklen_t &servlen, 
 
     bool found = false;
     for(unsigned int i = 0; i < vIP.size(); i++) {
-        if ((found = vIP[i].GetInAddr(&servaddr.sin_addr))) {
+        if ((found = vIP[i].GetInAddr(&servaddr.sin_addr)) != false) {
             break;
         }
     }
 
     if (!found) {
         return false;
-	}
+    }
 
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);
 
-    if (sockfd == -1)
+    if (sockfd == INVALID_SOCKET)
         return false; // socket initialization error
 
-	if (connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) == -1 ) {
+    if (connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) == -1 ) {
         return false; // "connection" error
     }
-	
+
 
     *pcliaddr = *((struct sockaddr *) &servaddr);
     servlen = sizeof(servaddr);
@@ -333,18 +334,20 @@ bool InitWithRandom(SOCKET &sockfd, socklen_t &servlen, struct sockaddr *pcliadd
 }
 
 int64_t DoReq(SOCKET sockfd, socklen_t servlen, struct sockaddr cliaddr) {
+
+
 #ifdef WIN32
     u_long nOne = 1;
-	if (ioctlsocket(sockfd, FIONBIO, &nOne) == SOCKET_ERROR) {
+    if (ioctlsocket(sockfd, FIONBIO, &nOne) == SOCKET_ERROR) {
         printf("ConnectSocket() : ioctlsocket non-blocking setting failed, error %d\n", WSAGetLastError());
 #else
-	if (fcntl(sockfd, F_SETFL, O_NONBLOCK) == SOCKET_ERROR) {
+    if (fcntl(sockfd, F_SETFL, O_NONBLOCK) == SOCKET_ERROR) {
         printf("ConnectSocket() : fcntl non-blocking setting failed, error %d\n", errno);
 #endif
         return -2;
     }
 
-	struct timeval timeout = {10, 0};
+    struct timeval timeout = {10, 0};
     struct pkt *msg = new pkt;
     struct pkt *prt  = new pkt;
     time_t seconds_transmit;
@@ -378,17 +381,17 @@ int64_t DoReq(SOCKET sockfd, socklen_t servlen, struct sockaddr cliaddr) {
     FD_SET(sockfd, &fdset);
 
     retcode = select(sockfd + 1, &fdset, NULL, NULL, &timeout);
-	if (retcode <= 0) {
+    if (retcode <= 0) {
         printf("recvfrom() error\n");
         seconds_transmit = -4;
         goto _end;
     }
-	
+
     recvfrom(sockfd, (char *) msg, len, 0, NULL, NULL);
     ntohl_fp(&msg->xmt, &prt->xmt);
     Ntp2Unix(prt->xmt.Ul_i.Xl_ui, seconds_transmit);
-	
-	_end:
+
+    _end:
 
     delete msg;
     delete prt;
@@ -413,11 +416,11 @@ int64_t NtpGetTime(CNetAddr& ip) {
     return nTime;
 }
 
-int64_t NtpGetTime(std::string &strHostName)
+int64_t NtpGetTime(const std::string &strHostName)
 {
     struct sockaddr cliaddr;
 
-	SOCKET sockfd;
+    SOCKET sockfd;
     socklen_t servlen;
 
     if (!InitWithHost(strHostName, sockfd, servlen, &cliaddr))
@@ -442,10 +445,8 @@ int64_t GetNtpOffset() {
 }
 
 void ThreadNtpSamples(void* parg) {
-
-    // Maximum offset is 2 hours.
     const int64_t nMaxOffset = 86400; // Not a real limit, just sanity threshold.
-	
+
     printf("Trying to find NTP server at localhost...\n");
 
     std::string strLocalHost = "127.0.0.1";
@@ -462,7 +463,7 @@ void ThreadNtpSamples(void* parg) {
     // Make this thread recognisable as time synchronization thread
     RenameThread("navajocoin-ntp-samples");
 
-	CMedianFilter<int64_t> vTimeOffsets(200,0);
+    CMedianFilter<int64_t> vTimeOffsets(200,0);
 
     while (!fShutdown) {
         if (strTrustedUpstream != "localhost") {
@@ -471,7 +472,7 @@ void ThreadNtpSamples(void* parg) {
 
             if (abs64(nClockOffset) < nMaxOffset) {
                 // Everything seems right, remember new trusted offset.
-				printf("ThreadNtpSamples: new offset sample from %s, offset=%" PRId64 ".\n", strTrustedUpstream.c_str(), nClockOffset);
+                printf("ThreadNtpSamples: new offset sample from %s, offset=%" PRId64 ".\n", strTrustedUpstream.c_str(), nClockOffset);
                 nNtpOffset = nClockOffset;
             }
             else {
@@ -481,6 +482,11 @@ void ThreadNtpSamples(void* parg) {
 
                 int nSleepMinutes = 1 + GetRandInt(9); // Sleep for 1-10 minutes.
                 for (int i = 0; i < nSleepMinutes * 60 && !fShutdown; i++)
+                #ifdef _WIN32
+					Sleep(1000);
+				#else
+					sleep(1000);
+				#endif
 
                 continue;
             }
@@ -494,7 +500,7 @@ void ThreadNtpSamples(void* parg) {
                 int64_t nClockOffset = NtpGetTime(ip) - GetTime();
 
                 if (abs64(nClockOffset) < nMaxOffset) { // Skip the deliberately wrong timestamps
-					printf("ThreadNtpSamples: new offset sample from %s, offset=%" PRId64 ".\n", ip.ToString().c_str(), nClockOffset);
+                    printf("ThreadNtpSamples: new offset sample from %s, offset=%" PRId64 ".\n", ip.ToString().c_str(), nClockOffset);
                     vTimeOffsets.input(nClockOffset);
                 }
             }
@@ -507,11 +513,15 @@ void ThreadNtpSamples(void* parg) {
                 nNtpOffset = INT64_MAX;
                 int nSleepMinutes = 1 + GetRandInt(4); // Sleep for 1-5 minutes.
                 for (int i = 0; i < nSleepMinutes * 60 && !fShutdown; i++) 
-                    sleep(1000);
+                #ifdef _WIN32
+					Sleep(1000);
+				#else
+					sleep(1000);
+				#endif
                 continue;
             }
         }
-		
+
         if (GetNodesOffset() == INT_MAX && abs64(nNtpOffset) > 40 * 60)
         {
             // If there is not enough node offsets data and NTP time offset is greater than 40 minutes then give a warning.
@@ -525,7 +535,11 @@ void ThreadNtpSamples(void* parg) {
 
         int nSleepHours = 1 + GetRandInt(5); // Sleep for 1-6 hours.
         for (int i = 0; i < nSleepHours * 3600 && !fShutdown; i++)
-            sleep(1000);
+				#ifdef _WIN32
+					Sleep(1000);
+				#else
+					sleep(1000);
+				#endif
     }
 
     vnThreadsRunning[THREAD_NTP]--;
