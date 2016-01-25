@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>About NavajoCoin</string>
+   <string>About NavCoin</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -103,7 +103,7 @@
              <cursorShape>IBeamCursor</cursorShape>
             </property>
             <property name="text">
-             <string>&lt;b&gt;NavajoCoin&lt;/b&gt; version</string>
+             <string>&lt;b&gt;NavCoin&lt;/b&gt; version</string>
             </property>
             <property name="margin">
              <number>0</number>
@@ -119,7 +119,7 @@
              <cursorShape>IBeamCursor</cursorShape>
             </property>
             <property name="text">
-             <string notr="true">3.2.0 - UT-ZAH</string>
+             <string notr="true">3.3.0 - UT-ZAH</string>
             </property>
             <property name="textInteractionFlags">
              <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -147,7 +147,7 @@
            <cursorShape>IBeamCursor</cursorShape>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Copyright © 2014 - 2015 The SummerCoin Developers&lt;br /&gt;Copyright © 2014 - 2015 The NavajoCoin Developers&lt;br /&gt;Copyright © 2014 - 2015 The NavajoAnonBeta Developers&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Copyright © 2014 - 2015 The SummerCoin Developers&lt;br /&gt;Copyright © 2014 - 2015 The NavCoin Developers&lt;br /&gt;Copyright © 2014 - 2015 The NavAnonBeta Developers&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="textInteractionFlags">
            <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>

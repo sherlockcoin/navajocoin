@@ -7,19 +7,19 @@ USE_UPNP?=-
 USE_IPV6:=1
 
 DEPSDIR?=/usr/local
-BOOST_SUFFIX?=-mgw48-mt-s-1_55
+BOOST_SUFFIX?=-mgw48-mt-s-1_53
 
 INCLUDEPATHS?= \
  -I"$(CURDIR)" \
- -I"c:/deps/boost_1_55_0" \
- -I"c:/deps/db-4.8.30.NC/build_unix" \
- -I"c:/deps/openssl-1.0.1g/include"
+ -I"C:/deps/boost_1_53_0" \
+ -I"C:/deps/db-6.0.20.NC/build_unix" \
+ -I"C:/deps/openssl-1.0.1g/include"
 
 LIBPATHS?= \
  -L"$(CURDIR)/leveldb" \
- -L"c:/deps/boost_1_55_0/stage/lib" \
- -L"c:/deps/db-4.8.30.NC/build_unix" \
- -L"c:/deps/openssl-1.0.1g"
+ -L"C:/deps/boost_1_53_0/stage/lib" \
+ -L"C:/deps/db-6.0.20.NC/build_unix" \
+ -L"C:/deps/openssl-1.0.1g"
 
 LIBS= \
  -l leveldb \
@@ -109,7 +109,7 @@ OBJS= \
     obj/scrypt-x86.o \
     obj/scrypt-x86_64.o 
 
-all: navajocoind.exe
+all: navcoind.exe
 
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
@@ -145,11 +145,11 @@ obj/%.o: %.cpp
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)
 
-navajocoind.exe: $(OBJS:obj/%=obj/%)
+navcoind.exe: $(OBJS:obj/%=obj/%)
 	g++ $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 clean:
-	-rm -f navajocoind
+	-rm -f navcoind
 	-rm -f obj/*.o
 	-rm -f obj/*.P
 	-rm -f obj-test/*.o

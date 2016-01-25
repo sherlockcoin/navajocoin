@@ -3,22 +3,22 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About NavajoCoin</source>
-        <translation>Sobre NavajoCoin</translation>
+        <source>About NavCoin</source>
+        <translation>Sobre NavCoin</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;NavajoCoin&lt;/b&gt; version</source>
-        <translation>versió &lt;b&gt;NavajoCoin&lt;/b&gt;</translation>
+        <source>&lt;b&gt;NavCoin&lt;/b&gt; version</source>
+        <translation>versió &lt;b&gt;NavCoin&lt;/b&gt;</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The NavajoCoin developers</source>
+Copyright © 2014 The NavCoin developers</source>
         <translation>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The NavajoCoin developers</translation>
+Copyright © 2014 The NavCoin developers</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -60,8 +60,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-46"/>
-        <source>These are your NavajoCoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Aquestes són les teves adreces de NavajoCoin per rebre els pagaments. És possible que vulgueu donar una diferent a cada remitent per a poder realitzar un seguiment de qui li está pagant.</translation>
+        <source>These are your NavCoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>Aquestes són les teves adreces de NavCoin per rebre els pagaments. És possible que vulgueu donar una diferent a cada remitent per a poder realitzar un seguiment de qui li está pagant.</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -75,8 +75,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a NavajoCoin address</source>
-        <translation>Signar un missatge per demostrar que és propietari d&apos;una adreça NavajoCoin</translation>
+        <source>Sign a message to prove you own a NavCoin address</source>
+        <translation>Signar un missatge per demostrar que és propietari d&apos;una adreça NavCoin</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -90,8 +90,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-14"/>
-        <source>Verify a message to ensure it was signed with a specified NavajoCoin address</source>
-        <translation>Comproveu el missatge per assegurar-se que es va signar amb una adreça NavajoCoin especificada.</translation>
+        <source>Verify a message to ensure it was signed with a specified NavCoin address</source>
+        <translation>Comproveu el missatge per assegurar-se que es va signar amb una adreça NavCoin especificada.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -258,8 +258,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-58"/>
-        <source>NavajoCoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
-        <translation>NavajoCoin tancarà ara per acabar el procés de xifrat. Recordeu que l&apos;encriptació de la seva cartera no pot protegir completament les seves monedes de ser robades pel malware que pugui infectar al seu equip.</translation>
+        <source>NavCoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
+        <translation>NavCoin tancarà ara per acabar el procés de xifrat. Recordeu que l&apos;encriptació de la seva cartera no pot protegir completament les seves monedes de ser robades pel malware que pugui infectar al seu equip.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -372,8 +372,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+6"/>
-        <source>Show information about NavajoCoin</source>
-        <translation>Mostra informació sobre NavajoCoin</translation>
+        <source>Show information about NavCoin</source>
+        <translation>Mostra informació sobre NavCoin</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -422,13 +422,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-64"/>
-        <source>Send coins to a NavajoCoin address</source>
-        <translation>Enviar monedes a una adreça NavajoCoin</translation>
+        <source>Send coins to a NavCoin address</source>
+        <translation>Enviar monedes a una adreça NavCoin</translation>
     </message>
     <message>
         <location line="+47"/>
-        <source>Modify configuration options for NavajoCoin</source>
-        <translation>Modificar les opcions de configuració per a NavajoCoin</translation>
+        <source>Modify configuration options for NavCoin</source>
+        <translation>Modificar les opcions de configuració per a NavCoin</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -467,8 +467,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-202"/>
-        <source>NavajoCoin</source>
-        <translation>NavajoCoin</translation>
+        <source>NavCoin</source>
+        <translation>NavCoin</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -477,8 +477,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+180"/>
-        <source>&amp;About NavajoCoin</source>
-        <translation>&amp;Sobre NavajoCoin</translation>
+        <source>&amp;About NavCoin</source>
+        <translation>&amp;Sobre NavCoin</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -534,13 +534,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+0"/>
         <location line="+60"/>
-        <source>NavajoCoin client</source>
-        <translation>Client NavajoCoin</translation>
+        <source>NavCoin client</source>
+        <translation>Client NavCoin</translation>
     </message>
     <message numerus="yes">
         <location line="+75"/>
-        <source>%n active connection(s) to NavajoCoin network</source>
-        <translation><numerusform>%n conexió activa a la xarxa NavajoCoin</numerusform><numerusform>%n conexions actives a la xarxa NavajoCoin</numerusform></translation>
+        <source>%n active connection(s) to NavCoin network</source>
+        <translation><numerusform>%n conexió activa a la xarxa NavCoin</numerusform><numerusform>%n conexions actives a la xarxa NavCoin</numerusform></translation>
     </message>
     <message>
         <location line="+40"/>
@@ -579,13 +579,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-312"/>
-        <source>About NavajoCoin card</source>
-        <translation>Sobre la tarjeta NavajoCoin</translation>
+        <source>About NavCoin card</source>
+        <translation>Sobre la tarjeta NavCoin</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Show information about NavajoCoin card</source>
-        <translation>Mostra informació sobre la tarjeta NavajoCoin</translation>
+        <source>Show information about NavCoin card</source>
+        <translation>Mostra informació sobre la tarjeta NavCoin</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -660,8 +660,8 @@ Address: %4
     <message>
         <location line="-15"/>
         <location line="+15"/>
-        <source>URI can not be parsed! This can be caused by an invalid NavajoCoin address or malformed URI parameters.</source>
-        <translation>l&apos;URI no es pot analitzar! Això pot ser causat per una adreça NavajoCoin no vàlida o paràmetres URI malformats.</translation>
+        <source>URI can not be parsed! This can be caused by an invalid NavCoin address or malformed URI parameters.</source>
+        <translation>l&apos;URI no es pot analitzar! Això pot ser causat per una adreça NavCoin no vàlida o paràmetres URI malformats.</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -720,8 +720,8 @@ Address: %4
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+109"/>
-        <source>A fatal error occurred. NavajoCoin can no longer continue safely and will quit.</source>
-        <translation>S&apos;ha produït un error fatal. NavajoCoin ja no pot continuar de forma segura i es tancarà.</translation>
+        <source>A fatal error occurred. NavCoin can no longer continue safely and will quit.</source>
+        <translation>S&apos;ha produït un error fatal. NavCoin ja no pot continuar de forma segura i es tancarà.</translation>
     </message>
 </context>
 <context>
@@ -1054,8 +1054,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid NavajoCoin address.</source>
-        <translation>La direcció introduïda &quot;%1&quot; no és una adreça NavajoCoin vàlida.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid NavCoin address.</source>
+        <translation>La direcció introduïda &quot;%1&quot; no és una adreça NavCoin vàlida.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1073,8 +1073,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message>
         <location filename="../guiutil.cpp" line="+420"/>
         <location line="+12"/>
-        <source>NavajoCoin-Qt</source>
-        <translation>NavajoCoin-Qt</translation>
+        <source>NavCoin-Qt</source>
+        <translation>NavCoin-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -1146,13 +1146,13 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start NavajoCoin after logging in to the system.</source>
-        <translation>Inicia automàticament NavajoCoin després d&apos;entrar en el sistema.</translation>
+        <source>Automatically start NavCoin after logging in to the system.</source>
+        <translation>Inicia automàticament NavCoin després d&apos;entrar en el sistema.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start NavajoCoin on system login</source>
-        <translation>&amp;Iniciar NavajoCoin amb l&apos;inici de sessió</translation>
+        <source>&amp;Start NavCoin on system login</source>
+        <translation>&amp;Iniciar NavCoin amb l&apos;inici de sessió</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1171,8 +1171,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the NavajoCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Obrir automàticament el port de client NavajoCoin en el router. Això només funciona quan el router és compatible amb UPnP i està habilitat.</translation>
+        <source>Automatically open the NavCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Obrir automàticament el port de client NavCoin en el router. Això només funciona quan el router és compatible amb UPnP i està habilitat.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1181,8 +1181,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the NavajoCoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>Connecteu-vos a la xarxa NavajoCoin través d&apos;un proxy SOCKS (per exemple, quan es connecta a través de Tor).</translation>
+        <source>Connect to the NavCoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>Connecteu-vos a la xarxa NavCoin través d&apos;un proxy SOCKS (per exemple, quan es connecta a través de Tor).</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1256,8 +1256,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting NavajoCoin.</source>
-        <translation>L&apos;idioma de la interfície d&apos;usuari es pot configurar aquí. Aquesta configuració s&apos;aplicarà després de reiniciar NavajoCoin.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting NavCoin.</source>
+        <translation>L&apos;idioma de la interfície d&apos;usuari es pot configurar aquí. Aquesta configuració s&apos;aplicarà després de reiniciar NavCoin.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -1271,8 +1271,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show NavajoCoin addresses in the transaction list or not.</source>
-        <translation>Per mostrar NavajoCoin adreces a la llista de transaccions o no.</translation>
+        <source>Whether to show NavCoin addresses in the transaction list or not.</source>
+        <translation>Per mostrar NavCoin adreces a la llista de transaccions o no.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1318,8 +1318,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting NavajoCoin.</source>
-        <translation>Aquesta configuració s&apos;aplicarà després de reiniciar NavajoCoin.</translation>
+        <source>This setting will take effect after restarting NavCoin.</source>
+        <translation>Aquesta configuració s&apos;aplicarà després de reiniciar NavCoin.</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1337,8 +1337,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message>
         <location line="+33"/>
         <location line="+231"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the NavajoCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>La informació mostrada pot estar fora de data. La seva cartera es sincronitza automàticament amb la xarxa NavajoCoin després d&apos;establir una connexió, però aquest procés no s&apos;ha completat encara.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the NavCoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>La informació mostrada pot estar fora de data. La seva cartera es sincronitza automàticament amb la xarxa NavCoin després d&apos;establir una connexió, però aquest procés no s&apos;ha completat encara.</translation>
     </message>
     <message>
         <location line="-160"/>
@@ -1553,8 +1553,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the NavajoCoin-Qt help message to get a list with possible NavajoCoin command-line options.</source>
-        <translation>Mostra el missatge d&apos;ajuda de NavajoCoin-Qt per obtenir una llista amb les possibles opcions de línia d&apos;ordres NavajoCoin.</translation>
+        <source>Show the NavCoin-Qt help message to get a list with possible NavCoin command-line options.</source>
+        <translation>Mostra el missatge d&apos;ajuda de NavCoin-Qt per obtenir una llista amb les possibles opcions de línia d&apos;ordres NavCoin.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1573,13 +1573,13 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="-104"/>
-        <source>NavajoCoin - Debug window</source>
-        <translation>NavajoCoin - Finestra Depuració</translation>
+        <source>NavCoin - Debug window</source>
+        <translation>NavCoin - Finestra Depuració</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>NavajoCoin Core</source>
-        <translation>Nucli NavajoCoin</translation>
+        <source>NavCoin Core</source>
+        <translation>Nucli NavCoin</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1588,8 +1588,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the NavajoCoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Obriu el fitxer de registre de depuració NavajoCoin des del directori de dades actual. Això pot trigar uns segons en els arxius de registre de grans dimensions.</translation>
+        <source>Open the NavCoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Obriu el fitxer de registre de depuració NavCoin des del directori de dades actual. Això pot trigar uns segons en els arxius de registre de grans dimensions.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1598,8 +1598,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-33"/>
-        <source>Welcome to the NavajoCoin RPC console.</source>
-        <translation>Benvingut a la consola RPC de NavajoCoin.</translation>
+        <source>Welcome to the NavCoin RPC console.</source>
+        <translation>Benvingut a la consola RPC de NavCoin.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1757,8 +1757,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-173"/>
-        <source>Enter a NavajoCoin/NavajoCoin address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</source>
-        <translation>Introdueix una adreça NavajoCoin (p.ex. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</translation>
+        <source>Enter a NavCoin/NavCoin address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</source>
+        <translation>Introdueix una adreça NavCoin (p.ex. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1857,8 +1857,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+251"/>
-        <source>WARNING: Invalid NavajoCoin address</source>
-        <translation>ADVERTÈNCIA: Direcció NavajoCoin invàlida</translation>
+        <source>WARNING: Invalid NavCoin address</source>
+        <translation>ADVERTÈNCIA: Direcció NavCoin invàlida</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -1931,8 +1931,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a NavajoCoin/NavajoCoin address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</source>
-        <translation>Introdueix una adreça NavajoCoin (p.ex. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</translation>
+        <source>Enter a NavCoin/NavCoin address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</source>
+        <translation>Introdueix una adreça NavCoin (p.ex. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</translation>
     </message>
 </context>
 <context>
@@ -1992,8 +1992,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this NavajoCoin address</source>
-        <translation>Signar un missatge per demostrar que és propietari d&apos;aquesta adreça NavajoCoin</translation>
+        <source>Sign the message to prove you own this NavCoin address</source>
+        <translation>Signar un missatge per demostrar que és propietari d&apos;aquesta adreça NavCoin</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2024,8 +2024,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified NavajoCoin address</source>
-        <translation>Comproveu el missatge per assegurar-se que es va signar amb l&apos;adreça NavajoCoin especificada.</translation>
+        <source>Verify the message to ensure it was signed with the specified NavCoin address</source>
+        <translation>Comproveu el missatge per assegurar-se que es va signar amb l&apos;adreça NavCoin especificada.</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2035,8 +2035,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a NavajoCoin/NavajoCoin address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</source>
-        <translation>Introdueix una adreça NavajoCoin (p.ex. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</translation>
+        <source>Enter a NavCoin/NavCoin address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</source>
+        <translation>Introdueix una adreça NavCoin (p.ex. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2045,8 +2045,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter NavajoCoin signature</source>
-        <translation>Introduïu la signatura NavajoCoin</translation>
+        <source>Enter NavCoin signature</source>
+        <translation>Introduïu la signatura NavCoin</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -2616,8 +2616,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+33"/>
-        <source>NavajoCoin version</source>
-        <translation>versió NavajoCoin</translation>
+        <source>NavCoin version</source>
+        <translation>versió NavCoin</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2626,8 +2626,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or navajocoind</source>
-        <translation>Enviar comandes a -server o navajocoind</translation>
+        <source>Send command to -server or navcoind</source>
+        <translation>Enviar comandes a -server o navcoind</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2646,13 +2646,13 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Specify configuration file (default: navajocoin.conf)</source>
-        <translation>Especifiqueu el fitxer de configuració (per defecte: navajocoin.conf)</translation>
+        <source>Specify configuration file (default: navcoin.conf)</source>
+        <translation>Especifiqueu el fitxer de configuració (per defecte: navcoin.conf)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: navajocoind.pid)</source>
-        <translation>Especificar arxiu pid (per defecte: navajocoind.pid)</translation>
+        <source>Specify pid file (default: navcoind.pid)</source>
+        <translation>Especificar arxiu pid (per defecte: navcoind.pid)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2801,8 +2801,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
     <message>
         <location line="+61"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong NavajoCoin will not work properly.</source>
-        <translation>Avís: Comproveu que la data i hora de l&apos;equip siguin correctes! Si el seu rellotge és erroni NavajoCoin no funcionarà correctament.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong NavCoin will not work properly.</source>
+        <translation>Avís: Comproveu que la data i hora de l&apos;equip siguin correctes! Si el seu rellotge és erroni NavCoin no funcionarà correctament.</translation>
     </message>
     <message>
         <location line="-31"/>
@@ -2991,24 +2991,24 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <source>%s, you must set a rpcpassword in the configuration file:
  %s
 It is recommended you use the following random password:
-rpcuser=navajocoinrpc
+rpcuser=navcoin
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;NavajoCoin Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;NavCoin Alert&quot; admin@foo.com
 </source>
         <translation>%s, ha d&apos;establir un rpcpassword al fitxer de configuració:
 %s
 Es recomana utilitzar la següent contrasenya aleatòria:
-rpcuser=navajocoinrpc
+rpcuser=navcoin
 rpcpassword=%s
 (No cal recordar aquesta contrasenya)
 El nom d&apos;usuari i contrasenya NO HA DE SER el mateix.
 Si no hi ha l&apos;arxiu, s&apos;ha de crear amb els permisos de només lectura per al propietari.
 També es recomana establir alertnotify per a que se li notifiquin els problemes;
-per exemple: alertnotify=echo %%s | mail -s &quot;NavajoCoin Alert&quot; admin@foo.com
+per exemple: alertnotify=echo %%s | mail -s &quot;NavCoin Alert&quot; admin@foo.com
 </translation>
     </message>
     <message>
@@ -3134,13 +3134,13 @@ Executar una ordre quan es rep un avís rellevant (%s en cmd es substitueix per 
     </message>
     <message>
         <location line="+1"/>
-        <source>Cannot obtain a lock on data directory %s.  NavajoCoin is probably already running.</source>
-        <translation>No es pot obtenir un bloqueig en el directori de dades %s. NavajoCoin probablement ja estigui en funcionament.</translation>
+        <source>Cannot obtain a lock on data directory %s.  NavCoin is probably already running.</source>
+        <translation>No es pot obtenir un bloqueig en el directori de dades %s. NavCoin probablement ja estigui en funcionament.</translation>
     </message>
     <message>
         <location line="-98"/>
-        <source>NavajoCoin</source>
-        <translation>NavajoCoin</translation>
+        <source>NavCoin</source>
+        <translation>NavCoin</translation>
     </message>
     <message>
         <location line="+140"/>
@@ -3174,13 +3174,13 @@ Executar una ordre quan es rep un avís rellevant (%s en cmd es substitueix per 
     </message>
     <message>
         <location line="+4"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of NavajoCoin</source>
-        <translation>Error en carregar wallet.dat: La cartera requereix la versió més recent de NavajoCoin</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of NavCoin</source>
+        <translation>Error en carregar wallet.dat: La cartera requereix la versió més recent de NavCoin</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart NavajoCoin to complete</source>
-        <translation>La cartera necessita ser reescrita: reiniciar NavajoCoin per completar</translation>
+        <source>Wallet needed to be rewritten: restart NavCoin to complete</source>
+        <translation>La cartera necessita ser reescrita: reiniciar NavCoin per completar</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3249,8 +3249,8 @@ Executar una ordre quan es rep un avís rellevant (%s en cmd es substitueix per 
     </message>
     <message>
         <location line="+122"/>
-        <source>Unable to bind to %s on this computer. NavajoCoin is probably already running.</source>
-        <translation>No es pot enllaçar a %s en aquest equip. NavajoCoin probablement ja estigui en funcionament.</translation>
+        <source>Unable to bind to %s on this computer. NavCoin is probably already running.</source>
+        <translation>No es pot enllaçar a %s en aquest equip. NavCoin probablement ja estigui en funcionament.</translation>
     </message>
     <message>
         <location line="-97"/>

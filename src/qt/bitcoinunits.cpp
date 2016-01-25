@@ -45,9 +45,9 @@ QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("NavajoCoins");
-    case mBTC: return QString("Milli-NavajoCoins (1 / 1,000)");
-    case uBTC: return QString("Micro-NavajoCoins (1 / 1,000,000)");
+    case BTC: return QString("NavCoins");
+    case mBTC: return QString("Milli-NavCoins (1 / 1,000)");
+    case uBTC: return QString("Micro-NavCoins (1 / 1,000,000)");
     default: return QString("???");
     }
 }

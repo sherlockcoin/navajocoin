@@ -1023,7 +1023,7 @@ int64_t GetProofOfWorkReward(int64_t nFees)
     {
         /*  ** FIX EM52
          *  15 coin POW reward phase never started. locked to 150 coin until POW end
-         * check with  http://cryptexplorer.com/chain/NavajoCoin?hi=100003&count=100
+         * check with  http://cryptexplorer.com/chain/NavCoin?hi=100003&count=100
          * nSubsidy = 15 * COIN;
          */
         nSubsidy = 150 * COIN;
@@ -2709,7 +2709,7 @@ bool LoadBlockIndex(bool fAllowNew)
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         txNew.vout[0].SetEmpty();
-		txNew.strTxComment = "text:NavajoCoin genesis block";
+		txNew.strTxComment = "text:NavCoin genesis block";
 		CBlock block;
         block.vtx.push_back(txNew);
         block.hashPrevBlock = 0;

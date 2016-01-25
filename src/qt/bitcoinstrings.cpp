@@ -134,7 +134,7 @@ QT_TRANSLATE_NOOP("bitcoin-core", ""
 QT_TRANSLATE_NOOP("bitcoin-core", "Invalid amount for -mininput=<amount>: '%s'"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Wallet %s resides outside data directory %s."),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
-"Cannot obtain a lock on data directory %s.  NavajoCoin is probably already "
+"Cannot obtain a lock on data directory %s.  NavCoin is probably already "
 "running."),
 QT_TRANSLATE_NOOP("bitcoin-core", "Verifying database integrity..."),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
@@ -161,8 +161,8 @@ QT_TRANSLATE_NOOP("bitcoin-core", "Error loading wallet.dat: Wallet corrupted"),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
 "Warning: error reading wallet.dat! All keys read correctly, but transaction "
 "data or address book entries might be missing or incorrect."),
-QT_TRANSLATE_NOOP("bitcoin-core", "Error loading wallet.dat: Wallet requires newer version of NavajoCoin"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Wallet needed to be rewritten: restart NavajoCoin to complete"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Error loading wallet.dat: Wallet requires newer version of NavCoin"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Wallet needed to be rewritten: restart NavCoin to complete"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Error loading wallet.dat"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Cannot downgrade wallet"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Cannot initialize keypool"),
@@ -174,7 +174,7 @@ QT_TRANSLATE_NOOP("bitcoin-core", "Loading addresses..."),
 QT_TRANSLATE_NOOP("bitcoin-core", "Error: could not start node"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Done loading"),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
-"Unable to bind to %s on this computer. NavajoCoin is probably already running."),
+"Unable to bind to %s on this computer. NavCoin is probably already running."),
 QT_TRANSLATE_NOOP("bitcoin-core", "Unable to bind to %s on this computer (bind returned error %d, %s)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Error: Wallet locked, unable to create transaction  "),
 QT_TRANSLATE_NOOP("bitcoin-core", "Error: Wallet unlocked for staking only, unable to create transaction."),
@@ -191,7 +191,7 @@ QT_TRANSLATE_NOOP("bitcoin-core", "Invalid amount"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Insufficient funds"),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
 "Warning: Please check that your computer's date and time are correct! If "
-"your clock is wrong NavajoCoin will not work properly."),
+"your clock is wrong NavCoin will not work properly."),
 QT_TRANSLATE_NOOP("bitcoin-core", "Warning: This version is obsolete, upgrade required!"),
 QT_TRANSLATE_NOOP("bitcoin-core", "WARNING: syncronized checkpoint violation detected, but skipped!"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Warning: Disk space is low!"),

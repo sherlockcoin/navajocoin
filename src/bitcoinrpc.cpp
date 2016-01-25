@@ -223,7 +223,7 @@ Value stop(const Array& params, bool fHelp)
     if (params.size() > 0)
         bitdb.SetDetach(params[0].get_bool());
     StartShutdown();
-    return "NavajoCoin server stopping";
+    return "NavCoin server stopping";
 }
 
 

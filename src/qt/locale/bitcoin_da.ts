@@ -3,22 +3,22 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About NavajoCoin</source>
-        <translation>Om NavajoCoin</translation>
+        <source>About NavCoin</source>
+        <translation>Om NavCoin</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;NavajoCoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;NavajoCoin&lt;/b&gt; version</translation>
+        <source>&lt;b&gt;NavCoin&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;NavCoin&lt;/b&gt; version</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The NavajoCoin developers</source>
+Copyright © 2014 The NavCoin developers</source>
         <translation>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The NavajoCoin developers</translation>
+Copyright © 2014 The NavCoin developers</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -65,8 +65,8 @@ Produktet indeholder software, som er udviklet af OpenSSL Project til brug i Ope
     </message>
     <message>
         <location line="-46"/>
-        <source>These are your NavajoCoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Dette er dine NavajoCoin adresser til at modtage betalinger. Du ønsker måske at give en anden en til af hver afsender, så du kan holde styr på hvem der betaler dig.</translation>
+        <source>These are your NavCoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>Dette er dine NavCoin adresser til at modtage betalinger. Du ønsker måske at give en anden en til af hver afsender, så du kan holde styr på hvem der betaler dig.</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -80,8 +80,8 @@ Produktet indeholder software, som er udviklet af OpenSSL Project til brug i Ope
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a NavajoCoin address</source>
-        <translation>Signerer en meddelelse for at bevise du ejer en NavajoCoin adresse</translation>
+        <source>Sign a message to prove you own a NavCoin address</source>
+        <translation>Signerer en meddelelse for at bevise du ejer en NavCoin adresse</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -95,8 +95,8 @@ Produktet indeholder software, som er udviklet af OpenSSL Project til brug i Ope
     </message>
     <message>
         <location line="-14"/>
-        <source>Verify a message to ensure it was signed with a specified NavajoCoin address</source>
-        <translation>Bekræft en meddelelse for at sikre, den blev underskrevet med en specificeret NavajoCoin adresse</translation>
+        <source>Verify a message to ensure it was signed with a specified NavCoin address</source>
+        <translation>Bekræft en meddelelse for at sikre, den blev underskrevet med en specificeret NavCoin adresse</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -263,8 +263,8 @@ Produktet indeholder software, som er udviklet af OpenSSL Project til brug i Ope
     </message>
     <message>
         <location line="-58"/>
-        <source>NavajoCoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
-        <translation>NavajoCoin lukker nu for at afslutte krypteringen. Husk at en krypteret  tegnebog ikke fuldt ud beskytter dine mønter mod at blive stjålet af malware som har inficeret din computer.</translation>
+        <source>NavCoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
+        <translation>NavCoin lukker nu for at afslutte krypteringen. Husk at en krypteret  tegnebog ikke fuldt ud beskytter dine mønter mod at blive stjålet af malware som har inficeret din computer.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -377,8 +377,8 @@ Produktet indeholder software, som er udviklet af OpenSSL Project til brug i Ope
     </message>
     <message>
         <location line="+6"/>
-        <source>Show information about NavajoCoin</source>
-        <translation>Vis oplysninger om NavajoCoin</translation>
+        <source>Show information about NavCoin</source>
+        <translation>Vis oplysninger om NavCoin</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -427,13 +427,13 @@ Produktet indeholder software, som er udviklet af OpenSSL Project til brug i Ope
     </message>
     <message>
         <location line="-64"/>
-        <source>Send coins to a NavajoCoin address</source>
-        <translation>Send mønter til en NavajoCoin adresse</translation>
+        <source>Send coins to a NavCoin address</source>
+        <translation>Send mønter til en NavCoin adresse</translation>
     </message>
     <message>
         <location line="+47"/>
-        <source>Modify configuration options for NavajoCoin</source>
-        <translation>Ændre indstillingsmuligheder for NavajoCoin</translation>
+        <source>Modify configuration options for NavCoin</source>
+        <translation>Ændre indstillingsmuligheder for NavCoin</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -472,8 +472,8 @@ Produktet indeholder software, som er udviklet af OpenSSL Project til brug i Ope
     </message>
     <message>
         <location line="-202"/>
-        <source>NavajoCoin</source>
-        <translation>NavajoCoin</translation>
+        <source>NavCoin</source>
+        <translation>NavCoin</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -482,8 +482,8 @@ Produktet indeholder software, som er udviklet af OpenSSL Project til brug i Ope
     </message>
     <message>
         <location line="+180"/>
-        <source>&amp;About NavajoCoin</source>
-        <translation>&amp;Om NavajoCoin</translation>
+        <source>&amp;About NavCoin</source>
+        <translation>&amp;Om NavCoin</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -539,13 +539,13 @@ Produktet indeholder software, som er udviklet af OpenSSL Project til brug i Ope
     <message>
         <location line="+0"/>
         <location line="+60"/>
-        <source>NavajoCoin client</source>
-        <translation>NavajoCoin Klient</translation>
+        <source>NavCoin client</source>
+        <translation>NavCoin Klient</translation>
     </message>
     <message numerus="yes">
         <location line="+75"/>
-        <source>%n active connection(s) to NavajoCoin network</source>
-        <translation><numerusform>%n aktiv forbindelse til NavajoCoin netværk</numerusform><numerusform>%n aktive forbindelser til NavajoCoin netværk</numerusform></translation>
+        <source>%n active connection(s) to NavCoin network</source>
+        <translation><numerusform>%n aktiv forbindelse til NavCoin netværk</numerusform><numerusform>%n aktive forbindelser til NavCoin netværk</numerusform></translation>
     </message>
     <message>
         <location line="+40"/>
@@ -584,13 +584,13 @@ Produktet indeholder software, som er udviklet af OpenSSL Project til brug i Ope
     </message>
     <message>
         <location line="-312"/>
-        <source>About NavajoCoin card</source>
-        <translation>Om NavajoCoin kort</translation>
+        <source>About NavCoin card</source>
+        <translation>Om NavCoin kort</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Show information about NavajoCoin card</source>
-        <translation>Vis oplysninger om NavajoCoin kort</translation>
+        <source>Show information about NavCoin card</source>
+        <translation>Vis oplysninger om NavCoin kort</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -669,8 +669,8 @@ Adresse: %4
     <message>
         <location line="-15"/>
         <location line="+15"/>
-        <source>URI can not be parsed! This can be caused by an invalid NavajoCoin address or malformed URI parameters.</source>
-        <translation>URI kan ikke tolkes! Dette kan skyldes en ugyldig NavajoCoin adresse eller misdannede URI parametre.</translation>
+        <source>URI can not be parsed! This can be caused by an invalid NavCoin address or malformed URI parameters.</source>
+        <translation>URI kan ikke tolkes! Dette kan skyldes en ugyldig NavCoin adresse eller misdannede URI parametre.</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -729,7 +729,7 @@ Adresse: %4
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+109"/>
-        <source>A fatal error occurred. NavajoCoin can no longer continue safely and will quit.</source>
+        <source>A fatal error occurred. NavCoin can no longer continue safely and will quit.</source>
         <translation>Der opstod en fejl under forsøg på at gemme dataene i tegnebogen til den nye placering.</translation>
     </message>
 </context>
@@ -1063,8 +1063,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid NavajoCoin address.</source>
-        <translation>Den indtastede adresse &quot;%1&quot; er ikke en gyldig NavajoCoin adresse.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid NavCoin address.</source>
+        <translation>Den indtastede adresse &quot;%1&quot; er ikke en gyldig NavCoin adresse.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1082,8 +1082,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     <message>
         <location filename="../guiutil.cpp" line="+420"/>
         <location line="+12"/>
-        <source>NavajoCoin-Qt</source>
-        <translation>NavajoCoin-Qt</translation>
+        <source>NavCoin-Qt</source>
+        <translation>NavCoin-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -1155,13 +1155,13 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start NavajoCoin after logging in to the system.</source>
-        <translation>Automatisk start NavajoCoin efter at have logget ind på systemet.</translation>
+        <source>Automatically start NavCoin after logging in to the system.</source>
+        <translation>Automatisk start NavCoin efter at have logget ind på systemet.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start NavajoCoin on system login</source>
-        <translation>&amp;Start NavajoCoin ved systems login</translation>
+        <source>&amp;Start NavCoin on system login</source>
+        <translation>&amp;Start NavCoin ved systems login</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1180,8 +1180,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the NavajoCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Automatisk åbne NavajoCoin klient-port på routeren. Dette virker kun, når din router understøtter UPnP og er det er aktiveret.</translation>
+        <source>Automatically open the NavCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Automatisk åbne NavCoin klient-port på routeren. Dette virker kun, når din router understøtter UPnP og er det er aktiveret.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1190,8 +1190,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the NavajoCoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>Opret forbindelse til NavajoCoin netværk via en SOCKS proxy (fx ved tilslutning gennem Tor).</translation>
+        <source>Connect to the NavCoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>Opret forbindelse til NavCoin netværk via en SOCKS proxy (fx ved tilslutning gennem Tor).</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1265,8 +1265,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting NavajoCoin.</source>
-        <translation>Sproget i brugergrænsefladen kan indstilles her. Denne indstilling vil træde i kraft efter genstart af NavajoCoin tegnebog.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting NavCoin.</source>
+        <translation>Sproget i brugergrænsefladen kan indstilles her. Denne indstilling vil træde i kraft efter genstart af NavCoin tegnebog.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -1280,8 +1280,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show NavajoCoin addresses in the transaction list or not.</source>
-        <translation>Få vist NavajoCoin adresser på listen over transaktioner eller ej.</translation>
+        <source>Whether to show NavCoin addresses in the transaction list or not.</source>
+        <translation>Få vist NavCoin adresser på listen over transaktioner eller ej.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1327,8 +1327,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting NavajoCoin.</source>
-        <translation>Denne indstilling vil træde i kraft efter genstart af NavajoCoin.</translation>
+        <source>This setting will take effect after restarting NavCoin.</source>
+        <translation>Denne indstilling vil træde i kraft efter genstart af NavCoin.</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1346,8 +1346,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     <message>
         <location line="+33"/>
         <location line="+231"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the NavajoCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>De viste oplysninger kan være forældet. Din tegnebog synkroniserer automatisk med NavajoCoin netværket efter en forbindelse er etableret, men denne proces er ikke afsluttet endnu.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the NavCoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>De viste oplysninger kan være forældet. Din tegnebog synkroniserer automatisk med NavCoin netværket efter en forbindelse er etableret, men denne proces er ikke afsluttet endnu.</translation>
     </message>
     <message>
         <location line="-160"/>
@@ -1562,8 +1562,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the NavajoCoin-Qt help message to get a list with possible NavajoCoin command-line options.</source>
-        <translation>Vis NavajoCoin-Qt hjælpe besked for at få en liste med mulige NavajoCoin kommandolinjeparametre.</translation>
+        <source>Show the NavCoin-Qt help message to get a list with possible NavCoin command-line options.</source>
+        <translation>Vis NavCoin-Qt hjælpe besked for at få en liste med mulige NavCoin kommandolinjeparametre.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1582,13 +1582,13 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location line="-104"/>
-        <source>NavajoCoin - Debug window</source>
-        <translation>NavajoCoin - Debug vindue</translation>
+        <source>NavCoin - Debug window</source>
+        <translation>NavCoin - Debug vindue</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>NavajoCoin Core</source>
-        <translation>NavajoCoin Kerne</translation>
+        <source>NavCoin Core</source>
+        <translation>NavCoin Kerne</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1597,8 +1597,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the NavajoCoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Åbn NavajoCoin debug logfilen fra den nuværende data mappe. Dette kan tage et par sekunder for store logfiler.</translation>
+        <source>Open the NavCoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Åbn NavCoin debug logfilen fra den nuværende data mappe. Dette kan tage et par sekunder for store logfiler.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1607,8 +1607,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-33"/>
-        <source>Welcome to the NavajoCoin RPC console.</source>
-        <translation>Velkommen til NavajoCoin RPC-konsol.</translation>
+        <source>Welcome to the NavCoin RPC console.</source>
+        <translation>Velkommen til NavCoin RPC-konsol.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1766,8 +1766,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-173"/>
-        <source>Enter a NavajoCoin/NavajoCoin address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</source>
-        <translation>Indtast en NavajoCoin-adresse (f.eks sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</translation>
+        <source>Enter a NavCoin/NavCoin address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</source>
+        <translation>Indtast en NavCoin-adresse (f.eks sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1866,8 +1866,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location line="+251"/>
-        <source>WARNING: Invalid NavajoCoin address</source>
-        <translation>ADVARSEL: Ugyldig NavajoCoin adresse</translation>
+        <source>WARNING: Invalid NavCoin address</source>
+        <translation>ADVARSEL: Ugyldig NavCoin adresse</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -1940,8 +1940,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a NavajoCoin/NavajoCoin address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</source>
-        <translation>Indtast en NavajoCoin-adresse (f.eks sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</translation>
+        <source>Enter a NavCoin/NavCoin address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</source>
+        <translation>Indtast en NavCoin-adresse (f.eks sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</translation>
     </message>
 </context>
 <context>
@@ -2001,8 +2001,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this NavajoCoin address</source>
-        <translation>Underskriv brevet for at bevise du ejer denne NavajoCoin adresse</translation>
+        <source>Sign the message to prove you own this NavCoin address</source>
+        <translation>Underskriv brevet for at bevise du ejer denne NavCoin adresse</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2033,8 +2033,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified NavajoCoin address</source>
-        <translation>Kontroller meddelelsen for at sikre, at den blev indgået med den angivne NavajoCoin adresse</translation>
+        <source>Verify the message to ensure it was signed with the specified NavCoin address</source>
+        <translation>Kontroller meddelelsen for at sikre, at den blev indgået med den angivne NavCoin adresse</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2044,8 +2044,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a NavajoCoin/NavajoCoin address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</source>
-        <translation>Indtast en NavajoCoin-adresse (f.eks sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</translation>
+        <source>Enter a NavCoin/NavCoin address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</source>
+        <translation>Indtast en NavCoin-adresse (f.eks sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2054,8 +2054,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter NavajoCoin signature</source>
-        <translation>Indtast NavajoCoin underskrift</translation>
+        <source>Enter NavCoin signature</source>
+        <translation>Indtast NavCoin underskrift</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -2625,8 +2625,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+33"/>
-        <source>NavajoCoin version</source>
-        <translation>NavajoCoin version</translation>
+        <source>NavCoin version</source>
+        <translation>NavCoin version</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2635,8 +2635,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or navajocoind</source>
-        <translation>Send kommando til-server eller navajocoind</translation>
+        <source>Send command to -server or navcoind</source>
+        <translation>Send kommando til-server eller navcoind</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2655,13 +2655,13 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Specify configuration file (default: navajocoin.conf)</source>
-        <translation>Angiv konfigurationsfil (default: navajocoin.conf)</translation>
+        <source>Specify configuration file (default: navcoin.conf)</source>
+        <translation>Angiv konfigurationsfil (default: navcoin.conf)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: navajocoind.pid)</source>
-        <translation>Angiv pid fil (standard: navajocoind.pid)</translation>
+        <source>Specify pid file (default: navcoind.pid)</source>
+        <translation>Angiv pid fil (standard: navcoind.pid)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2810,8 +2810,8 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
     </message>
     <message>
         <location line="+61"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong NavajoCoin will not work properly.</source>
-        <translation>Advarsel: Kontroller venligst, at computerens dato og klokkeslæt er korrekt! Hvis dit ur er forkert vil NavajoCoin ikke fungere korrekt.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong NavCoin will not work properly.</source>
+        <translation>Advarsel: Kontroller venligst, at computerens dato og klokkeslæt er korrekt! Hvis dit ur er forkert vil NavCoin ikke fungere korrekt.</translation>
     </message>
     <message>
         <location line="-31"/>
@@ -3000,24 +3000,24 @@ Det betyder, at et gebyr på mindst %2 er påkrævet.</translation>
         <source>%s, you must set a rpcpassword in the configuration file:
  %s
 It is recommended you use the following random password:
-rpcuser=navajocoinrpc
+rpcuser=navcoin
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;NavajoCoin Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;NavCoin Alert&quot; admin@foo.com
 </source>
         <translation>% s, skal du indstille et rpcpassword i konfigurationsfilen: 
 % s 
 Det anbefales at bruge følgende tilfældig adgangskode: 
-rpcuser = navajocoinrpc  
+rpcuser = navcoin  
 rpcpassword =% s  
 (du behøver ikke at huske denne adgangskode)  
 Brugernavn og adgangskode må ikke være den samme.  
 Hvis filen ikke findes, skal du oprette den med filtilladelser ejer-læsbar-kun. 
 Det kan også anbefales at sætte alertnotify så du får besked om problemer; 
-for eksempel: alertnotify = echo%% s | mail-s &quot;NavajoCoin Alert&quot; admin@foo.com 
+for eksempel: alertnotify = echo%% s | mail-s &quot;NavCoin Alert&quot; admin@foo.com 
 </translation>
     </message>
     <message>
@@ -3142,13 +3142,13 @@ for eksempel: alertnotify = echo%% s | mail-s &quot;NavajoCoin Alert&quot; admin
     </message>
     <message>
         <location line="+1"/>
-        <source>Cannot obtain a lock on data directory %s.  NavajoCoin is probably already running.</source>
-        <translation>Kan ikke få en lås på data mappe% s. NavajoCoin kører sikkert allerede.</translation>
+        <source>Cannot obtain a lock on data directory %s.  NavCoin is probably already running.</source>
+        <translation>Kan ikke få en lås på data mappe% s. NavCoin kører sikkert allerede.</translation>
     </message>
     <message>
         <location line="-98"/>
-        <source>NavajoCoin</source>
-        <translation>NavajoCoin</translation>
+        <source>NavCoin</source>
+        <translation>NavCoin</translation>
     </message>
     <message>
         <location line="+140"/>
@@ -3182,13 +3182,13 @@ for eksempel: alertnotify = echo%% s | mail-s &quot;NavajoCoin Alert&quot; admin
     </message>
     <message>
         <location line="+4"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of NavajoCoin</source>
-        <translation>Fejl ved indlæsning af wallet.dat: Wallet kræver en nyere version af NavajoCoin</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of NavCoin</source>
+        <translation>Fejl ved indlæsning af wallet.dat: Wallet kræver en nyere version af NavCoin</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart NavajoCoin to complete</source>
-        <translation>Det er nødvendig for wallet at blive omskrevet: Genstart NavajoCoin for fuldføre</translation>
+        <source>Wallet needed to be rewritten: restart NavCoin to complete</source>
+        <translation>Det er nødvendig for wallet at blive omskrevet: Genstart NavCoin for fuldføre</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3257,8 +3257,8 @@ for eksempel: alertnotify = echo%% s | mail-s &quot;NavajoCoin Alert&quot; admin
     </message>
     <message>
         <location line="+122"/>
-        <source>Unable to bind to %s on this computer. NavajoCoin is probably already running.</source>
-        <translation>Kunne ikke binde sig til% s på denne computer. NavajoCoin kører sikkert allerede.</translation>
+        <source>Unable to bind to %s on this computer. NavCoin is probably already running.</source>
+        <translation>Kunne ikke binde sig til% s på denne computer. NavCoin kører sikkert allerede.</translation>
     </message>
     <message>
         <location line="-97"/>

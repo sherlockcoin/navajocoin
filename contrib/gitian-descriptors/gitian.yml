@@ -1,5 +1,5 @@
 ---
-name: "navajocoin"
+name: "navcoin"
 suites:
 - "lucid"
 architectures:
@@ -20,8 +20,8 @@ packages:
 - "libpng12-dev"
 reference_datetime: "2011-01-30 00:00:00"
 remotes:
-- "url": "https://github.com/navajocoin/navajocoin.git"
-  "dir": "navajocoin"
+- "url": "https://github.com/navcoin/navcoin.git"
+  "dir": "navcoin"
 files:
 - "miniupnpc-1.6.tar.gz"
 - "qrencode-3.2.0.tar.bz2"
@@ -40,17 +40,17 @@ script: |
   make $MAKEOPTS install
   cd ..
   #
-  cd navajocoin
+  cd navcoin
   mkdir -p $OUTDIR/src
   git archive HEAD | tar -x -C $OUTDIR/src
   cp $OUTDIR/src/doc/README $OUTDIR
   cp $OUTDIR/src/COPYING $OUTDIR
   cd src
-  make -f makefile.unix STATIC=1 OPENSSL_INCLUDE_PATH="$INSTDIR/include" OPENSSL_LIB_PATH="$INSTDIR/lib" $MAKEOPTS navajocoind USE_UPNP=1 DEBUGFLAGS=
+  make -f makefile.unix STATIC=1 OPENSSL_INCLUDE_PATH="$INSTDIR/include" OPENSSL_LIB_PATH="$INSTDIR/lib" $MAKEOPTS navcoind USE_UPNP=1 DEBUGFLAGS=
   mkdir -p $OUTDIR/bin/$GBUILD_BITS
-  install -s navajocoind $OUTDIR/bin/$GBUILD_BITS
+  install -s navcoind $OUTDIR/bin/$GBUILD_BITS
   #
   cd ..
   qmake INCLUDEPATH="$INSTDIR/include" LIBS="-L$INSTDIR/lib" RELEASE=1 USE_QRCODE=1
   make $MAKEOPTS
-  install navajocoin-qt $OUTDIR/bin/$GBUILD_BITS
+  install navcoin-qt $OUTDIR/bin/$GBUILD_BITS

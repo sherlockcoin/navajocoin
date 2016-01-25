@@ -492,7 +492,7 @@ bool AppInit2()
     if (file) fclose(file);
     static boost::interprocess::file_lock lock(pathLockFile.string().c_str());
     if (!lock.try_lock())
-        return InitError(strprintf(_("Cannot obtain a lock on data directory %s.  NavajoCoin is probably already running."), strDataDir.c_str()));
+        return InitError(strprintf(_("Cannot obtain a lock on data directory %s.  NavCoin is probably already running."), strDataDir.c_str()));
 
 #if !defined(WIN32) && !defined(QT_GUI)
     if (fDaemon)
@@ -528,7 +528,7 @@ bool AppInit2()
     std::ostringstream strErrors;
 
     if (fDaemon)
-        fprintf(stdout, "NavajoCoin server starting\n");
+        fprintf(stdout, "NavCoin server starting\n");
 
     int64_t nStart;
 
@@ -770,10 +770,10 @@ bool AppInit2()
             uiInterface.ThreadSafeMessageBox(msg, _("SummerCoinV2"), CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION | CClientUIInterface::MODAL);
         }
         else if (nLoadWalletRet == DB_TOO_NEW)
-            strErrors << _("Error loading wallet.dat: Wallet requires newer version of NavajoCoin") << "\n";
+            strErrors << _("Error loading wallet.dat: Wallet requires newer version of NavCoin") << "\n";
         else if (nLoadWalletRet == DB_NEED_REWRITE)
         {
-            strErrors << _("Wallet needed to be rewritten: restart NavajoCoin to complete") << "\n";
+            strErrors << _("Wallet needed to be rewritten: restart NavCoin to complete") << "\n";
             printf("%s", strErrors.str().c_str());
             return InitError(strErrors.str());
         }

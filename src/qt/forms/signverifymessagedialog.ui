@@ -188,7 +188,7 @@ margin: 0px 6px 0px 0px;</string>
          <item>
           <widget class="QPushButton" name="signMessageButton_SM">
            <property name="toolTip">
-            <string>Sign the message to prove you own this NavajoCoin address</string>
+            <string>Sign the message to prove you own this NavCoin address</string>
            </property>
            <property name="styleSheet">
             <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240,240,240), stop:1 rgb(255, 255, 255));
@@ -382,7 +382,7 @@ padding: 4px;</string>
          <item>
           <widget class="QPushButton" name="verifyMessageButton_VM">
            <property name="toolTip">
-            <string>Verify the message to ensure it was signed with the specified NavajoCoin address</string>
+            <string>Verify the message to ensure it was signed with the specified NavCoin address</string>
            </property>
            <property name="styleSheet">
             <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240,240,240), stop:1 rgb(255, 255, 255));

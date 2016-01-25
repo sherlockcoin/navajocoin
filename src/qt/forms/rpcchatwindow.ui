@@ -151,7 +151,7 @@
          </font>
         </property>
         <property name="text">
-         <string>NavajoCoin IRC Chat</string>
+         <string>NavCoin IRC Chat</string>
         </property>
        </widget>
       </item>
@@ -180,7 +180,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=https://twitter.com/NavajoCoin style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;&lt;img src=&quot;:/icons/twitter&quot;/&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=https://twitter.com/NavCoin style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;&lt;img src=&quot;:/icons/twitter&quot;/&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="margin">
       <number>5</number>
@@ -270,7 +270,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=http://www.reddit.com/r/NavajoCoin style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;&lt;img src=&quot;:/icons/reddit&quot;/&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=http://www.reddit.com/r/NavCoin style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;&lt;img src=&quot;:/icons/reddit&quot;/&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="openExternalLinks">
       <bool>true</bool>

@@ -3,7 +3,7 @@
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-# Mac OS X makefile for navajocoin
+# Mac OS X makefile for navcoin
 # Originally by Laszlo Hanyecz (solar@heliacal.net)
 
 CXX=llvm-g++
@@ -25,7 +25,7 @@ USE_IPV6:=1
 LIBS= -dead_strip
 
 ifdef STATIC
-# Build STATIC if you are redistributing the navajocoind binary
+# Build STATIC if you are redistributing the navcoind binary
 LIBS += \
  $(DEPSDIR)/lib/db48/libdb_cxx-4.8.a \
  $(DEPSDIR)/lib/libboost_system-mt.a \
@@ -128,7 +128,7 @@ ifneq (${USE_IPV6}, -)
 	DEFS += -DUSE_IPV6=$(USE_IPV6)
 endif
 
-all: navajocoind
+all: navcoind
 
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
@@ -159,11 +159,11 @@ obj/scrypt-x86.o: scrypt-x86.S
 obj/scrypt-x86_64.o: scrypt-x86_64.S
 	$(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
 
-navajocoind: $(OBJS:obj/%=obj/%)
+navcoind: $(OBJS:obj/%=obj/%)
 	$(CXX) $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 clean:
-	-rm -f navajocoind
+	-rm -f navcoind
 	-rm -f obj/*.o
 	-rm -f obj/*.P
 	-rm -f obj-test/*.o

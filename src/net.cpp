@@ -1140,16 +1140,16 @@ void MapPort()
 // The second name should resolve to a list of seed addresses.
 static const char *strDNSSeed[][2] = {
     {"summercoinv2.no-ip.biz", "summercoinv2.no-ip.biz"},
-	{"navajosupernode1.no-ip.biz", "summercoinv2.no-ip.biz"},
-	{"navajosupernode2.no-ip.biz", "navajosupernode2.no-ip.biz"},
-	{"navajosupernode3.no-ip.biz", "navajosupernode3.no-ip.biz"},
-	{"navajosupernode4.no-ip.biz", "navajosupernode4.no-ip.biz"},
-	{"navajosupernode5.no-ip.biz", "navajosupernode5.no-ip.biz"},
-	{"navajosupernode6.no-ip.biz", "navajosupernode6.no-ip.biz"},
-	{"navajosupernode7.no-ip.biz", "navajosupernode7.no-ip.biz"},
-	{"navajosupernode8.no-ip.biz", "navajosupernode8.no-ip.biz"},
-	{"navajosupernode9.no-ip.biz", "navajosupernode9.no-ip.biz"},
-	{"navajosupernode10.no-ip.biz", "navajosupernode10.no-ip.biz"},
+	{"navsupernode1.no-ip.biz", "summercoinv2.no-ip.biz"},
+	{"navsupernode2.no-ip.biz", "navsupernode2.no-ip.biz"},
+	{"navsupernode3.no-ip.biz", "navsupernode3.no-ip.biz"},
+	{"navsupernode4.no-ip.biz", "navsupernode4.no-ip.biz"},
+	{"navsupernode5.no-ip.biz", "navsupernode5.no-ip.biz"},
+	{"navsupernode6.no-ip.biz", "navsupernode6.no-ip.biz"},
+	{"navsupernode7.no-ip.biz", "navsupernode7.no-ip.biz"},
+	{"navsupernode8.no-ip.biz", "navsupernode8.no-ip.biz"},
+	{"navsupernode9.no-ip.biz", "navsupernode9.no-ip.biz"},
+	{"navsupernode10.no-ip.biz", "navsupernode10.no-ip.biz"},
 };
 
 void ThreadDNSAddressSeed(void* parg)
@@ -1752,7 +1752,7 @@ bool BindListenPort(const CService &addrBind, string& strError)
     {
         int nErr = WSAGetLastError();
         if (nErr == WSAEADDRINUSE)
-            strError = strprintf(_("Unable to bind to %s on this computer. NavajoCoin is probably already running."), addrBind.ToString().c_str());
+            strError = strprintf(_("Unable to bind to %s on this computer. NavCoin is probably already running."), addrBind.ToString().c_str());
         else
             strError = strprintf(_("Unable to bind to %s on this computer (bind returned error %d, %s)"), addrBind.ToString().c_str(), nErr, strerror(nErr));
         printf("%s\n", strError.c_str());

@@ -60,7 +60,7 @@ void Server::connected()
 
 void Server::joins()
 {
-    join("#navajocoin");
+    join("#navcoin");
 }
 
 void Server::readServer()

@@ -26,7 +26,7 @@ ChatWindow::ChatWindow(QWidget *parent) : QMainWindow(parent)
 
     stackedWidget->setCurrentWidget(loginPage);
 
-    QSettings settings("navajocoin","wallet");
+    QSettings settings("navcoin","wallet");
 
     QString username = settings.value("username").toString();
 
@@ -79,7 +79,7 @@ void ChatWindow::on_loginButton_clicked()
             errorMessageLabel->setMaximumHeight(0);
             isChecked = rememberCheckBox->checkState();
 
-            QSettings settings("navajocoin","wallet");
+            QSettings settings("navcoin","wallet");
 
             if(isChecked)
             {
@@ -645,7 +645,7 @@ void ChatWindow::on_submitRegisterButton_clicked()
             registerError->setText("Invalid Characters");
         }else{
 
-            QSettings settings("navajocoin","wallet");
+            QSettings settings("navcoin","wallet");
             settings.setValue("username",usernameValue);
 
             QNetworkAccessManager *networkManager = new QNetworkAccessManager(this);
@@ -676,7 +676,7 @@ void ChatWindow::registerRequest(QNetworkReply *reply){
         registerError->setText(responseMessage);
     }else{
         stackedWidget->setCurrentWidget(loginPage);
-        QSettings settings("navajocoin","wallet");
+        QSettings settings("navcoin","wallet");
         QString username = settings.value("username").toString();
         usernameLine->setText("");
         userLineEdit->setText(username);
@@ -935,7 +935,7 @@ void ChatWindow::recoveryRequest(QNetworkReply *reply){
         recoveryTokenMessage->setText(responseMessage);
     }else{
         stackedWidget->setCurrentWidget(loginPage);
-        QSettings settings("navajocoin","wallet");
+        QSettings settings("navcoin","wallet");
         QString username = settings.value("username").toString();
         usernameLine->setText("");
         userLineEdit->setText(username);

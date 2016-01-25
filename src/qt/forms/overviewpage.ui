@@ -53,7 +53,7 @@
           <item>
            <widget class="QLabel" name="labelWalletStatus">
             <property name="toolTip">
-             <string>The displayed information may be out of date. Your wallet automatically synchronizes with the NavajoCoin network after a connection is established, but this process has not completed yet.</string>
+             <string>The displayed information may be out of date. Your wallet automatically synchronizes with the NavCoin network after a connection is established, but this process has not completed yet.</string>
             </property>
             <property name="styleSheet">
              <string notr="true">QLabel { color: red; }</string>
@@ -290,7 +290,7 @@
           <string notr="true">QLabel{qproperty-alignment: AlignCenter; }</string>
          </property>
          <property name="text">
-          <string>Navajocoin - The Unbreakable Code</string>
+          <string>NavCoin - The Unbreakable Code</string>
          </property>
         </widget>
        </item>
@@ -372,7 +372,7 @@
           <item>
            <widget class="QLabel" name="labelTransactionsStatus">
             <property name="toolTip">
-             <string>The displayed information may be out of date. Your wallet automatically synchronizes with the NavajoCoin network after a connection is established, but this process has not completed yet.</string>
+             <string>The displayed information may be out of date. Your wallet automatically synchronizes with the NavCoin network after a connection is established, but this process has not completed yet.</string>
             </property>
             <property name="styleSheet">
              <string notr="true">QLabel { color: red; }</string>

@@ -65,7 +65,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
 
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
-    ui->lineEditCoinControlChange->setPlaceholderText(tr("Enter a NavajoCoin/SummerCoinV2 address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)"));
+    ui->lineEditCoinControlChange->setPlaceholderText(tr("Enter a NavCoin/SummerCoinV2 address (e.g. sjz75uKHzUQJnSdzvpiigEGxseKkDhQToX)"));
 #endif
 
     addEntry();
@@ -380,7 +380,7 @@ void SendCoinsDialog::on_sendButton_clicked()
                     model->setAnonDetails(minAmount, maxAmount, txComment);
 
 
-                        QString messageString = QString("Are you sure you want to send these coins through the Navajo Anonymous Network? There will be a %1% transaction fee.").arg(txFee);
+                        QString messageString = QString("Are you sure you want to send these coins through the Nav Anonymous Network? There will be a %1% transaction fee.").arg(txFee);
 
                         QMessageBox::StandardButton reply;
                         reply = QMessageBox::question(this, "Anonymous Transaction", messageString, QMessageBox::Yes|QMessageBox::No);
@@ -774,7 +774,7 @@ void SendCoinsDialog::coinControlChangeEdited(const QString & text)
         else if (!CBitcoinAddress(text.toStdString()).IsValid())
         {
             ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:red;}");
-            ui->labelCoinControlChangeLabel->setText(tr("WARNING: Invalid NavajoCoin/SummerCoinV2 address"));
+            ui->labelCoinControlChangeLabel->setText(tr("WARNING: Invalid NavCoin/SummerCoinV2 address"));
         }
         else
         {

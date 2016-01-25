@@ -82,7 +82,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     rpcConsole(0)
 {
     resize(850, 550);
-    setWindowTitle(tr("NavajoCoin") + " - " + tr("Wallet"));
+    setWindowTitle(tr("NavCoin") + " - " + tr("Wallet"));
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/bitcoin"));
     setWindowIcon(QIcon(":icons/bitcoin"));
@@ -280,7 +280,7 @@ void BitcoinGUI::createActions()
     quitAction->setToolTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
-    aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About NavajoCoin"), this);
+    aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About NavCoin"), this);
     aboutAction->setToolTip(tr("Show information about SummerCoinV2"));
     aboutAction->setMenuRole(QAction::AboutRole);
     aboutQtAction = new QAction(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
@@ -294,17 +294,17 @@ void BitcoinGUI::createActions()
     encryptWalletAction->setToolTip(tr("Encrypt or decrypt wallet"));
     encryptWalletAction->setCheckable(true);
 	
-	openUrlAction = new QAction(QIcon(":/icons/bitcoin"), tr("NavajoCoin Website"), this);
-    openUrlAction->setToolTip(tr("NavajoCoin Website"));
+	openUrlAction = new QAction(QIcon(":/icons/bitcoin"), tr("NavCoin Website"), this);
+    openUrlAction->setToolTip(tr("NavCoin Website"));
 	
-    openUrlAction1 = new QAction(QIcon(":/icons/bitcoin"), tr("Buy Navajo at Bittrex"), this);
-    openUrlAction->setToolTip(tr("Buy Navajo at Bittrex"));
+    openUrlAction1 = new QAction(QIcon(":/icons/bitcoin"), tr("Buy NavCoin at Bittrex"), this);
+    openUrlAction->setToolTip(tr("Buy NavCoin at Bittrex"));
 	
-	openUrlAction2 = new QAction(QIcon(":/icons/bitcoin"), tr("Buy Navajo at Poloniex"), this);
-    openUrlAction2->setToolTip(tr("Buy Navajo at Poloniex"));
+	openUrlAction2 = new QAction(QIcon(":/icons/bitcoin"), tr("Buy NavCoin at Poloniex"), this);
+    openUrlAction2->setToolTip(tr("Buy NavCoin at Poloniex"));
 	
-	openUrlAction3 = new QAction(QIcon(":/icons/bitcoin"), tr("Buy Navajo at Bter"), this);
-    openUrlAction3->setToolTip(tr("Buy Navajo at Bter"));
+	openUrlAction3 = new QAction(QIcon(":/icons/bitcoin"), tr("Buy NavCoin at Bter"), this);
+    openUrlAction3->setToolTip(tr("Buy NavCoin at Bter"));
 	
 	openUrlAction4 = new QAction(QIcon(":/icons/bitcoin"), tr("Block Explorer"), this);
     openUrlAction4->setToolTip(tr("Block Explorer"));
@@ -437,7 +437,7 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
 #endif
             if(trayIcon)
             {
-                trayIcon->setToolTip(tr("NavajoCoin/SummerCoinV2 client") + QString(" ") + tr("[testnet]"));
+                trayIcon->setToolTip(tr("NavCoin/SummerCoinV2 client") + QString(" ") + tr("[testnet]"));
                 trayIcon->setIcon(QIcon(":/icons/toolbar_testnet"));
                 toggleHideAction->setIcon(QIcon(":/icons/toolbar_testnet"));
             }
@@ -503,7 +503,7 @@ void BitcoinGUI::createTrayIcon()
     trayIcon = new QSystemTrayIcon(this);
     trayIconMenu = new QMenu(this);
     trayIcon->setContextMenu(trayIconMenu);
-    trayIcon->setToolTip(tr("NavajoCoin/SummerCoinV2 client"));
+    trayIcon->setToolTip(tr("NavCoin/SummerCoinV2 client"));
     trayIcon->setIcon(QIcon(":/icons/toolbar"));
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
@@ -618,7 +618,7 @@ void BitcoinGUI::setNumConnections(int count)
     default: icon = ":/icons/connect_4"; break;
     }
     labelConnectionsIcon->setPixmap(QIcon(icon).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to NavajoCoin/SummerCoinV2 network", "", count));
+    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to NavCoin/SummerCoinV2 network", "", count));
 }
 
 void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
@@ -928,7 +928,7 @@ void BitcoinGUI::dropEvent(QDropEvent *event)
         if (nValidUrisFound)
             gotoSendCoinsPage();
         else
-            notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid NavajoCoin/SummerCoinV2 address or malformed URI parameters."));
+            notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid NavCoin/SummerCoinV2 address or malformed URI parameters."));
     }
 
     event->acceptProposedAction();
@@ -943,7 +943,7 @@ void BitcoinGUI::handleURI(QString strURI)
         gotoSendCoinsPage();
     }
     else
-        notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid NavajoCoin/SummerCoinV2 address or malformed URI parameters."));
+        notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid NavCoin/SummerCoinV2 address or malformed URI parameters."));
 }
 
 void BitcoinGUI::setEncryptionStatus(int status)

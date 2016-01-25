@@ -358,7 +358,7 @@ color: #4C4C4C;
 padding: 5px 20px;</string>
                  </property>
                  <property name="text">
-                  <string>TALK NAVAJO</string>
+                  <string>TALK NAV</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
