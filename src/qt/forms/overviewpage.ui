@@ -568,7 +568,7 @@ padding: 4px 0;</string>
            </row>
            <row>
             <property name="text">
-             <string>Cryptsy</string>
+             <string>Await</string>
             </property>
             <property name="textAlignment">
              <set>AlignHCenter|AlignVCenter|AlignCenter</set>
